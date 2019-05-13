@@ -7,10 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		43F674B641A6DC355B930095 /* libPods-DataUsageCatTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FAEBFB559E0810735A8DC4BD /* libPods-DataUsageCatTests.a */; };
-		50A0F44209287BAD5EA347A4 /* libPods-DataUsageCat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 44EAD957862B372157897F0A /* libPods-DataUsageCat.a */; };
+		0BD4200A1A2C3EDE9127A0BB /* Pods_DataUsageCat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A700A22843B21031FF66B7D6 /* Pods_DataUsageCat.framework */; };
 		600F66551DE2F651003167C5 /* DebugSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600F66541DE2F651003167C5 /* DebugSettingViewController.swift */; };
-		93579403BCBF418D0886F99D /* libPods-DataUsageCatUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BAF9E92A92C5BD0D250CFB4 /* libPods-DataUsageCatUITests.a */; };
+		7104EED2D2638E871689B2D3 /* Pods_DataUsageCatTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62BAD97D5361726B2F11AAB6 /* Pods_DataUsageCatTests.framework */; };
 		96007AEE1D604AF8006BAF2C /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96007AEC1D604AF8006BAF2C /* Main_iPad.storyboard */; };
 		964215E01D28AA5100E7E29A /* CurrentMonthNetworkUsage+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964215DB1D28AA5100E7E29A /* CurrentMonthNetworkUsage+CoreDataClass.swift */; };
 		964215E11D28AA5100E7E29A /* CurrentMonthNetworkUsage+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964215DC1D28AA5100E7E29A /* CurrentMonthNetworkUsage+CoreDataProperties.swift */; };
@@ -117,15 +116,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0BAF9E92A92C5BD0D250CFB4 /* libPods-DataUsageCatUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DataUsageCatUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		15B0B41C5C9E3E3E3D984800 /* Pods-DataUsageCatUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DataUsageCatUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DataUsageCatUITests/Pods-DataUsageCatUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		1C472B7F5111AD35ADC0E74D /* Pods-DataUsageCat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DataUsageCat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DataUsageCat/Pods-DataUsageCat.debug.xcconfig"; sourceTree = "<group>"; };
 		351431C7D619F476ACC27FD3 /* Pods-DataUsageCatTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DataUsageCatTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DataUsageCatTests/Pods-DataUsageCatTests.release.xcconfig"; sourceTree = "<group>"; };
 		41567DF400617B260871B8C4 /* Pods-DataUsageCatTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DataUsageCatTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DataUsageCatTests/Pods-DataUsageCatTests.debug.xcconfig"; sourceTree = "<group>"; };
 		44EAD957862B372157897F0A /* libPods-DataUsageCat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DataUsageCat.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		465670DB09017032A72CB1D8 /* Pods-DataUsageCat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DataUsageCat.release.xcconfig"; path = "Pods/Target Support Files/Pods-DataUsageCat/Pods-DataUsageCat.release.xcconfig"; sourceTree = "<group>"; };
-		5F486117BBFA40C165F213B8 /* Pods-DataUsageCatUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DataUsageCatUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DataUsageCatUITests/Pods-DataUsageCatUITests.release.xcconfig"; sourceTree = "<group>"; };
 		600F66541DE2F651003167C5 /* DebugSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugSettingViewController.swift; sourceTree = "<group>"; };
+		62BAD97D5361726B2F11AAB6 /* Pods_DataUsageCatTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DataUsageCatTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		96007AED1D604AF8006BAF2C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		96007AEF1D604B16006BAF2C /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main_iPad.strings; sourceTree = "<group>"; };
 		960E100C1D291D970055CA44 /* Messages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Messages.framework; path = System/Library/Frameworks/Messages.framework; sourceTree = SDKROOT; };
@@ -209,7 +206,7 @@
 		96F8F0A91D28A7E70083BEDB /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		96F8F0AB1D28A7E70083BEDB /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		96F8F0AF1D28A7E70083BEDB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
-		FAEBFB559E0810735A8DC4BD /* libPods-DataUsageCatTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DataUsageCatTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A700A22843B21031FF66B7D6 /* Pods_DataUsageCat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DataUsageCat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -225,7 +222,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				964215E71D28AB0F00E7E29A /* CloudKit.framework in Frameworks */,
-				50A0F44209287BAD5EA347A4 /* libPods-DataUsageCat.a in Frameworks */,
+				0BD4200A1A2C3EDE9127A0BB /* Pods_DataUsageCat.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,7 +230,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				43F674B641A6DC355B930095 /* libPods-DataUsageCatTests.a in Frameworks */,
+				7104EED2D2638E871689B2D3 /* Pods_DataUsageCatTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,7 +238,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				93579403BCBF418D0886F99D /* libPods-DataUsageCatUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,8 +251,6 @@
 				465670DB09017032A72CB1D8 /* Pods-DataUsageCat.release.xcconfig */,
 				41567DF400617B260871B8C4 /* Pods-DataUsageCatTests.debug.xcconfig */,
 				351431C7D619F476ACC27FD3 /* Pods-DataUsageCatTests.release.xcconfig */,
-				15B0B41C5C9E3E3E3D984800 /* Pods-DataUsageCatUITests.debug.xcconfig */,
-				5F486117BBFA40C165F213B8 /* Pods-DataUsageCatUITests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -267,8 +261,8 @@
 				964215E61D28AB0F00E7E29A /* CloudKit.framework */,
 				960E100C1D291D970055CA44 /* Messages.framework */,
 				44EAD957862B372157897F0A /* libPods-DataUsageCat.a */,
-				FAEBFB559E0810735A8DC4BD /* libPods-DataUsageCatTests.a */,
-				0BAF9E92A92C5BD0D250CFB4 /* libPods-DataUsageCatUITests.a */,
+				A700A22843B21031FF66B7D6 /* Pods_DataUsageCat.framework */,
+				62BAD97D5361726B2F11AAB6 /* Pods_DataUsageCatTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -466,6 +460,7 @@
 				02F6C69472C614CF1E92F2E2 /* [CP] Copy Pods Resources */,
 				961981CA1D28DE5500D3EAA2 /* ShellScript */,
 				96D80CF91D56CA4400F8F019 /* Embed App Extensions */,
+				69E95FB6A7791AEE73A4B7FD /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -500,7 +495,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9687A2E31D281F1600C6B9C1 /* Build configuration list for PBXNativeTarget "DataUsageCatUITests" */;
 			buildPhases = (
-				75926AB20934EC16642C3214 /* [CP] Check Pods Manifest.lock */,
 				9687A2D01D281F1600C6B9C1 /* Sources */,
 				9687A2D11D281F1600C6B9C1 /* Frameworks */,
 				9687A2D21D281F1600C6B9C1 /* Resources */,
@@ -591,8 +585,10 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
+				ja,
 			);
 			mainGroup = 9687A2A91D281F1500C6B9C1;
 			productRefGroup = 9687A2B31D281F1600C6B9C1 /* Products */;
@@ -678,24 +674,16 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-DataUsageCat/Pods-DataUsageCat-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/BubbleTransition-objc/BubbleTransition.bundle",
-				"${PODS_ROOT}/DJKUtilNADView/Resources/InterfaceBuilders/DJKNativeAdTableViewCell.xib",
-				"${PODS_ROOT}/DJKUtilNADView/Resources/InterfaceBuilders/DJKUtilNADNativeView.xib",
+				"${PODS_ROOT}/Target Support Files/Pods-DataUsageCat/Pods-DataUsageCat-resources.sh",
 				"${PODS_ROOT}/NendSDK_iOS/NendAd.embeddedframework/NendAd.framework/Resources/NendAdResource.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/PersonalizedAdConsent/PersonalizedAdConsent.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/BubbleTransition.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/DJKNativeAdTableViewCell.nib",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/DJKUtilNADNativeView.nib",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/NendAdResource.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/PersonalizedAdConsent.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DataUsageCat/Pods-DataUsageCat-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DataUsageCat/Pods-DataUsageCat-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		4B89A30B90F5F230A711A45A /* [CP] Check Pods Manifest.lock */ = {
@@ -716,22 +704,44 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		75926AB20934EC16642C3214 /* [CP] Check Pods Manifest.lock */ = {
+		69E95FB6A7791AEE73A4B7FD /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
+				"${PODS_ROOT}/Target Support Files/Pods-DataUsageCat/Pods-DataUsageCat-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BubbleTransition/BubbleTransition.framework",
+				"${BUILT_PRODUCTS_DIR}/DJKPurchaseService/DJKPurchaseService.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/NCMB/NCMB.framework",
+				"${BUILT_PRODUCTS_DIR}/PersonalizedAdConsent/PersonalizedAdConsent.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/PureLayout/PureLayout.framework",
+				"${BUILT_PRODUCTS_DIR}/RMPZoomTransitionAnimator/RMPZoomTransitionAnimator.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyStoreKit/SwiftyStoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/TinyConstraints/TinyConstraints.framework",
+				"${BUILT_PRODUCTS_DIR}/ZFDragableModalTransition/ZFDragableModalTransition.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
-			name = "[CP] Check Pods Manifest.lock";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-DataUsageCatUITests-checkManifestLockResult.txt",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BubbleTransition.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DJKPurchaseService.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NCMB.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PersonalizedAdConsent.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PureLayout.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RMPZoomTransitionAnimator.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyStoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TinyConstraints.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ZFDragableModalTransition.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DataUsageCat/Pods-DataUsageCat-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		961981CA1D28DE5500D3EAA2 /* ShellScript */ = {
@@ -1022,6 +1032,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = DataUsageCat/DataUsageCat.entitlements;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/FirebaseAnalytics/Frameworks\"",
+					"\"${PODS_ROOT}/FirebaseInstanceID/Frameworks\"",
+					"\"${PODS_ROOT}/Google-Mobile-Ads-SDK/Frameworks/frameworks\"",
+					"\"${PODS_ROOT}/GoogleMobileAdsMediationNend/NendAdapter-5.0.1.0\"",
+					"\"${PODS_ROOT}/NendSDK_iOS/NendAd.embeddedframework\"",
+				);
 				INFOPLIST_FILE = DataUsageCat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.co.JchanKchan.DataUsageCat;
@@ -1040,6 +1058,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = DataUsageCat/DataUsageCat.entitlements;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/FirebaseAnalytics/Frameworks\"",
+					"\"${PODS_ROOT}/FirebaseInstanceID/Frameworks\"",
+					"\"${PODS_ROOT}/Google-Mobile-Ads-SDK/Frameworks/frameworks\"",
+					"\"${PODS_ROOT}/GoogleMobileAdsMediationNend/NendAdapter-5.0.1.0\"",
+					"\"${PODS_ROOT}/NendSDK_iOS/NendAd.embeddedframework\"",
+				);
 				INFOPLIST_FILE = DataUsageCat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.co.JchanKchan.DataUsageCat;
@@ -1082,7 +1108,6 @@
 		};
 		9687A2E41D281F1600C6B9C1 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 15B0B41C5C9E3E3E3D984800 /* Pods-DataUsageCatUITests.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = DataUsageCatUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1096,7 +1121,6 @@
 		};
 		9687A2E51D281F1600C6B9C1 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5F486117BBFA40C165F213B8 /* Pods-DataUsageCatUITests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = DataUsageCatUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

@@ -1,0 +1,50 @@
+{
+  "stickers" : [
+    {
+      "filename" : "sticker-cat-caution.sticker"
+    },
+    {
+      "filename" : "sticker-cat-dangerous.sticker"
+    },
+    {
+      "filename" : "sticker-cat-fine.sticker"
+    },
+    {
+      "filename" : "sticker-cat-good.sticker"
+    },
+    {
+      "filename" : "sticker-cat-readbook.sticker"
+    },
+    {
+      "filename" : "sticker-cat-waitdownload.sticker"
+    },
+    {
+      "filename" : "sticker-cat-catch.sticker"
+    },
+    {
+      "filename" : "sticker-cat-research.sticker"
+    },
+    {
+      "filename" : "sticker-cat-waitng.sticker"
+    },
+    {
+      "filename" : "sticker-cat-searching.sticker"
+    },
+    {
+      "filename" : "sticker-cat-ohmygod.sticker"
+    },
+    {
+      "filename" : "sticker-cat-letter.sticker"
+    },
+    {
+      "filename" : "sticker-cat-porting.sticker"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  },
+  "properties" : {
+    "grid-size" : "regular"
+  }
+}

@@ -1,0 +1,6 @@
+framework module DJKPurchaseService {
+  umbrella header "DJKPurchaseService-umbrella.h"
+
+  export *
+  module * { export * }
+}

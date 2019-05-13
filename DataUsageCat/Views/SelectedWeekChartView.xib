@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" restorationIdentifier="SelectedWeekChartView" id="tma-Y1-gSl" customClass="SelectedWeekChartView" customModule="DataUsageCat" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="293"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" id="VMr-f5-T3V">
+                    <rect key="frame" x="14" y="0.0" width="35" height="293"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" id="DDR-K5-6nL">
+                            <rect key="frame" x="0.0" y="0.0" width="18" height="281"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinY="YES" heightSizable="YES"/>
+                            <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        </view>
+                        <view contentMode="scaleToFill" id="G5f-L4-jAJ">
+                            <rect key="frame" x="18" y="0.0" width="17" height="281"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinY="YES" heightSizable="YES"/>
+                            <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" id="Mro-SH-nhx">
+                    <rect key="frame" x="57" y="0.0" width="35" height="293"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" id="oBd-AO-FJT">
+                            <rect key="frame" x="0.0" y="0.0" width="18" height="281"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinY="YES" heightSizable="YES"/>
+                            <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        </view>
+                        <view contentMode="scaleToFill" id="k2d-fx-lap">
+                            <rect key="frame" x="18" y="0.0" width="17" height="281"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinY="YES" heightSizable="YES"/>
+                            <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" id="kuc-O9-gIy">
+                    <rect key="frame" x="100" y="0.0" width="35" height="293"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" id="KxC-85-vSG">
+                            <rect key="frame" x="0.0" y="0.0" width="18" height="281"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinY="YES" heightSizable="YES"/>
+                            <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        </view>
+                        <view contentMode="scaleToFill" id="ApJ-ro-BVA">
+                            <rect key="frame" x="18" y="0.0" width="17" height="281"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinY="YES" heightSizable="YES"/>
+                            <color key="backgroundColor" red="0.0" green="0.47843137254901957" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" id="JB1-0C-ZSv">
+                    <rect key="frame" x="142" y="0.0" width="35" height="293"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" id="bxK-QO-CMG">
+                            <rect key="frame" x="0.0" y="0.0" width="18" height="281"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinY="YES" heightSizable="YES"/>
+                            <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        </view>
+                        <view contentMode="scaleToFill" id="WC8-Ny-gMg">
+                            <rect key="frame" x="18" y="0.0" width="17" height="281"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinY="YES" heightSizable="YES"/>
+                            <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" id="9vw-V9-4KE">
+                    <rect key="frame" x="186" y="0.0" width="35" height="293"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" id="qSf-tF-Mer">
+                            <rect key="frame" x="0.0" y="0.0" width="18" height="281"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinY="YES" heightSizable="YES"/>
+                            <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        </view>
+                        <view contentMode="scaleToFill" id="QWM-MG-WS4">
+                            <rect key="frame" x="18" y="0.0" width="17" height="281"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinY="YES" heightSizable="YES"/>
+                            <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" id="8AC-IY-K64">
+                    <rect key="frame" x="229" y="0.0" width="35" height="293"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" id="pOj-Vo-7Yb">
+                            <rect key="frame" x="0.0" y="0.0" width="18" height="281"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinY="YES" heightSizable="YES"/>
+                            <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        </view>
+                        <view contentMode="scaleToFill" id="LFK-jM-u4I">
+                            <rect key="frame" x="18" y="0.0" width="17" height="281"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinY="YES" heightSizable="YES"/>
+                            <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" id="ykG-ZG-HPi">
+                    <rect key="frame" x="272" y="0.0" width="35" height="293"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" id="QoR-bg-Mb1">
+                            <rect key="frame" x="0.0" y="0.0" width="18" height="281"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinY="YES" heightSizable="YES"/>
+                            <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        </view>
+                        <view contentMode="scaleToFill" id="Coc-iZ-B5v">
+                            <rect key="frame" x="18" y="0.0" width="17" height="281"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinY="YES" heightSizable="YES"/>
+                            <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" id="EbI-vi-4IY">
+                    <rect key="frame" x="14" y="0.0" width="35" height="293"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="jarashi_for_chart.png" id="5vr-J8-8T7">
+                            <rect key="frame" x="0.0" y="178" width="35" height="115"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" id="l6c-Fq-nRH">
+                    <rect key="frame" x="57" y="0.0" width="35" height="293"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="jarashi_for_chart.png" id="dBx-yk-Id2">
+                            <rect key="frame" x="0.0" y="178" width="35" height="115"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" id="2QY-lM-UNY">
+                    <rect key="frame" x="100" y="0.0" width="35" height="293"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="jarashi_for_chart.png" id="CTJ-VG-g3v">
+                            <rect key="frame" x="0.0" y="178" width="35" height="115"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" id="iq5-YF-Jm0">
+                    <rect key="frame" x="143" y="0.0" width="35" height="293"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="jarashi_for_chart.png" id="ce6-dH-p27">
+                            <rect key="frame" x="0.0" y="178" width="35" height="115"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" id="Boj-gF-lEV">
+                    <rect key="frame" x="186" y="0.0" width="35" height="293"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="jarashi_for_chart.png" id="Ms9-AR-YrA">
+                            <rect key="frame" x="0.0" y="178" width="35" height="115"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" id="g8M-XC-xhV">
+                    <rect key="frame" x="229" y="0.0" width="35" height="293"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="jarashi_for_chart.png" id="DCV-Lz-4qY">
+                            <rect key="frame" x="0.0" y="178" width="35" height="115"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" id="hCO-NL-o0a">
+                    <rect key="frame" x="272" y="0.0" width="35" height="293"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="jarashi_for_chart.png" id="oFd-8N-MPF">
+                            <rect key="frame" x="0.0" y="178" width="35" height="115"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" id="Kra-kj-B3o">
+                    <rect key="frame" x="0.0" y="281" width="320" height="12"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <color key="backgroundColor" red="0.0" green="0.40057036042944788" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="chartView_01" destination="DDR-K5-6nL" id="rqW-CU-SO4"/>
+                <outlet property="chartView_02" destination="oBd-AO-FJT" id="jU7-Y1-R6c"/>
+                <outlet property="chartView_03" destination="KxC-85-vSG" id="wg8-cr-XK4"/>
+                <outlet property="chartView_04" destination="bxK-QO-CMG" id="i4H-qg-itD"/>
+                <outlet property="chartView_05" destination="qSf-tF-Mer" id="nYG-yV-QKl"/>
+                <outlet property="chartView_06" destination="pOj-Vo-7Yb" id="ss2-az-sZW"/>
+                <outlet property="chartView_07" destination="QoR-bg-Mb1" id="abL-UO-X9L"/>
+                <outlet property="chartWifiView_01" destination="G5f-L4-jAJ" id="55H-Fz-B7g"/>
+                <outlet property="chartWifiView_02" destination="k2d-fx-lap" id="zRd-zN-0se"/>
+                <outlet property="chartWifiView_03" destination="ApJ-ro-BVA" id="oW0-eW-5V1"/>
+                <outlet property="chartWifiView_04" destination="WC8-Ny-gMg" id="MxP-dv-t38"/>
+                <outlet property="chartWifiView_05" destination="QWM-MG-WS4" id="5cV-Z9-kn9"/>
+                <outlet property="chartWifiView_06" destination="LFK-jM-u4I" id="rLU-n8-10G"/>
+                <outlet property="chartWifiView_07" destination="Coc-iZ-B5v" id="3cX-fd-Bxt"/>
+                <outlet property="focusViewImage_01" destination="5vr-J8-8T7" id="Tso-FW-LKf"/>
+                <outlet property="focusViewImage_02" destination="dBx-yk-Id2" id="Ggk-AB-OiV"/>
+                <outlet property="focusViewImage_03" destination="CTJ-VG-g3v" id="OzH-SO-Cw1"/>
+                <outlet property="focusViewImage_04" destination="ce6-dH-p27" id="DpV-5Y-GkM"/>
+                <outlet property="focusViewImage_05" destination="Ms9-AR-YrA" id="X4h-hJ-L1F"/>
+                <outlet property="focusViewImage_06" destination="DCV-Lz-4qY" id="IM6-dR-YKx"/>
+                <outlet property="focusViewImage_07" destination="oFd-8N-MPF" id="4hx-gg-TGp"/>
+                <outlet property="focusView_01" destination="EbI-vi-4IY" id="X4q-TD-QHw"/>
+                <outlet property="focusView_02" destination="l6c-Fq-nRH" id="UUh-8J-Q4q"/>
+                <outlet property="focusView_03" destination="2QY-lM-UNY" id="A0h-sq-Eki"/>
+                <outlet property="focusView_04" destination="iq5-YF-Jm0" id="pU2-2q-1Uc"/>
+                <outlet property="focusView_05" destination="Boj-gF-lEV" id="cvL-wm-19e"/>
+                <outlet property="focusView_06" destination="g8M-XC-xhV" id="JeU-T2-zWI"/>
+                <outlet property="focusView_07" destination="hCO-NL-o0a" id="VEH-NW-8Hc"/>
+            </connections>
+        </view>
+    </objects>
+    <resources>
+        <image name="jarashi_for_chart.png" width="70" height="230"/>
+    </resources>
+</document>

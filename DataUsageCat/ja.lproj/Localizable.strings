@@ -1,0 +1,107 @@
+/* 
+  Localizable.strings
+  DataUsageCat
+
+  Created by 鈴木 航 on 2013/09/30.
+  Copyright (c) 2013年 鈴木 航. All rights reserved.
+*/
+detail = "詳細";
+wifi = "Wi-Fi";
+wwan = "パケット";
+mobile_data = "パケット通信";
+data_send = "データ送信量";
+data_received = "データ受信量";
+month_usage = "今月使用量";
+month_remain = "今月残り";
+month_save = "今月の節約分";
+month_percentage = "今月の割合";
+
+breakdown_this_month = "今月の内訳";
+show_breakdown = "内訳を見る";
+comment_from_cat = "にゃんこコメント";
+
+usage_charts = "グラフ";
+msg_no_data = "まだ表示するだけのデータが無いので、しばらく放置してください。";
+
+footer_wifi = "Wi-Fiを使用した通信量です。iPhoneへの請求対象外ですので、あなたが節約した量といえます。";
+footer_wifi_pad = "Wi-Fiを使用した通信量です。iPadへの請求対象外ですので、あなたが節約した量といえます。";
+footer_mobile_data = "iPhoneが3Gや4Gで通信した量です。制限を超えると速度制限がかけられるので注意しながら使用して下さい。";
+footer_mobile_data_pad = "iPadが3Gや4Gで通信した量です。制限を超えると速度制限がかけられるので注意しながら使用して下さい。";
+about_this_app = "このアプリについて";
+about_this_app_message_pad = "このアプリは3Gや4Gのデータ通信量を記録するアプリです。\n\n・バックグラウンド設定をONにすると定期的に記録を行うので、より正確な記録になります。\n\n・本アプリを起動していない状態が長時間起動していない場合、情報が不正確になります。定期的に起動して下さい。\n\n・このアプリが記録出来るデータは必ずしも正確とは限らない為、正確なデータはご契約する通信キャリアへご確認ください。";
+about_this_app_message = "このアプリは3Gや4Gのデータ通信量を記録するアプリです。";
+
+app_settings = "アプリの設定";
+show_app_settings = "設定を全画面表示";
+reset_every_month = "月ごとにリセット";
+reset_date = "リセット日";
+reset_chart_display = "グラフは先月も表示";
+footer_setting_reset_chart = "設定がONの場合は2カ月分のデータを表示するニャ";
+
+limit_usage_value = "最大使用量";
+notification = "にゃんこからの通知";
+
+premium_options = "有料オプション";
+unlock_ad = "広告の解除";
+restore = "復元する";
+purchase = "購入する";
+buy = "購入する";
+welcome = "いらっしゃいニャ〜";
+thankyou_purchase = "ご購入ありがとニャ！";
+
+cancel = "キャンセル";
+error = "エラー";
+restrict_in_app_purchase = "アプリ内課金が制限されています。";
+cannot_pay = "購入または復元できません。\nしばらく経ってから、やり直して下さい。";
+about_restore = "すでに他のデバイスで購入している場合や、購入したのに反映されていない場合は「復元する」を選択してみてニャ。\n※前回購入時と同じApple IDじゃないと復元できないから気をつけるニャ〜";
+comp_restore = "復元が完了しました";
+fail_invalid = "実行が許可されていません。\nしばらく経ってから、やり直して下さい。";
+not_available = "現在は発売されていないかもしれません...";
+cannot_find_pay_history = "購入履歴が見つかりません。\nしばらく経ってから、やり直して下さい。";
+
+message_state_good = "ニャニャニャ、たっぷり使えるニャ。\nニャンコの動画をたくさん見たいニャ。";
+message_state_fine = "まだまだ使えるニャ。\nニャンコが遊べるアプリを探してほしいニャ。";
+message_state_caution = "ちょっと使い過ぎだニャ...\n気をつけないと制限かかるニャ。\n少し休んでニャンコと遊ぶか、なるべくWi-Fiで使うのニャ。";
+message_state_dangerous = "フシャーーーーー！！\n\n使い過ぎてるニャーー！\n制限されるニャ。Wi-Fiでしのぐのニャ！";
+
+about = "約";
+aim = "目安";
+aim_about_music = "音楽";
+aim_about_movie = "動画";
+aim_about_webpage = "Webページ";
+aim_about_email = "メール";
+aim_about_map = "地図アプリ";
+
+minutes = "分";
+pages = "ページ";
+count_time = "回";
+
+aim_message_music = "Apple Musicみたいな、音楽をインターネット経由で再生するサービスを使用した場合の目安だニャ。\n\nパケットを節約するにはWi-Fiスポットを探すニャ。\n\nまたは事前にミュージックに音楽を同期などで取り込んで置くことで、データ通信無しで音楽を聴くことができるニャ。
+";
+aim_message_movie = "YouTubeとか動画をインターネット経由で視聴するサービスを使用した場合の目安だニャ。\n\nパケットを節約するにはWi-Fiスポットを探すニャ。\n\nまたは事前にビデオに動画を同期などで取り込んでおけば、データ通信無しで動画を観ることができるニャ。
+";
+aim_message_webpage = "インターネットでWebサイトを閲覧した回数の目安だニャ。\n\nパケットを節約するにはWi-Fiスポットを探すニャ。\n\nときどき読書の時間を増やすのもいいかも知れないニャ。
+";
+aim_message_email = "メール（1通で300文字ぐらい）の送受信を行った場合の目安だニャ。\n\nパケットを節約するにはWi-Fiスポットを探すニャ。\n\nたまにはお手紙書いたりするのもいいかも知れないニャ。";
+aim_message_map = "マップを使って現在地を表示する回数の目安だニャ。\n\nパケットを節約するにはWi-Fiスポットを探すニャ。\n\nもしくは目的地を事前に調べておくと、マップアプリはオフライン（データ通信OFF）でも使うことができるからパケ節約になるニャ。";
+
+local_notification_alert_action = "ニャニャニャ";
+local_notification_alert_body = "パケ使い過ぎかもニャ！どれくらい使ってるか確認するニャ";
+footer_setting_notification = "直近3日間のパケット使用量が多いかニャ？\nってニャンコが思ったときに通知する機能だニャ";
+
+msg_ad_recommended = "(=・ω・=)おすすめ";
+msg_ad_recommended_title = "(=・ω・=)";
+msg_ad_recommended_detail = "おすすめ";
+
+title_ignore_notification = "(=・人・=)...";
+msg_ignore_notification = "通知がオフになっているのでニャンコがお話できません。お話できないとお仕事できないアプリです。通知をオンにしますか？";
+
+title_not_work_recently = "(=-ω-=)zzz...";
+msg_not_work_recently = "最近ニャンコがサボっているっぽいです。お仕事してもらいますか？";
+
+about_this_app_cat = "ニャンコについて";
+about_this_app_usageValue = "使用量について";
+about_this_app_jarashi = "猫じゃらしについて";
+msg_about_this_app_cat = "使用量に合わせてニャンコの気持ちが変わるニャ。ニャンコのありがたいアドバイスも参考にするニャ。\nバックグラウンド設定をONにすると定期的に記録を行うので、より正確な記録になるニャ。";
+msg_about_this_app_usageValue = "日々の使用量をグラフでチェックできるニャ。\nこのアプリを起動していない状態が長い場合、情報が不正確になるニャ。定期的に起動してほしいニャ。";
+msg_about_this_app_jarashi = "タップするとチェックする量とか設定を確認できるニャ。\nこのアプリが記録出来るデータは必ずしも正確じゃニャいから、正確なデータはご契約の通信キャリアへ確認するニャ。";

@@ -1,0 +1,8 @@
+/* 
+  InfoPlist.strings
+  DataUsageCat
+
+  Created by 鈴木 航 on 2015/03/03.
+  Copyright (c) 2015年 鈴木 航. All rights reserved.
+*/
+CFBundleDisplayName = "パケにゃんこ";

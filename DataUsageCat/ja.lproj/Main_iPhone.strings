@@ -1,0 +1,63 @@
+
+/* Class = "IBUIButton"; normalTitle = "Now"; ObjectID = "27e-Yi-vQG"; */
+"27e-Yi-vQG.normalTitle" = "Now";
+
+/* Class = "IBUILabel"; text = "Detail"; ObjectID = "7w9-zI-ZQ4"; */
+"7w9-zI-ZQ4.text" = "Detail";
+
+/* Class = "IBUILabel"; text = "Title"; ObjectID = "8cJ-Sf-Ejg"; */
+"8cJ-Sf-Ejg.text" = "Title";
+
+/* Class = "IBUILabel"; text = "This month"; ObjectID = "AIH-Ui-4R0"; */
+"AIH-Ui-4R0.text" = "This month";
+
+/* Class = "IBUILabel"; text = "Title"; ObjectID = "CUe-uT-y5f"; */
+"CUe-uT-y5f.text" = "Title";
+
+/* Class = "IBUILabel"; text = "Detail"; ObjectID = "FYu-I0-Sgg"; */
+"FYu-I0-Sgg.text" = "Detail";
+
+/* Class = "IBUISegmentedControl"; GcC-jc-Sx4.segmentTitles[0] = "グラフ"; ObjectID = "GcC-jc-Sx4"; */
+"GcC-jc-Sx4.segmentTitles[0]" = "グラフ";
+
+/* Class = "IBUISegmentedControl"; GcC-jc-Sx4.segmentTitles[1] = "今月の内訳"; ObjectID = "GcC-jc-Sx4"; */
+"GcC-jc-Sx4.segmentTitles[1]" = "今月の内訳";
+
+/* Class = "IBUILabel"; text = "Detail"; ObjectID = "H3y-xB-1sW"; */
+"H3y-xB-1sW.text" = "Detail";
+
+/* Class = "IBUILabel"; text = "Value"; ObjectID = "Qcz-nG-TLo"; */
+"Qcz-nG-TLo.text" = "Value";
+
+/* Class = "IBUIButton"; normalTitle = "Settings"; ObjectID = "Xck-wm-j7B"; */
+"Xck-wm-j7B.normalTitle" = "Settings";
+
+/* Class = "IBUITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "eo8-fZ-dk2"; */
+"eo8-fZ-dk2.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+
+/* Class = "IBUITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "h0S-Ip-ObW"; */
+"h0S-Ip-ObW.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+
+/* Class = "IBUILabel"; text = "Title"; ObjectID = "jTo-8r-Bal"; */
+"jTo-8r-Bal.text" = "Title";
+
+/* Class = "IBUISegmentedControl"; n8g-dJ-628.segmentTitles[0] = "First"; ObjectID = "n8g-dJ-628"; */
+"n8g-dJ-628.segmentTitles[0]" = "First";
+
+/* Class = "IBUISegmentedControl"; n8g-dJ-628.segmentTitles[1] = "Second"; ObjectID = "n8g-dJ-628"; */
+"n8g-dJ-628.segmentTitles[1]" = "Second";
+
+/* Class = "IBUISegmentedControl"; n8g-dJ-628.segmentTitles[2] = "Third"; ObjectID = "n8g-dJ-628"; */
+"n8g-dJ-628.segmentTitles[2]" = "Third";
+
+/* Class = "IBUITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "qLW-sc-kBa"; */
+"qLW-sc-kBa.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+
+/* Class = "IBUINavigationItem"; title = "Title"; ObjectID = "rCJ-ye-PFR"; */
+"rCJ-ye-PFR.title" = "Title";
+
+/* Class = "IBUILabel"; text = "GB"; ObjectID = "sZg-ip-byJ"; */
+"sZg-ip-byJ.text" = "GB";
+
+/* Class = "IBUILabel"; text = "Title"; ObjectID = "uBc-Ob-WXk"; */
+"uBc-Ob-WXk.text" = "Title";

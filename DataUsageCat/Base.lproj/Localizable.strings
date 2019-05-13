@@ -1,0 +1,106 @@
+/*
+ Localizable.strings
+ DataUsageCat
+ 
+ Created by 鈴木 航 on 2013/09/30.
+ Copyright (c) 2013年 鈴木 航. All rights reserved.
+ */
+detail = "detail";
+wifi = "Wi-Fi";
+wwan = "WWAN";
+mobile_data = "Mobile network";
+data_send = "data send";
+data_received = "data received";
+month_usage = "usage";
+month_remain = "remaining";
+month_save = "save of month";
+month_percentage = "percentage of month";
+
+breakdown_this_month = "About this month";
+show_breakdown = "Show breakdown";
+comment_from_cat = "Comment from Cat";
+
+usage_charts = "Usage charts";
+msg_no_data = "No data. Please allow to stand for a while.";
+
+reset_every_month = "Reset every month";
+reset_date = "Reset date";
+reset_chart_display = "Enable chart last month";
+footer_setting_reset_chart = "Display the data of the 2-month while setting is ON";
+
+limit_usage_value = "Limit usage value";
+notification = "Notification";
+
+premium_options = "Premium options";
+unlock_ad = "Unlock ad";
+restore = "Restore";
+purchase = "Purchase";
+buy = "Buy";
+welcome = "Welco-meow";
+thankyou_purchase = "Thank you meow!!";
+
+cancel = "Cancel";
+error = "Error";
+restrict_in_app_purchase = "Restrict in app purchase";
+cannot_pay = "Cannot pay item. Please try again later.";
+about_restore = "Select \"Restore\" if you have purchased on other devices already, or if it has not been reflected even after being purchased.";
+comp_restore = "Restore is completed";
+fail_invalid = "Not allowed to perform the attempted action";
+not_available = "Product is not available...";
+cannot_find_pay_history = "Cannot find history. Please try again later.";
+
+footer_wifi = "This data usage was used in Wi-Fi. This data is billed outside of the iPhone.";
+footer_wifi_pad = "This data usage was used in Wi-Fi. This data is billed outside of the iPad.";
+footer_mobile_data = "The data usage was used by LTE or 3G. Please use it with caution because the speed limit is applied to the limit is exceeded.";
+footer_mobile_data_pad = "The data usage was used by LTE or 3G. Please use it with caution because the speed limit is applied to the limit is exceeded.";
+about_this_app = "About this App";
+about_this_app_message_pad = "This application records the data traffic of the LTE and 3G.\n\nBut data is not always accurate. \n\nIf you want to get more accurately data, you should check to settings or inquire to network carrier.";
+about_this_app_message = "This application records the data traffic of the LTE and 3G.";
+
+app_settings = "Settings";
+show_app_settings = "Expand all settings";
+
+message_state_good = "Remaining amount is fully.\nLet's watch cats videos.";
+message_state_fine = "Remaining amount is large.\nLet's look for apps to Cat.";
+message_state_caution = "Remaining amount is small.\nPlease should use Wi-Fi & refrain to use mobile network. ";
+message_state_dangerous = "Remaining amount is only a few.\nDon't use mobile network as much as possible.";
+
+about = "About";
+aim = "Aim";
+aim_about_music = "Music";
+aim_about_movie = "Movie";
+aim_about_webpage = "Load Web";
+aim_about_email = "Email";
+aim_about_map = "Map app";
+
+minutes = "min.";
+pages = "pages";
+count_time = "times";
+
+aim_message_music = "This aim is when you listen the music on the streaming service, e.g Apple Music or anything.";
+aim_message_movie = "This aim is when you watch the movie on the streaming service, e.g YouTube, Hulu, NBA League pass or anything.";
+aim_message_webpage = "This aim is when you load web site.";
+aim_message_email = "This aim is when you use email application.";
+aim_message_map = "This aim is when you use map application.";
+
+local_notification_alert_action = "Meow Meow";
+local_notification_alert_body = "Your data usage is a lot recently. Check the usage result.";
+footer_setting_notification = "Cat notify message if the amount of the last three days is often.";
+
+msg_ad_recommended = "(=・ω・=) Recommended";
+msg_ad_recommended_title = "(=・ω・=)";
+msg_ad_recommended_detail = "Recommended";
+
+title_ignore_notification = "(=・人・=)...";
+msg_ignore_notification = "Notification settings is ignored. The Cat would like to talk you & it's need to working this app. Would you change notification setting is enabled?";
+
+title_not_work_recently = "(=-ω-=)zzz...";
+msg_not_work_recently = "Cat doesn't work recently. Would you want to Cat restart job?";
+
+about_this_app_cat = "About Cat";
+about_this_app_usageValue = "About usage value";
+about_this_app_jarashi = "About Setaria";
+msg_about_this_app_cat = "Your usage refrect Cat's feelings. And you can get advice from Cat.";
+msg_about_this_app_usageValue = "You can check daily usage on chart.\n\nBut data is not always accurate. \n\nIf you want to get more accurately data, you should check to settings or inquire to network carrier.";
+msg_about_this_app_jarashi = "You can change reference value of tracking usage.";
+

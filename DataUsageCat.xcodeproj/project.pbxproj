@@ -75,6 +75,9 @@
 		96F8F0B01D28A7E70083BEDB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 96F8F0A81D28A7E70083BEDB /* InfoPlist.strings */; };
 		96F8F0B11D28A7E70083BEDB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 96F8F0AA1D28A7E70083BEDB /* Localizable.strings */; };
 		96F8F0B31D28A7E70083BEDB /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96F8F0AE1D28A7E70083BEDB /* Main_iPhone.storyboard */; };
+		CCD08EAB2316693F007116AA /* HelpingMonetizeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD08EAA2316693F007116AA /* HelpingMonetizeViewController.swift */; };
+		CCD08EAE23166EB3007116AA /* DJKViewUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = CCD08EAC23166EB3007116AA /* DJKViewUtils.m */; };
+		CCD08EB123166ED7007116AA /* DJKUtilLocale.m in Sources */ = {isa = PBXBuildFile; fileRef = CCD08EAF23166ED7007116AA /* DJKUtilLocale.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -207,6 +210,11 @@
 		96F8F0AB1D28A7E70083BEDB /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		96F8F0AF1D28A7E70083BEDB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		A700A22843B21031FF66B7D6 /* Pods_DataUsageCat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DataUsageCat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CCD08EAA2316693F007116AA /* HelpingMonetizeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpingMonetizeViewController.swift; sourceTree = "<group>"; };
+		CCD08EAC23166EB3007116AA /* DJKViewUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJKViewUtils.m; sourceTree = "<group>"; };
+		CCD08EAD23166EB3007116AA /* DJKViewUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJKViewUtils.h; sourceTree = "<group>"; };
+		CCD08EAF23166ED7007116AA /* DJKUtilLocale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJKUtilLocale.m; sourceTree = "<group>"; };
+		CCD08EB023166ED7007116AA /* DJKUtilLocale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJKUtilLocale.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -404,6 +412,10 @@
 				96F8F0561D28A7860083BEDB /* DUCCsvHelper.m */,
 				96F8F0571D28A7860083BEDB /* DUCNetworkInterFace.h */,
 				96F8F0581D28A7860083BEDB /* DUCNetworkInterFace.m */,
+				CCD08EAD23166EB3007116AA /* DJKViewUtils.h */,
+				CCD08EAC23166EB3007116AA /* DJKViewUtils.m */,
+				CCD08EB023166ED7007116AA /* DJKUtilLocale.h */,
+				CCD08EAF23166ED7007116AA /* DJKUtilLocale.m */,
 				96F8F0591D28A7860083BEDB /* KeysOf3rdParty.swift */,
 				96F8F05A1D28A7860083BEDB /* UtilCloudKit.swift */,
 				96F8F05B1D28A7860083BEDB /* UtilLocalNotification.swift */,
@@ -418,6 +430,7 @@
 		96F8F0601D28A7860083BEDB /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				CCD08EA9231668B8007116AA /* Commonized */,
 				96F8F0611D28A7860083BEDB /* AboutAimViewController.swift */,
 				96F8F0621D28A7860083BEDB /* CommonUtilChartScrollViewController.swift */,
 				96F8F0631D28A7860083BEDB /* DetailSettingViewController.swift */,
@@ -444,6 +457,14 @@
 				96F8F0711D28A7870083BEDB /* SelectedWeekChartView.xib */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		CCD08EA9231668B8007116AA /* Commonized */ = {
+			isa = PBXGroup;
+			children = (
+				CCD08EAA2316693F007116AA /* HelpingMonetizeViewController.swift */,
+			);
+			path = Commonized;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -806,12 +827,15 @@
 				964215E01D28AA5100E7E29A /* CurrentMonthNetworkUsage+CoreDataClass.swift in Sources */,
 				96F8F0971D28A7870083BEDB /* UtilUserDefaults.swift in Sources */,
 				96F8F0A11D28A7870083BEDB /* PickerViewCell.swift in Sources */,
+				CCD08EAE23166EB3007116AA /* DJKViewUtils.m in Sources */,
 				96F8F0A31D28A7870083BEDB /* SelectedDayUnitView.swift in Sources */,
 				9687A2BE1D281F1600C6B9C1 /* DataUsageCat.xcdatamodeld in Sources */,
 				96F8F09A1D28A7870083BEDB /* DetailSettingViewController.swift in Sources */,
 				9687A2B61D281F1600C6B9C1 /* AppDelegate.swift in Sources */,
 				96F8F0901D28A7870083BEDB /* DUCNetworkInterFace.m in Sources */,
+				CCD08EB123166ED7007116AA /* DJKUtilLocale.m in Sources */,
 				96F8F0A61D28A7870083BEDB /* SelectedWeekChartView.swift in Sources */,
+				CCD08EAB2316693F007116AA /* HelpingMonetizeViewController.swift in Sources */,
 				96F8F0951D28A7870083BEDB /* UtilNCMB.swift in Sources */,
 				96F8F0921D28A7870083BEDB /* UtilCloudKit.swift in Sources */,
 				96F8F09F1D28A7870083BEDB /* SettingsViewController.swift in Sources */,

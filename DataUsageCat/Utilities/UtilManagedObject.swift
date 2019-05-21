@@ -2,8 +2,8 @@
 //  UtilManagedObject.swift
 //  DataUsageCat
 //
-//  Created by 鈴木 航 on 2016/05/20.
-//  Copyright (c) 2015年 鈴木 航. All rights reserved.
+//  Created by Wataru Suzuki on 2016/05/20.
+//  Copyright (c) 2015年 Wataru Suzuki. All rights reserved.
 //
 
 /*

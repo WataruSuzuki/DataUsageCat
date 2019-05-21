@@ -2,8 +2,8 @@
 //  SettingsViewController.swift
 //  DataUsageCat
 //
-//  Created by 鈴木 航 on 2015/07/05.
-//  Copyright © 2015年 鈴木 航. All rights reserved.
+//  Created by Wataru Suzuki on 2015/07/05.
+//  Copyright © 2015年 Wataru Suzuki. All rights reserved.
 //
 
 /* Hello Swift, Goodbye Obj-C.
@@ -12,12 +12,12 @@
 */
 import UIKit
 
-class DetailSettingViewController: DJKAdMobBaseViewController,
+class DetailSettingViewController: HelpingMonetizeViewController,
     UITableViewDelegate, UITableViewDataSource
 {
 
-    var utilNADView: DJKUtilNendAd?
-    var nendBannerView: NADView!
+    //TODO -> var utilNADView: DJKUtilNendAd?
+    //TODO -> var nendBannerView: NADView!
     var settingType: Int = DetailSettingType.DATE.rawValue
     var secretButtonTappedCount = 0
 
@@ -41,7 +41,7 @@ class DetailSettingViewController: DJKAdMobBaseViewController,
                     nendBannerView = utilNADView?.setupNendBannerView(self.view.frame, uiUserInterfaceIdiom: .phone, sizeType: SIZE_NEND_BANNER_320_50, apiKey: KeyIdAppBankSSP.KEY_BANNER_320_50, spotId: KeyIdAppBankSSP.ID_BANNER_320_50)
                     self.view.addSubview(nendBannerView!)
                 } else {
-                    addAdMobBannerView(KeyIdAdMob.BANNER_PHONE)
+                    addAdMobBannerView(unitId: KeyIdAdMob.BANNER_PHONE)
                     DJKViewUtils.setConstraintBottomView(admobBannerView, currentAndTo: self.view)
                     DJKViewUtils.setConstraintCenterX(admobBannerView, currentView: self.view)
                 }
@@ -55,13 +55,13 @@ class DetailSettingViewController: DJKAdMobBaseViewController,
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        utilNADView?.notifyBannerResume(nendBannerView)
+        //TODO -> utilNADView?.notifyBannerResume(nendBannerView)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        utilNADView?.notifyBannerPause()
-        utilNADView?.allRemoveFromSuperview()
+        //TODO -> utilNADView?.notifyBannerPause()
+        //TODO -> utilNADView?.allRemoveFromSuperview()
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {

@@ -2,8 +2,8 @@
 //  AboutThisAppViewController.swift
 //  DataUsageCat
 //
-//  Created by 鈴木 航 on 2015/07/05.
-//  Copyright © 2015年 鈴木 航. All rights reserved.
+//  Created by Wataru Suzuki on 2015/07/05.
+//  Copyright © 2015年 Wataru Suzuki. All rights reserved.
 //
 
 /* Hello Swift, Goodbye Obj-C.
@@ -16,7 +16,7 @@ protocol AboutThisAppViewControllerDelegate: class {
     func didFinishAboutThisApp(controller: AboutThisAppViewController)
 }
 
-class AboutThisAppViewController: DJKAdMobBaseViewController,
+class AboutThisAppViewController: HelpingMonetizeViewController,
     UITableViewDelegate, UITableViewDataSource
 {
 
@@ -26,8 +26,8 @@ class AboutThisAppViewController: DJKAdMobBaseViewController,
     @IBOutlet weak var tableViewAboutThisApp: UITableView!
 
     var storyBoardName: String!
-    var utilNADView: DJKUtilNendAd?
-    var nendBannerView: NADView!
+    //TODO -> var utilNADView: DJKUtilNendAd?
+    //TODO -> var nendBannerView: NADView!
     //var admobInterstitial: GADInterstitial!
     weak var delegate: AboutThisAppViewControllerDelegate?
 
@@ -53,26 +53,28 @@ class AboutThisAppViewController: DJKAdMobBaseViewController,
                 if UIDevice.current.userInterfaceIdiom == .pad {
                     self.setupAdBannerView(delegate: delegate)
                 } else {
-                    self.addAdMobBannerView(KeyIdAdMob.BANNER_PHONE)
-                    DJKViewUtils.setConstraintBottomView(self.admobBannerView, currentAndTo: self.view)
-                    DJKViewUtils.setConstraintCenterX(self.admobBannerView, currentView: self.view)
+                    self.addAdMobBannerView(unitId: KeyIdAdMob.BANNER_PHONE)
+                    //TODO -> DJKViewUtils.setConstraintBottomView(self.admobBannerView, currentAndTo: self.view)
+                    //TODO -> DJKViewUtils.setConstraintCenterX(self.admobBannerView, currentView: self.view)
                 }
             })
-            admobInterstitial = createAndLoadAdMobInterstitial(KeyIdAdMob.INTERSTITIAL, sender: self)
+            //TODO -> admobInterstitial = createAndLoadAdMobInterstitial(KeyIdAdMob.INTERSTITIAL, sender: self)
         }
 
         self.storyBoardName = delegate.storyBoardName
             buttonAppSettings?.setTitle(NSLocalizedString("show_app_settings", comment:""), for: [])
         
-        if UIDevice.current.userInterfaceIdiom == .pad && !DJKProcessInfo().isGreaterThanOrEqual(9, minor: 0, patch: 0) {
+        if #available(iOS 9.0, *) {
+            //Do nothing
+        } else if UIDevice.current.userInterfaceIdiom == .pad {
             self.navigationItem.leftBarButtonItem = nil
         }
     }
 
     func setupAdBannerView(delegate: AppDelegate) {
-        utilNADView = delegate.utilNADView
-        nendBannerView = utilNADView?.setupNendBannerView(self.view.frame, uiUserInterfaceIdiom: .phone, sizeType: SIZE_NEND_BANNER_320_50, apiKey: KeyIdAppBankSSP.KEY_BANNER_320_50, spotId: KeyIdAppBankSSP.ID_BANNER_320_50)
-        self.view.addSubview(nendBannerView)
+        //TODO -> utilNADView = delegate.utilNADView
+        //TODO -> nendBannerView = utilNADView?.setupNendBannerView(self.view.frame, uiUserInterfaceIdiom: .phone, sizeType: SIZE_NEND_BANNER_320_50, apiKey: KeyIdAppBankSSP.KEY_BANNER_320_50, spotId: KeyIdAppBankSSP.ID_BANNER_320_50)
+        //TODO -> self.view.addSubview(nendBannerView)
     }
 
     override func didReceiveMemoryWarning() {
@@ -90,19 +92,17 @@ class AboutThisAppViewController: DJKAdMobBaseViewController,
             }
         }
 
-        utilNADView?.notifyBannerResume(nendBannerView)
+        //TODO -> utilNADView?.notifyBannerResume(nendBannerView)
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        if nil != admobInterstitial && admobInterstitial!.isReady {
-            admobInterstitial!.present(fromRootViewController: self)
-        }
+        showAdMobInterstitial(unitId: KeyIdAdMob.INTERSTITIAL, rootViewController: self)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
-        utilNADView?.notifyBannerPause()
+        //TODO -> utilNADView?.notifyBannerPause()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

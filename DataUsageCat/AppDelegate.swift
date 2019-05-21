@@ -2,8 +2,8 @@
 //  AppDelegate.swift
 //  DataUsageCat
 //
-//  Created by 鈴木 航 on 2015/06/21.
-//  Copyright © 2015年 鈴木 航. All rights reserved.
+//  Created by Wataru Suzuki on 2015/06/21.
+//  Copyright © 2015年 Wataru Suzuki. All rights reserved.
 //
 
 /* Hello Swift, Goodbye Obj-C.
@@ -25,7 +25,7 @@ class AppDelegate: UIResponder,
 
     var window: UIWindow?
 
-    var utilNADView: DJKUtilNendAd?
+    //TODO -> var utilNADView: DJKUtilNendAd?
     //var utilADGMngrVC: DJKUtilADGMngrVC!
     
     var isUnlockAd: Bool = false
@@ -36,7 +36,6 @@ class AppDelegate: UIResponder,
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
         NCMB.setApplicationKey(KeyIdNCMB.API, clientKey: KeyIdNCMB.CLIENT)
         FirebaseApp.configure()
-        GADMobileAds.configure(withApplicationID: "ca-app-pub-3165756184642596")
         
         application.setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
         if #available(iOS 10.0, *) {
@@ -47,8 +46,8 @@ class AppDelegate: UIResponder,
         
         cmnuManagedObj.getNetworkUsageArrayData(context: cmnuManagedObj.managedObjectContext)
         isUnlockAd = false
-        utilNADView = DJKUtilNendAd()
-        utilNADView?.initNADInterstitial(KeyIdNend.KEY_INTERSTITIAL, withSpodId: KeyIdNend.ID_INTERSTITIAL)
+        //TODO -> utilNADView = DJKUtilNendAd()
+        //TODO -> utilNADView?.initNADInterstitial(KeyIdNend.KEY_INTERSTITIAL, withSpodId: KeyIdNend.ID_INTERSTITIAL)
         //utilADGMngrVC = DJKUtilADGMngrVC()
         
         if #available(iOS 10, *) {
@@ -185,11 +184,11 @@ class AppDelegate: UIResponder,
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
-        utilNADView?.notifyBannerPause()
+        //TODO -> utilNADView?.notifyBannerPause()
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
-        utilNADView?.notifyBannerResume(utilNADView?.nend_BannerView)
+        //TODO -> utilNADView?.notifyBannerResume(utilNADView?.nend_BannerView)
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -206,7 +205,7 @@ class AppDelegate: UIResponder,
     
     func updateValueUnLockAd() {
         isUnlockAd = false
-        utilNADView?.isUnlockAd = isUnlockAd
+        //TODO -> utilNADView?.isUnlockAd = isUnlockAd
         //utilADGMngrVC!.isUnlockAd = isUnlockAd
     }
 }

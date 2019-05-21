@@ -2,8 +2,8 @@
 //  AboutAimViewController.swift
 //  DataUsageCat
 //
-//  Created by 鈴木 航 on 2015/06/28.
-//  Copyright (c) 2015年 鈴木 航. All rights reserved.
+//  Created by Wataru Suzuki on 2015/06/28.
+//  Copyright (c) 2015年 Wataru Suzuki. All rights reserved.
 //
 
 /* Hello Swift, Goodbye Obj-C.
@@ -13,7 +13,7 @@
 
 import UIKit
 
-class AboutAimViewController: DJKAdMobBaseViewController {
+class AboutAimViewController: HelpingMonetizeViewController {
 
     var aimType: Int = 0
 
@@ -33,8 +33,8 @@ class AboutAimViewController: DJKAdMobBaseViewController {
         NSLocalizedString("aim_message_map", comment: "")
     ]
 
-    var utilNADView: DJKUtilNendAd?
-    var nendBannerView: NADView!
+    //TODO -> var utilNADView: DJKUtilNendAd?
+    //TODO -> var nendBannerView: NADView!
     @IBOutlet weak var textViewAimDiscription: UITextView!
     
     override func viewDidLoad() {
@@ -49,15 +49,15 @@ class AboutAimViewController: DJKAdMobBaseViewController {
         if delegate.isUnlockAd {
         } else {
             if UIDevice.current.userInterfaceIdiom == .pad {
-                utilNADView = delegate.utilNADView
-                nendBannerView = utilNADView?.setupNendBannerView(self.view.frame, uiUserInterfaceIdiom: .phone, sizeType: SIZE_NEND_BANNER_320_50, apiKey: KeyIdAppBankSSP.KEY_BANNER_320_50, spotId: KeyIdAppBankSSP.ID_BANNER_320_50)
-                self.view.addSubview(nendBannerView!)
+                //TODO -> utilNADView = delegate.utilNADView
+                //TODO -> nendBannerView = utilNADView?.setupNendBannerView(self.view.frame, uiUserInterfaceIdiom: .phone, sizeType: SIZE_NEND_BANNER_320_50, apiKey: KeyIdAppBankSSP.KEY_BANNER_320_50, spotId: KeyIdAppBankSSP.ID_BANNER_320_50)
+                //TODO -> self.view.addSubview(nendBannerView!)
             } else {
-                addAdMobBannerView(KeyIdAdMob.BANNER_PHONE)
-                DJKViewUtils.setConstraintBottomView(admobBannerView, currentAndTo: self.view)
-                DJKViewUtils.setConstraintCenterX(admobBannerView, currentView: self.view)
+                addAdMobBannerView(unitId: KeyIdAdMob.BANNER_PHONE)
+                //TODO -> DJKViewUtils.setConstraintBottomView(admobBannerView, currentAndTo: self.view)
+                //TODO -> DJKViewUtils.setConstraintCenterX(admobBannerView, currentView: self.view)
             }
-            admobInterstitial = createAndLoadAdMobInterstitial(KeyIdAdMob.INTERSTITIAL, sender: self)
+            //TODO -> admobInterstitial = createAndLoadAdMobInterstitial(KeyIdAdMob.INTERSTITIAL, sender: self)
         }
     }
 
@@ -67,20 +67,18 @@ class AboutAimViewController: DJKAdMobBaseViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        utilNADView?.notifyBannerResume(nendBannerView)
+        //TODO -> utilNADView?.notifyBannerResume(nendBannerView)
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        if nil != admobInterstitial && admobInterstitial!.isReady {
-            admobInterstitial!.present(fromRootViewController: self)
-        }
+        showAdMobInterstitial(unitId: KeyIdAdMob.INTERSTITIAL, rootViewController: self)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        utilNADView?.notifyBannerPause()
+        //TODO -> utilNADView?.notifyBannerPause()
     }
 
 }

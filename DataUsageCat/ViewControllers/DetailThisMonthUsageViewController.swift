@@ -2,8 +2,8 @@
 //  DetailThisMonthUsageViewController.swift
 //  DataUsageCat
 //
-//  Created by 鈴木 航 on 2015/07/19.
-//  Copyright © 2015年 鈴木 航. All rights reserved.
+//  Created by Wataru Suzuki on 2015/07/19.
+//  Copyright © 2015年 Wataru Suzuki. All rights reserved.
 //
 
 /* Hello Swift, Goodbye Obj-C.
@@ -42,9 +42,7 @@ class DetailThisMonthUsageViewController: CommonUtilChartScrollViewController
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if nil != admobInterstitial && admobInterstitial!.isReady {
-            admobInterstitial!.present(fromRootViewController: self)
-        }
+        showAdMobInterstitial(unitId: KeyIdAdMob.INTERSTITIAL, rootViewController: self)
         setupChartScrollViews()
     }
 
@@ -56,10 +54,10 @@ class DetailThisMonthUsageViewController: CommonUtilChartScrollViewController
 
         if delegate.isUnlockAd {
         } else {
-            addAdMobBannerView(KeyIdAdMob.BANNER_PHONE)
-            DJKViewUtils.setConstraintCenterX(admobBannerView, currentView: self.view)
-            DJKViewUtils.setConstraintBottomView(admobBannerView, toItem: adConstraintView, currentView: self.view)
-            admobInterstitial = createAndLoadAdMobInterstitial(KeyIdAdMob.INTERSTITIAL, sender: self)
+            addAdMobBannerView(unitId: KeyIdAdMob.BANNER_PHONE)
+            //TODO -> DJKViewUtils.setConstraintCenterX(admobBannerView, currentView: self.view)
+            //TODO -> DJKViewUtils.setConstraintBottomView(admobBannerView, toItem: adConstraintView, currentView: self.view)
+            //TODO -> admobInterstitial = createAndLoadAdMobInterstitial(KeyIdAdMob.INTERSTITIAL, sender: self)
         }
         
         segmentedControlViewChange.setTitle(NSLocalizedString("usage_charts", comment: ""), forSegmentAt: ViewControllerIndex.DETAIL_THIS_MONTH.rawValue)

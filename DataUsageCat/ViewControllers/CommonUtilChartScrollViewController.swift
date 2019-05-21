@@ -2,14 +2,14 @@
 //  CommonUtilChartScrollViewController.swift
 //  DataUsageCat
 //
-//  Created by 鈴木 航 on 2015/09/24.
-//  Copyright © 2015年 鈴木 航. All rights reserved.
+//  Created by Wataru Suzuki on 2015/09/24.
+//  Copyright © 2015年 Wataru Suzuki. All rights reserved.
 //
 
 import UIKit
 //import DJKUtilities
 
-class CommonUtilChartScrollViewController: DJKAdMobBaseViewController,
+class CommonUtilChartScrollViewController: HelpingMonetizeViewController,
     UIScrollViewDelegate
 {
     var storyBoardName: String!

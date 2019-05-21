@@ -2,21 +2,21 @@
 //  DetailAboutThisAppViewController.swift
 //  DataUsageCat
 //
-//  Created by 鈴木 航 on 2016/09/10.
-//  Copyright © 2016年 鈴木 航. All rights reserved.
+//  Created by Wataru Suzuki on 2016/09/10.
+//  Copyright © 2016年 Wataru Suzuki. All rights reserved.
 //
 
 import UIKit
 
-class DetailAboutThisAppViewController: DJKAdMobBaseViewController {
+class DetailAboutThisAppViewController: HelpingMonetizeViewController {
     
     @IBOutlet weak var detailImageView: UIImageView!
     @IBOutlet weak var detailTextView: UITextView!
     
     var detailImage: UIImage!
     var detailText = ""
-    var utilNADView: DJKUtilNendAd?
-    var nendBannerView: NADView!
+    //TODO -> var utilNADView: DJKUtilNendAd?
+    //TODO -> var nendBannerView: NADView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,13 +32,13 @@ class DetailAboutThisAppViewController: DJKAdMobBaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        utilNADView?.notifyBannerResume(nendBannerView)
+        //TODO -> utilNADView?.notifyBannerResume(nendBannerView)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        utilNADView?.notifyBannerPause()
+        //TODO -> utilNADView?.notifyBannerPause()
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,14 +48,14 @@ class DetailAboutThisAppViewController: DJKAdMobBaseViewController {
     
     func setupAdBannerView(delegate: AppDelegate) {
         if UIDevice.current.userInterfaceIdiom == .pad {
-            utilNADView = delegate.utilNADView
-            nendBannerView = utilNADView?.setupNendBannerView(self.view.frame, uiUserInterfaceIdiom: .phone, sizeType: SIZE_NEND_BANNER_320_50, apiKey: KeyIdAppBankSSP.KEY_BANNER_320_50, spotId: KeyIdAppBankSSP.ID_BANNER_320_50)
+            //TODO -> utilNADView = delegate.utilNADView
+            //TODO -> nendBannerView = utilNADView?.setupNendBannerView(self.view.frame, uiUserInterfaceIdiom: .phone, sizeType: SIZE_NEND_BANNER_320_50, apiKey: KeyIdAppBankSSP.KEY_BANNER_320_50, spotId: KeyIdAppBankSSP.ID_BANNER_320_50)
             
-            self.view.addSubview(nendBannerView)
+            //TODO -> self.view.addSubview(nendBannerView)
         } else {
-            addAdMobBannerView(KeyIdAdMob.BANNER_PHONE)
-            DJKViewUtils.setConstraintBottomView(admobBannerView, currentAndTo: self.view)
-            DJKViewUtils.setConstraintCenterX(admobBannerView, currentView: self.view)
+            addAdMobBannerView(unitId: KeyIdAdMob.BANNER_PHONE)
+            //TODO -> DJKViewUtils.setConstraintBottomView(admobBannerView, currentAndTo: self.view)
+            //TODO -> DJKViewUtils.setConstraintCenterX(admobBannerView, currentView: self.view)
         }
     }
 }

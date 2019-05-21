@@ -2,8 +2,8 @@
 //  SettingsViewController.swift
 //  DataUsageCat
 //
-//  Created by 鈴木 航 on 2015/07/05.
-//  Copyright © 2015年 鈴木 航. All rights reserved.
+//  Created by Wataru Suzuki on 2015/07/05.
+//  Copyright © 2015年 Wataru Suzuki. All rights reserved.
 //
 
 /* Hello Swift, Goodbye Obj-C.
@@ -16,13 +16,13 @@ protocol SettingsViewControllerDelegate: class {
     func settingsViewControllerDidFinish(controller: SettingsViewController)
 }
 
-class SettingsViewController: DJKAdMobBaseViewController,
+class SettingsViewController: HelpingMonetizeViewController,
     UITableViewDelegate, UITableViewDataSource
 {
 
     var isShowPickerDate: Bool = false
-    var utilNADView: DJKUtilNendAd?
-    var nendBannerView: NADView!
+    //TODO -> var utilNADView: DJKUtilNendAd?
+    //TODO -> var nendBannerView: NADView!
     weak var delegate: SettingsViewControllerDelegate?
 
     //@IBOutlet var iAd_BannerView: ADBannerView!
@@ -38,14 +38,14 @@ class SettingsViewController: DJKAdMobBaseViewController,
         if delegate.isUnlockAd {
         } else {
             if UIDevice.current.userInterfaceIdiom == .pad {
-                utilNADView = delegate.utilNADView
-                nendBannerView = utilNADView?.setupNendBannerView(self.view.frame, uiUserInterfaceIdiom: .phone, sizeType: SIZE_NEND_BANNER_320_50, apiKey: KeyIdAppBankSSP.KEY_BANNER_320_50, spotId: KeyIdAppBankSSP.ID_BANNER_320_50)
+                //TODO -> utilNADView = delegate.utilNADView
+                //TODO -> nendBannerView = utilNADView?.setupNendBannerView(self.view.frame, uiUserInterfaceIdiom: .phone, sizeType: SIZE_NEND_BANNER_320_50, apiKey: KeyIdAppBankSSP.KEY_BANNER_320_50, spotId: KeyIdAppBankSSP.ID_BANNER_320_50)
                 
-                self.view.addSubview(nendBannerView)
+                //TODO -> self.view.addSubview(nendBannerView)
             } else {
-                addAdMobBannerView(KeyIdAdMob.BANNER_PHONE)
-                DJKViewUtils.setConstraintBottomView(admobBannerView, currentAndTo: self.view)
-                DJKViewUtils.setConstraintCenterX(admobBannerView, currentView: self.view)
+                addAdMobBannerView(unitId: KeyIdAdMob.BANNER_PHONE)
+                //TODO -> DJKViewUtils.setConstraintBottomView(admobBannerView, currentAndTo: self.view)
+                //TODO -> DJKViewUtils.setConstraintCenterX(admobBannerView, currentView: self.view)
             }
         }
     }
@@ -60,13 +60,13 @@ class SettingsViewController: DJKAdMobBaseViewController,
         let delegate = UIApplication.shared.delegate as! AppDelegate
         if delegate.isUnlockAd {
         } else {
-            utilNADView?.notifyBannerResume(nendBannerView)
+            //TODO -> utilNADView?.notifyBannerResume(nendBannerView)
         }
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        utilNADView?.notifyBannerPause()
+        //TODO -> utilNADView?.notifyBannerPause()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

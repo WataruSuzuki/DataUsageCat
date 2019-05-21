@@ -2,8 +2,8 @@
 //  DUCNetworkInterFace.h
 //  DataUsageCat
 //
-//  Created by 鈴木 航 on 2013/07/15.
-//  Copyright (c) 2013年 鈴木 航. All rights reserved.
+//  Created by Wataru Suzuki on 2013/07/15.
+//  Copyright (c) 2013年 Wataru Suzuki. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

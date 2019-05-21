@@ -2,8 +2,8 @@
 //  SelectedDayUnitView.swift
 //  DataUsageCat
 //
-//  Created by 鈴木 航 on 2016/06/03.
-//  Copyright (c) 2014年 鈴木 航. All rights reserved.
+//  Created by Wataru Suzuki on 2016/06/03.
+//  Copyright (c) 2014年 Wataru Suzuki. All rights reserved.
 //
 
 /*

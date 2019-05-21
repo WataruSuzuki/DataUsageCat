@@ -2,8 +2,8 @@
 //  UtilUserDefaults.swift
 //  DataUsageCat
 //
-//  Created by 鈴木 航 on 2014/08/20.
-//  Copyright (c) 2014年 鈴木 航. All rights reserved.
+//  Created by Wataru Suzuki on 2014/08/20.
+//  Copyright (c) 2014年 Wataru Suzuki. All rights reserved.
 //
 
 /*

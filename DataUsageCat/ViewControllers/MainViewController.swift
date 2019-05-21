@@ -2,8 +2,8 @@
 //  MainViewController.swift
 //  DataUsageCat
 //
-//  Created by 鈴木 航 on 2015/07/04.
-//  Copyright © 2015年 鈴木 航. All rights reserved.
+//  Created by Wataru Suzuki on 2015/07/04.
+//  Copyright © 2015年 Wataru Suzuki. All rights reserved.
 //
 
 /* Hello Swift, Goodbye Obj-C.
@@ -13,7 +13,9 @@
 
 import UIKit
 import CoreData
-//import DJKUtilities
+import BubbleTransition
+import RMPZoomTransitionAnimator
+import DJKPurchaseService
 
 class MainViewController: CommonUtilChartScrollViewController,
     AboutThisAppViewControllerDelegate,
@@ -24,16 +26,18 @@ class MainViewController: CommonUtilChartScrollViewController,
     UIViewControllerTransitioningDelegate,
     UIPopoverControllerDelegate
 {
-    let bubbleTransition = YPBubbleTransition()
+    let bubbleTransition = BubbleTransition()
     let zoomTransitionAnimator = RMPZoomTransitionAnimator()
     
     var needleAngle: Float = OFFSET_START_ANGLE
     //var myPopoverController: UIPopoverController?
     var statusImageFilename: String = UsageProgessStats.GOOD.getStatusPartsName()
-    var utilNADView: DJKUtilNendAd?
+    //TODO -> var utilNADView: DJKUtilNendAd?
     //var adgMngr: ADGManagerViewController?
     var dataUsageCount: DUCNetworkInterFace?
     var isPrepareShowDayUsage: Bool = false
+    
+    private let privacyPolicyUrl = "https://github.com/WataruSuzuki/DataUsageCat/blob/master/PRIVACY_POLICY.md"
     
     //@IBOutlet var iAd_BannerView: ADBannerView!
     @IBOutlet weak var meterNeedleImage: UIImageView!
@@ -51,7 +55,7 @@ class MainViewController: CommonUtilChartScrollViewController,
     @IBOutlet weak var meterNeedleButton: UIButton!
 
     override func viewDidLoad() {
-        setupPersonalizedAdConsent()
+        //setupPersonalizedAdConsent()
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
@@ -88,35 +92,6 @@ class MainViewController: CommonUtilChartScrollViewController,
         if UIDevice.current.userInterfaceIdiom == .pad {
             self.setupChartScrollViews()
         }
-    }
-    
-    fileprivate func setupPersonalizedAdConsent() {
-        checkConfirmPersonalizedAdConsent = true
-        publisherIdArrays = [KeyIdAdMob.PUBLISHER_ID]
-        privacyURL = URL(string: "https://github.com/WataruSuzuki/DataUsageCat/blob/master/PRIVACY_POLICY.md")
-        personalizedAdConsentInformationUpdateHandler = { (error) in
-            if let error = error {
-                // Handle error.
-                print(error)
-            } else if !PACConsentInformation.sharedInstance.isRequestLocationInEEAOrUnknown {
-                self.setupAdMob()
-            }
-        }
-        personalizedAdConsentFormDismissCompletionHandler = { (error, userPrefersAdFree) in
-            if let error = error {
-                // Handle error.
-                print(error)
-            } else {
-                // Check the user's consent choice.
-                let status =
-                    PACConsentInformation.sharedInstance.consentStatus
-                print(status)
-                self.setupAdMob()
-            }
-        }
-        shouldOfferPersonalizedAds = true
-        shouldOfferNonPersonalizedAds = true
-        //shouldOfferAdFree = true
     }
     
     func checkPermissions() {
@@ -159,24 +134,29 @@ class MainViewController: CommonUtilChartScrollViewController,
         if #available(iOS 10.0, *) {
             UtilLocalNotification().catRestartDataMonitoring()
         }
-        if currentPersonalizedAdConsentStatus != .unknown {
-            setupAdMob()
-        }
+        
+        setupAdMob()
         
         self.setViewTitle()
         self.setNeedlePosition()
         self.checkPermissions()
     }
     
-    fileprivate func setupAdMob() {
-        if UIDevice.current.userInterfaceIdiom == .pad {
-            self.updateViewUsageResult(size: self.view.frame.size, orientation: UIApplication.shared.statusBarOrientation)
-            setupUsageDataForChart()
-            self.updateAllAdBannerView()
-            admobInterstitial = createAndLoadAdMobInterstitial(KeyIdAdMob.INTERSTITIAL, sender: self)
-        } else {
-            navigationController?.isNavigationBarHidden = true
-            self.updateAllAdBannerView()
+    private func setupAdMob() {
+        PurchaseService.shared.confirmPersonalizedConsent(publisherIds: [KeyIdAdMob.PUBLISHER_ID], privacyPolicyUrl: privacyPolicyUrl) { (success) in
+            if success {
+                //GADMobileAds.sharedInstance().start(completionHandler: nil)
+
+                if UIDevice.current.userInterfaceIdiom == .pad {
+                    self.updateViewUsageResult(size: self.view.frame.size, orientation: UIApplication.shared.statusBarOrientation)
+                    self.setupUsageDataForChart()
+                    self.updateAllAdBannerView()
+                    //TODO -> admobInterstitial = createAndLoadAdMobInterstitial(KeyIdAdMob.INTERSTITIAL, sender: self)
+                } else {
+                    self.navigationController?.isNavigationBarHidden = true
+                    self.updateAllAdBannerView()
+                }
+            }
         }
     }
 
@@ -356,10 +336,8 @@ class MainViewController: CommonUtilChartScrollViewController,
         let delegate = UIApplication.shared.delegate as! AppDelegate
         let isShowTime = (isForce || 0 == (delegate.countAdMobInterstitial % 10))
         
-        if nil != admobInterstitial && admobInterstitial!.isReady && isShowTime {
-            admobInterstitial!.present(fromRootViewController: self)
-        }
-        
+        showAdMobInterstitial(unitId: KeyIdAdMob.INTERSTITIAL, rootViewController: self)
+
         if !isForce {
             delegate.countAdMobInterstitial += 1
         }
@@ -405,7 +383,7 @@ class MainViewController: CommonUtilChartScrollViewController,
         let navigationController = presented as! UINavigationController
         if let destination = navigationController.viewControllers.last {
                 bubbleTransition.transitionMode = .present
-                bubbleTransition.startPoint = getStartPoint(destination: destination)
+            bubbleTransition.startingPoint = getStartPoint(destination: destination)
                 bubbleTransition.bubbleColor = UIColor.white//getDucGreenColor()
                 return bubbleTransition
         }
@@ -416,7 +394,7 @@ class MainViewController: CommonUtilChartScrollViewController,
         let navigationController = dismissed as! UINavigationController
         if let destination = navigationController.viewControllers.last {
                 bubbleTransition.transitionMode = .dismiss
-                bubbleTransition.startPoint = getStartPoint(destination: destination)
+            bubbleTransition.startingPoint = getStartPoint(destination: destination)
                 bubbleTransition.bubbleColor = UIColor.white//getDucGreenColor()
                 return bubbleTransition
                 
@@ -515,10 +493,6 @@ class MainViewController: CommonUtilChartScrollViewController,
         return false
     }
     
-    func removeAllAdBannerView() {
-        admobBannerView!.removeFromSuperview()
-    }
-    
     func updateAllAdBannerView() {
         let delegate = UIApplication.shared.delegate as! AppDelegate
         if delegate.isUnlockAd {
@@ -530,13 +504,13 @@ class MainViewController: CommonUtilChartScrollViewController,
     
     func updateAdMobBannerView() {
         if UIDevice.current.userInterfaceIdiom == .pad {
-            addAdMobBannerView(KeyIdAdMob.BANNER_PAD)
-            DJKViewUtils.setConstraintBottomView(admobBannerView, currentAndTo: self.view)
+            addAdMobBannerView(unitId: KeyIdAdMob.BANNER_PAD)
+            //TODO -> DJKViewUtils.setConstraintBottomView(admobBannerView, currentAndTo: self.view)
         } else {
-            addAdMobBannerView(KeyIdAdMob.BANNER_PHONE)
-            DJKViewUtils.setConstraintBottomView(admobBannerView, toItem: adConstraintView, currentView: self.view)
+            addAdMobBannerView(unitId: KeyIdAdMob.BANNER_PHONE)
+            //TODO -> DJKViewUtils.setConstraintBottomView(admobBannerView, toItem: adConstraintView, currentView: self.view)
         }
-        DJKViewUtils.setConstraintCenterX(admobBannerView, currentView: self.view)
+        //TODO -> DJKViewUtils.setConstraintCenterX(admobBannerView, currentView: self.view)
     }
     
     func getDucGreenCgColor() -> CGColor {

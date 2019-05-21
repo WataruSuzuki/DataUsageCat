@@ -2,8 +2,8 @@
 //  NotifyUsageStatusViewController.swift
 //  DataUsageCat
 //
-//  Created by 鈴木 航 on 2015/07/05.
-//  Copyright © 2015年 鈴木 航. All rights reserved.
+//  Created by Wataru Suzuki on 2015/07/05.
+//  Copyright © 2015年 Wataru Suzuki. All rights reserved.
 //
 
 /* Hello Swift, Goodbye Obj-C.
@@ -16,7 +16,7 @@ protocol NotifyUsageStatusViewControllerDelegate: class {
     func notifyUsageStatusViewControllerDidFinish(controller: NotifyUsageStatusViewController, ShowAd isShowAd: Bool)
 }
 
-class NotifyUsageStatusViewController: DJKAdMobBaseViewController,
+class NotifyUsageStatusViewController: HelpingMonetizeViewController,
     UITableViewDelegate, UITableViewDataSource
 {
     @IBOutlet weak var tableviewAboutAim: UITableView!
@@ -29,8 +29,8 @@ class NotifyUsageStatusViewController: DJKAdMobBaseViewController,
     var userDefaultLimit: Float = 7.0
     var dataUsageCount: DUCNetworkInterFace?
     var aimTypeArray: [Double]!
-    var utilNADView: DJKUtilNendAd?
-    var nendBannerView: NADView?
+    //TODO -> var utilNADView: DJKUtilNendAd?
+    //TODO -> var nendBannerView: NADView?
     var statusImageFilename: String?
     
     weak var delegate: NotifyUsageStatusViewControllerDelegate?
@@ -57,16 +57,16 @@ class NotifyUsageStatusViewController: DJKAdMobBaseViewController,
         if delegate.isUnlockAd {
         } else {
             if UIDevice.current.userInterfaceIdiom == .pad {
-                utilNADView = delegate.utilNADView
-                nendBannerView = utilNADView?.setupNendBannerView(self.view.frame, uiUserInterfaceIdiom: .phone, sizeType: SIZE_NEND_BANNER_320_50, apiKey: KeyIdAppBankSSP.KEY_BANNER_320_50, spotId: KeyIdAppBankSSP.ID_BANNER_320_50)
-                self.view.addSubview(nendBannerView!)
+                //TODO -> utilNADView = delegate.utilNADView
+                //TODO -> nendBannerView = utilNADView?.setupNendBannerView(self.view.frame, uiUserInterfaceIdiom: .phone, sizeType: SIZE_NEND_BANNER_320_50, apiKey: KeyIdAppBankSSP.KEY_BANNER_320_50, spotId: KeyIdAppBankSSP.ID_BANNER_320_50)
+                //TODO -> self.view.addSubview(nendBannerView!)
             } else {
-                addAdMobBannerView(KeyIdAdMob.BANNER_PHONE)
-                DJKViewUtils.setConstraintBottomView(admobBannerView, currentAndTo: self.view)
-                DJKViewUtils.setConstraintCenterX(admobBannerView, currentView: self.view)
+                addAdMobBannerView(unitId: KeyIdAdMob.BANNER_PHONE)
+                //TODO -> DJKViewUtils.setConstraintBottomView(admobBannerView, currentAndTo: self.view)
+                //TODO -> DJKViewUtils.setConstraintCenterX(admobBannerView, currentView: self.view)
             }
-            admobInterstitial = createAndLoadAdMobInterstitial(KeyIdAdMob.INTERSTITIAL, sender: self)
-            admobRewardedVideo = createAndLoadAdMobReward(KeyIdAdMob.REWARDED_VIDEO, sender: self)
+            //TODO -> admobInterstitial = createAndLoadAdMobInterstitial(KeyIdAdMob.INTERSTITIAL, sender: self)
+            //TODO -> admobRewardedVideo = createAndLoadAdMobReward(KeyIdAdMob.REWARDED_VIDEO, sender: self)
         }
 
         self.initPercentageDisplay()
@@ -91,20 +91,18 @@ class NotifyUsageStatusViewController: DJKAdMobBaseViewController,
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        utilNADView?.notifyBannerResume(nendBannerView)
+        //TODO -> utilNADView?.notifyBannerResume(nendBannerView)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        utilNADView?.notifyBannerPause()
+        //TODO -> utilNADView?.notifyBannerPause()
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        if nil != admobInterstitial && admobInterstitial!.isReady {
-            admobInterstitial!.present(fromRootViewController: self)
-        }
+        showAdMobInterstitial(unitId: KeyIdAdMob.INTERSTITIAL, rootViewController: self)
     }
 
     func setViewNotifyUsageStatus() {
@@ -225,9 +223,7 @@ class NotifyUsageStatusViewController: DJKAdMobBaseViewController,
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.section {
         case SectionNotify.RECOMMEND_AD.rawValue:
-            if nil != admobRewardedVideo && admobRewardedVideo!.isReady {
-                admobRewardedVideo!.present(fromRootViewController: self)
-            }
+            showAdMobReward(unitId: KeyIdAdMob.REWARDED_VIDEO, rootViewController: self)
 
         default:
             break

@@ -151,7 +151,7 @@ class MainViewController: CommonUtilChartScrollViewController,
                     self.updateViewUsageResult(size: self.view.frame.size, orientation: UIApplication.shared.statusBarOrientation)
                     self.setupUsageDataForChart()
                     self.updateAllAdBannerView()
-                    //TODO -> admobInterstitial = createAndLoadAdMobInterstitial(KeyIdAdMob.INTERSTITIAL, sender: self)
+                    self.loadAdMobInterstitial(unitId: KeyIdAdMob.INTERSTITIAL)
                 } else {
                     self.navigationController?.isNavigationBarHidden = true
                     self.updateAllAdBannerView()
@@ -336,7 +336,7 @@ class MainViewController: CommonUtilChartScrollViewController,
         let delegate = UIApplication.shared.delegate as! AppDelegate
         let isShowTime = (isForce || 0 == (delegate.countAdMobInterstitial % 10))
         
-        showAdMobInterstitial(unitId: KeyIdAdMob.INTERSTITIAL, rootViewController: self)
+        showAdMobInterstitial(rootViewController: self)
 
         if !isForce {
             delegate.countAdMobInterstitial += 1
@@ -504,15 +504,12 @@ class MainViewController: CommonUtilChartScrollViewController,
     
     func updateAdMobBannerView() {
         if UIDevice.current.userInterfaceIdiom == .pad {
-            addAdMobBannerView(unitId: KeyIdAdMob.BANNER_PAD)
-            //TODO -> DJKViewUtils.setConstraintBottomView(admobBannerView, currentAndTo: self.view)
+            addAdMobBannerView(unitId: KeyIdAdMob.BANNER_PAD, toItem: adConstraintView)
         } else {
-            addAdMobBannerView(unitId: KeyIdAdMob.BANNER_PHONE)
-            //TODO -> DJKViewUtils.setConstraintBottomView(admobBannerView, toItem: adConstraintView, currentView: self.view)
+            addAdMobBannerView(unitId: KeyIdAdMob.BANNER_PHONE, toItem: adConstraintView)
         }
-        //TODO -> DJKViewUtils.setConstraintCenterX(admobBannerView, currentView: self.view)
     }
-    
+
     func getDucGreenCgColor() -> CGColor {
         return getDucGreenColor().cgColor
     }

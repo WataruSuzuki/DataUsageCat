@@ -54,8 +54,6 @@ class DetailAboutThisAppViewController: HelpingMonetizeViewController {
             //TODO -> self.view.addSubview(nendBannerView)
         } else {
             addAdMobBannerView(unitId: KeyIdAdMob.BANNER_PHONE)
-            //TODO -> DJKViewUtils.setConstraintBottomView(admobBannerView, currentAndTo: self.view)
-            //TODO -> DJKViewUtils.setConstraintCenterX(admobBannerView, currentView: self.view)
-        }
+                                }
     }
 }

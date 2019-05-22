@@ -42,7 +42,7 @@ class DetailThisMonthUsageViewController: CommonUtilChartScrollViewController
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        showAdMobInterstitial(unitId: KeyIdAdMob.INTERSTITIAL, rootViewController: self)
+        showAdMobInterstitial(rootViewController: self)
         setupChartScrollViews()
     }
 
@@ -54,10 +54,8 @@ class DetailThisMonthUsageViewController: CommonUtilChartScrollViewController
 
         if delegate.isUnlockAd {
         } else {
-            addAdMobBannerView(unitId: KeyIdAdMob.BANNER_PHONE)
-            //TODO -> DJKViewUtils.setConstraintCenterX(admobBannerView, currentView: self.view)
-            //TODO -> DJKViewUtils.setConstraintBottomView(admobBannerView, toItem: adConstraintView, currentView: self.view)
-            //TODO -> admobInterstitial = createAndLoadAdMobInterstitial(KeyIdAdMob.INTERSTITIAL, sender: self)
+            addAdMobBannerView(unitId: KeyIdAdMob.BANNER_PHONE, toItem: adConstraintView)
+            loadAdMobInterstitial(unitId: KeyIdAdMob.INTERSTITIAL)
         }
         
         segmentedControlViewChange.setTitle(NSLocalizedString("usage_charts", comment: ""), forSegmentAt: ViewControllerIndex.DETAIL_THIS_MONTH.rawValue)

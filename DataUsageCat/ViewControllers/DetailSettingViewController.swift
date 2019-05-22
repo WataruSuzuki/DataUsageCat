@@ -33,19 +33,13 @@ class DetailSettingViewController: HelpingMonetizeViewController,
         let delegate = UIApplication.shared.delegate as! AppDelegate
         if delegate.isUnlockAd {
         } else {
-            #if DEBUG
-                //do nothing
-            #else//DEBUG
-                if UIDevice.current.userInterfaceIdiom == .pad {
-                    utilNADView = delegate.utilNADView
-                    nendBannerView = utilNADView?.setupNendBannerView(self.view.frame, uiUserInterfaceIdiom: .phone, sizeType: SIZE_NEND_BANNER_320_50, apiKey: KeyIdAppBankSSP.KEY_BANNER_320_50, spotId: KeyIdAppBankSSP.ID_BANNER_320_50)
-                    self.view.addSubview(nendBannerView!)
-                } else {
-                    addAdMobBannerView(unitId: KeyIdAdMob.BANNER_PHONE)
-                    DJKViewUtils.setConstraintBottomView(admobBannerView, currentAndTo: self.view)
-                    DJKViewUtils.setConstraintCenterX(admobBannerView, currentView: self.view)
-                }
-            #endif//DEBUG
+            if UIDevice.current.userInterfaceIdiom == .pad {
+                //TODO -> utilNADView = delegate.utilNADView
+                //TODO -> nendBannerView = utilNADView?.setupNendBannerView(self.view.frame, uiUserInterfaceIdiom: .phone, sizeType: SIZE_NEND_BANNER_320_50, apiKey: KeyIdAppBankSSP.KEY_BANNER_320_50, spotId: KeyIdAppBankSSP.ID_BANNER_320_50)
+                //TODO -> self.view.addSubview(nendBannerView!)
+            } else {
+                addAdMobBannerView(unitId: KeyIdAdMob.BANNER_PHONE)
+            }
         }
     }
 

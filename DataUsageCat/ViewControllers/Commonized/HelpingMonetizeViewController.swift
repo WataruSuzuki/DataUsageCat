@@ -8,30 +8,44 @@
 
 import UIKit
 import DJKPurchaseService
+import PureLayout
 
 class HelpingMonetizeViewController: UIViewController {
 
     private var admobBannerView: UIView?
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-    
-    func addAdMobBannerView(unitId: String) {
-        //TODO ->
+    func addAdMobBannerView(unitId: String, toItem: UIView? = nil) {
+        if admobBannerView == nil {
+            admobBannerView = PurchaseService.shared.bannerView(unitId: unitId, rootViewController: self)
+            if let toItem = toItem {
+                toItem.addSubview(admobBannerView!)
+                admobBannerView?.autoPinEdge(toSuperviewEdge: .bottom)
+            } else {
+                view.addSubview(admobBannerView!)
+                admobBannerView?.autoPinEdge(toSuperviewSafeArea: .bottom)
+            }
+            admobBannerView?.autoAlignAxis(toSuperviewAxis: .vertical)
+        }
     }
 
     func removeAllAdBannerView() {
         admobBannerView?.removeFromSuperview()
+        admobBannerView = nil
     }
     
-    func showAdMobInterstitial(unitId: String, rootViewController: UIViewController) {
-        //TODO ->
+    func loadAdMobInterstitial(unitId: String) {
+        PurchaseService.shared.loadInterstitial(unitId: unitId)
+    }
+    
+    func loadAdMobReward(unitId: String) {
+        PurchaseService.shared.loadReward(unitId: unitId)
     }
 
-    func showAdMobReward(unitId: String, rootViewController: UIViewController) {
-        //TODO ->
+    func showAdMobInterstitial(rootViewController: UIViewController) {
+        PurchaseService.shared.showInterstitial(rootViewController: rootViewController)
+    }
+
+    func showAdMobReward(rootViewController: UIViewController) {
+        PurchaseService.shared.showReward(rootViewController: rootViewController)
     }
 }

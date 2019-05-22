@@ -62,11 +62,9 @@ class NotifyUsageStatusViewController: HelpingMonetizeViewController,
                 //TODO -> self.view.addSubview(nendBannerView!)
             } else {
                 addAdMobBannerView(unitId: KeyIdAdMob.BANNER_PHONE)
-                //TODO -> DJKViewUtils.setConstraintBottomView(admobBannerView, currentAndTo: self.view)
-                //TODO -> DJKViewUtils.setConstraintCenterX(admobBannerView, currentView: self.view)
-            }
-            //TODO -> admobInterstitial = createAndLoadAdMobInterstitial(KeyIdAdMob.INTERSTITIAL, sender: self)
-            //TODO -> admobRewardedVideo = createAndLoadAdMobReward(KeyIdAdMob.REWARDED_VIDEO, sender: self)
+                                            }
+            loadAdMobInterstitial(unitId: KeyIdAdMob.INTERSTITIAL)
+            loadAdMobReward(unitId: KeyIdAdMob.REWARDED_VIDEO)
         }
 
         self.initPercentageDisplay()
@@ -102,7 +100,7 @@ class NotifyUsageStatusViewController: HelpingMonetizeViewController,
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        showAdMobInterstitial(unitId: KeyIdAdMob.INTERSTITIAL, rootViewController: self)
+        showAdMobInterstitial(rootViewController: self)
     }
 
     func setViewNotifyUsageStatus() {
@@ -223,7 +221,7 @@ class NotifyUsageStatusViewController: HelpingMonetizeViewController,
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.section {
         case SectionNotify.RECOMMEND_AD.rawValue:
-            showAdMobReward(unitId: KeyIdAdMob.REWARDED_VIDEO, rootViewController: self)
+            showAdMobReward(rootViewController: self)
 
         default:
             break

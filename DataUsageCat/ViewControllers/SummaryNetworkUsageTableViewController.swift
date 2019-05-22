@@ -55,11 +55,9 @@ class SummaryNetworkUsageTableViewController: HelpingMonetizeViewController,
                 //TODO -> self.view.addSubview(nendBannerView)
             } else {
                 addAdMobBannerView(unitId: KeyIdAdMob.BANNER_PHONE)
-                //TODO -> DJKViewUtils.setConstraintBottomView(admobBannerView, currentAndTo: self.view)
-                //TODO -> DJKViewUtils.setConstraintCenterX(admobBannerView, currentView: self.view)
-            }
+                                            }
 
-            //TODO -> admobInterstitial = createAndLoadAdMobInterstitial(KeyIdAdMob.INTERSTITIAL, sender: self)
+            loadAdMobInterstitial(unitId: KeyIdAdMob.INTERSTITIAL)
             //TODO -> admobRewardedVideo = createAndLoadAdMobReward(KeyIdAdMob.REWARDED_VIDEO, sender: self)
         }
     }
@@ -205,7 +203,7 @@ class SummaryNetworkUsageTableViewController: HelpingMonetizeViewController,
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.section {
         case SectionSummary.SECTION_RECOMMEND_AD.rawValue:
-            showAdMobInterstitial(unitId: KeyIdAdMob.INTERSTITIAL, rootViewController: self)
+            showAdMobInterstitial(rootViewController: self)
 
         default:
             break

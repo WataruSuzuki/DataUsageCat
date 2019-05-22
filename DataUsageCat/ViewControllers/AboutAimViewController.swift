@@ -54,10 +54,8 @@ class AboutAimViewController: HelpingMonetizeViewController {
                 //TODO -> self.view.addSubview(nendBannerView!)
             } else {
                 addAdMobBannerView(unitId: KeyIdAdMob.BANNER_PHONE)
-                //TODO -> DJKViewUtils.setConstraintBottomView(admobBannerView, currentAndTo: self.view)
-                //TODO -> DJKViewUtils.setConstraintCenterX(admobBannerView, currentView: self.view)
-            }
-            //TODO -> admobInterstitial = createAndLoadAdMobInterstitial(KeyIdAdMob.INTERSTITIAL, sender: self)
+                                            }
+            loadAdMobInterstitial(unitId: KeyIdAdMob.INTERSTITIAL)
         }
     }
 
@@ -73,7 +71,7 @@ class AboutAimViewController: HelpingMonetizeViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        showAdMobInterstitial(unitId: KeyIdAdMob.INTERSTITIAL, rootViewController: self)
+        showAdMobInterstitial(rootViewController: self)
     }
 
     override func viewWillDisappear(_ animated: Bool) {

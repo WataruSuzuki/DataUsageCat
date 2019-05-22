@@ -54,11 +54,9 @@ class AboutThisAppViewController: HelpingMonetizeViewController,
                     self.setupAdBannerView(delegate: delegate)
                 } else {
                     self.addAdMobBannerView(unitId: KeyIdAdMob.BANNER_PHONE)
-                    //TODO -> DJKViewUtils.setConstraintBottomView(self.admobBannerView, currentAndTo: self.view)
-                    //TODO -> DJKViewUtils.setConstraintCenterX(self.admobBannerView, currentView: self.view)
                 }
             })
-            //TODO -> admobInterstitial = createAndLoadAdMobInterstitial(KeyIdAdMob.INTERSTITIAL, sender: self)
+            loadAdMobInterstitial(unitId: KeyIdAdMob.INTERSTITIAL)
         }
 
         self.storyBoardName = delegate.storyBoardName
@@ -98,7 +96,7 @@ class AboutThisAppViewController: HelpingMonetizeViewController,
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        showAdMobInterstitial(unitId: KeyIdAdMob.INTERSTITIAL, rootViewController: self)
+        showAdMobInterstitial(rootViewController: self)
     }
 
     override func viewWillDisappear(_ animated: Bool) {

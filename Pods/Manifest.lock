@@ -1,9 +1,10 @@
 PODS:
   - BubbleTransition (4.0.0)
-  - DJKPurchaseService (0.0.21):
+  - DJKPurchaseService (0.0.23):
     - PersonalizedAdConsent
     - PureLayout
     - SwiftyStoreKit
+    - TinyConstraints
   - Firebase/Core (6.7.0):
     - Firebase/CoreOnly
     - FirebaseAnalytics (= 6.1.1)
@@ -141,7 +142,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   DJKPurchaseService:
-    :commit: 491a95fce2ee7ac4c6fc62c4f0eb2fc3676ed4cf
+    :commit: 845c5ec21ec5015d503487d1ca21b60e8deea12e
     :git: https://github.com/WataruSuzuki/PurchaseService-iOS.git
   NCMB:
     :commit: ee91ac4978b78f244b4c4d838aa0287b05da4b64
@@ -149,7 +150,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   BubbleTransition: 9d96f31375e0db46684e2060d3a601fa47d9f9c1
-  DJKPurchaseService: f169e496db87c6c6dbe3581025e8818be6defb58
+  DJKPurchaseService: c9ce18253522a919d282ca3d32e69a9bed4d4a18
   Firebase: 291d7b0a7b393f252358083b5d224884126fa46d
   FirebaseAnalytics: 843c7f64a8f9c79f0d03281197ebe7bb1d58d477
   FirebaseAnalyticsInterop: d48b6ab67bcf016a05e55b71fc39c61c0cb6b7f3

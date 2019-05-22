@@ -336,7 +336,9 @@ class MainViewController: CommonUtilChartScrollViewController,
         let delegate = UIApplication.shared.delegate as! AppDelegate
         let isShowTime = (isForce || 0 == (delegate.countAdMobInterstitial % 10))
         
-        showAdMobInterstitial(rootViewController: self)
+        if isShowTime {
+            showAdMobInterstitial(rootViewController: self)
+        }
 
         if !isForce {
             delegate.countAdMobInterstitial += 1

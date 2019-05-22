@@ -24,15 +24,6 @@ extern const float DISP_AD_OFFSET_OFF;
 
 +(void)setConstraintCenterX:(UIView *)targetView
                 CurrentView:(UIView *)currentView;
-+(void)setConstraintBottomView:(UIView *)targetView
-                  CurrentAndTo:(UIView *)currentAndToView;
-+(void)setConstraintBottomView:(UIView *)targetView
-                        ToItem:(UIView *)toItem
-                   CurrentView:(UIView *)currentView;
-+(void)relayoutBottomViewBeforeRemoveAd:(UIView *)updateView
-                               AdBanner:(UIView *)removeAdView
-                            CurrentView:(UIView *)currentView
-                             AutoLayout:(BOOL)isAutoLayout;
 +(CGRect)changeHeightToDisplaySize:(CGRect)frame beforeSize:(int)beforeSize afterSize:(int)afterSize;
 +(void)initScrollViewForPaging:(UIScrollView *)scrollView
                withPageNumbers:(NSUInteger)numberPages

@@ -45,48 +45,6 @@ const float DISP_AD_OFFSET_OFF = (50.0);
     [currentView addConstraint:layoutCenterX];
 }
 
-+(void)setConstraintBottomView:(UIView *)targetView
-                   CurrentAndTo:(UIView *)currentAndToView
-{
-    NSLayoutConstraint *layoutBottom =
-    [NSLayoutConstraint constraintWithItem:targetView
-                                 attribute:NSLayoutAttributeBottom
-                                 relatedBy:NSLayoutRelationEqual
-                                    toItem:currentAndToView.safeAreaLayoutGuide
-                                 attribute:NSLayoutAttributeBottom
-                                multiplier:1.0
-                                  constant:0.0];
-    [currentAndToView addConstraint:layoutBottom];
-}
-
-+(void)setConstraintBottomView:(UIView *)targetView
-                        ToItem:(UIView *)toItem
-                   CurrentView:(UIView *)currentView
-{
-    NSLayoutConstraint *layoutBottom =
-    [NSLayoutConstraint constraintWithItem:targetView
-                                 attribute:NSLayoutAttributeBottomMargin
-                                 relatedBy:NSLayoutRelationEqual
-                                    toItem:toItem
-                                 attribute:NSLayoutAttributeBottomMargin
-                                multiplier:1.0
-                                  constant:0.0];
-    [currentView addConstraint:layoutBottom];
-}
-
-+(void)relayoutBottomViewBeforeRemoveAd:(UIView *)updateView
-                               AdBanner:(UIView *)removeAdView
-                            CurrentView:(UIView *)currentView
-                             AutoLayout:(BOOL)isAutoLayout{
-    if (isAutoLayout) {
-        [DJKViewUtils setConstraintBottomView:updateView ToItem:currentView CurrentView:currentView];
-    } else {
-        CGRect frame = updateView.frame;
-        frame.size.height += removeAdView.frame.size.height;
-        updateView.frame = frame;
-    }
-}
-
 +(CGRect)changeHeightToDisplaySize:(CGRect)frame beforeSize:(int)beforeSize afterSize:(int)afterSize{
     CGRect retFrame;
     

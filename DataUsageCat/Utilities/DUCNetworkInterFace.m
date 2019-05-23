@@ -10,12 +10,12 @@
 
 @implementation DUCNetworkInterFace
 
-@synthesize wifiSend;
-@synthesize wifiReceived;
-@synthesize wwanSend;
-@synthesize wwanReceived;
+//@synthesize wifiSend;
+//@synthesize wifiReceived;
+//@synthesize wwanSend;
+//@synthesize wwanReceived;
 
--(DUCNetworkInterFace *)getDataCounters
++(DUCNetworkInterFace *)getDataCounters
 {
     BOOL   success;
     struct ifaddrs *addrs;
@@ -60,8 +60,8 @@
                     NSLog(@"WiFi ifi_ipackets=%d",networkStatisc->ifi_ipackets);
 #endif//ENABLE_LOG_NETWORK_INTERFACE
                     
-                    WiFiSent += [self getNetworkStatiscIfiValue:networkStatisc->ifi_obytes];
-                    WiFiReceived += [self getNetworkStatiscIfiValue:networkStatisc->ifi_ibytes];
+                    WiFiSent += [DUCNetworkInterFace getNetworkStatiscIfiValue:networkStatisc->ifi_obytes];
+                    WiFiReceived += [DUCNetworkInterFace getNetworkStatiscIfiValue:networkStatisc->ifi_ibytes];
 #ifdef ENABLE_LOG_NETWORK_INTERFACE
                     NSLog(@"WiFiSent =%lluu",WiFiSent);
                     NSLog(@"WiFiReceived =%llu",WiFiReceived);
@@ -78,8 +78,8 @@
                     NSLog(@"WWAN ifi_ipackets=%d",networkStatisc->ifi_ipackets);
 #endif//ENABLE_LOG_NETWORK_INTERFACE
                     
-                    WWANSent += [self getNetworkStatiscIfiValue:networkStatisc->ifi_obytes];
-                    WWANReceived += [self getNetworkStatiscIfiValue:networkStatisc->ifi_ibytes];
+                    WWANSent += [DUCNetworkInterFace getNetworkStatiscIfiValue:networkStatisc->ifi_obytes];
+                    WWANReceived += [DUCNetworkInterFace getNetworkStatiscIfiValue:networkStatisc->ifi_ibytes];
 #ifdef ENABLE_LOG_NETWORK_INTERFACE
                     NSLog(@"WWANSent =%llu",WWANSent);
                     NSLog(@"WWANReceived =%llu",WWANReceived);
@@ -93,10 +93,10 @@
         freeifaddrs(addrs);
     }
     
-    return [self generateNetWorkInterFaceFromArray:@[@(WiFiSent),@(WiFiReceived),@(WWANSent),@(WWANReceived)]];
+    return [DUCNetworkInterFace generateNetWorkInterFaceFromArray:@[@(WiFiSent),@(WiFiReceived),@(WWANSent),@(WWANReceived)]];
 }
 
--(long long)getNetworkStatiscIfiValue:(int)ifiValue
++ (long long)getNetworkStatiscIfiValue:(int)ifiValue
 {
     long long ret = (long long)ifiValue;
     
@@ -110,7 +110,7 @@
     return ret;
 }
 
--(long long)getLongLongValueFromArray:(NSArray *)array
++(long long)getLongLongValueFromArray:(NSArray *)array
                        andObjectIndex:(int)index
 {
     NSNumber *numberObj =(NSNumber *)array[index];
@@ -119,18 +119,19 @@
     return ret;
 }
 
--(DUCNetworkInterFace *)generateNetWorkInterFaceFromArray:(NSArray *)currentArray
++(DUCNetworkInterFace *)generateNetWorkInterFaceFromArray:(NSArray *)currentArray
 {
     NSArray *array = nil;
-    DUCNetworkInterFace *networkInterFace = [[DUCNetworkInterFace alloc] init];
+    DUCNetworkInterFace *networkInterFace = [DUCNetworkInterFace new];
+    //DUCNetworkInterFace *networkInterFace = [[DUCNetworkInterFace alloc] init];
     if (nil != currentArray) {
         array = currentArray;
         
-        networkInterFace.wifiSend = [self getLongLongValueFromArray:array andObjectIndex:IFA_DATA_WIFI_SEND];
-        networkInterFace.wifiReceived = [self getLongLongValueFromArray:array andObjectIndex:IFA_DATA_WIFI_RECEIVED];
+        networkInterFace.wifiSend = [DUCNetworkInterFace getLongLongValueFromArray:array andObjectIndex:IFA_DATA_WIFI_SEND];
+        networkInterFace.wifiReceived = [DUCNetworkInterFace getLongLongValueFromArray:array andObjectIndex:IFA_DATA_WIFI_RECEIVED];
         
-        networkInterFace.wwanSend = [self getLongLongValueFromArray:array andObjectIndex:IFA_DATA_WWAN_SEND];
-        networkInterFace.wwanReceived = [self getLongLongValueFromArray:array andObjectIndex:IFA_DATA_WWAN_RECEIVED];
+        networkInterFace.wwanSend = [DUCNetworkInterFace getLongLongValueFromArray:array andObjectIndex:IFA_DATA_WWAN_SEND];
+        networkInterFace.wwanReceived = [DUCNetworkInterFace getLongLongValueFromArray:array andObjectIndex:IFA_DATA_WWAN_RECEIVED];
     }
     
     return networkInterFace;

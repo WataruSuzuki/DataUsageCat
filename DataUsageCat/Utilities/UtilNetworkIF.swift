@@ -15,7 +15,7 @@ class UtilNetworkIF: NetService {
     var wwanSend: Int64 = 0
     var wwanReceived: Int64 = 0
 
-    func getResultValue(newValue: Int64, lastSavedData lastSavedValue: Int64, offsetData offsetValue: Int64) -> Int64 {
+    private static func getResultValue(newValue: Int64, lastSavedData lastSavedValue: Int64, offsetData offsetValue: Int64) -> Int64 {
         var ret = (lastSavedValue + newValue - offsetValue)
         if 0 != lastSavedValue && lastSavedValue > ret {
             ret = newValue + lastSavedValue
@@ -26,13 +26,13 @@ class UtilNetworkIF: NetService {
         return ret
     }
     
-    func addOffsetValueToUsageData(currentData: DUCNetworkInterFace, lastSavedData lastSavedUsage: DUCNetworkInterFace, offsetData offsetUsage: DUCNetworkInterFace) -> DUCNetworkInterFace {
+    static func addOffsetValueToUsageData(currentData: DUCNetworkInterFace, lastSavedData lastSavedUsage: DUCNetworkInterFace, offsetData offsetUsage: DUCNetworkInterFace) -> DUCNetworkInterFace {
         let WiFiSent = getResultValue(newValue: currentData.wifiSend, lastSavedData: lastSavedUsage.wifiSend, offsetData: offsetUsage.wifiSend)
         let WiFiReceived = getResultValue(newValue: currentData.wifiReceived, lastSavedData: lastSavedUsage.wifiReceived, offsetData: offsetUsage.wifiReceived)
         let WWANSent = getResultValue(newValue: currentData.wwanSend, lastSavedData: lastSavedUsage.wwanSend, offsetData: offsetUsage.wwanSend)
         let WWANReceived = getResultValue(newValue: currentData.wwanReceived, lastSavedData: lastSavedUsage.wwanReceived, offsetData: offsetUsage.wwanReceived)
         
-        return DUCNetworkInterFace().generateNetWork(from: [(NSNumber(value: WiFiSent)), (NSNumber(value: WiFiReceived)), (NSNumber(value: WWANSent)), (NSNumber(value: WWANReceived))])
+        return DUCNetworkInterFace.generateNetWork(from: [(NSNumber(value: WiFiSent)), (NSNumber(value: WiFiReceived)), (NSNumber(value: WWANSent)), (NSNumber(value: WWANReceived))])
     }
     
     class func getUsageValue(networkIf: DUCNetworkInterFace) -> Int64 {

@@ -152,7 +152,7 @@ class SelectedWeekChartView: UIView {
         for count in 0 ..< usageValueArray.count {
             let usageView = viewArray[count]
             let wifiView = savingArray[count]
-            if let dataOfDay = DUCNetworkInterFace().generateNetWork(from: usageValueArray[count] as! [AnyObject]) {
+            if let dataOfDay = DUCNetworkInterFace.generateNetWork(from: usageValueArray[count] as! [AnyObject]) {
                 let usageValue = dataOfDay.wwanSend + dataOfDay.wwanReceived
                 let savingValue = dataOfDay.wifiSend + dataOfDay.wifiReceived
                 let referenceValue = self.getDayReferenceValue(userMax: userDefaultLimit)

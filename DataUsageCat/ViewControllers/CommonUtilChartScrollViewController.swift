@@ -103,10 +103,10 @@ class CommonUtilChartScrollViewController: HelpingMonetizeViewController,
         if let usages = self.csvForThisMonthUsage {
             if let dataOfDayArray = usages[page] as? [AnyObject] {
                 let referenceValue = SelectedWeekChartView().getDayReferenceValue(userMax: self.userDefaultLimit)
-                let usageValue = UtilNetworkIF.getUsageValue(networkIf: DUCNetworkInterFace().generateNetWork(from: dataOfDayArray))
+                let usageValue = UtilNetworkIF.getUsageValue(networkIf: DUCNetworkInterFace.generateNetWork(from: dataOfDayArray))
                 unitview.buttonUsageValue!.setTitleColor(SelectedWeekChartView.getUsageChartBarColor(usageValue: usageValue, withMaxReference: referenceValue), for: [])
-                let usageValueMegaByte = UtilNetworkIF.getCellularDataUsageByMegaByte(dataUsage: DUCNetworkInterFace().generateNetWork(from: dataOfDayArray))
-                let savingValueMegaByte = UtilNetworkIF.getWifiDataUsageByMegaByte(dataUsage: DUCNetworkInterFace().generateNetWork(from: dataOfDayArray))
+                let usageValueMegaByte = UtilNetworkIF.getCellularDataUsageByMegaByte(dataUsage: DUCNetworkInterFace.generateNetWork(from: dataOfDayArray))
+                let savingValueMegaByte = UtilNetworkIF.getWifiDataUsageByMegaByte(dataUsage: DUCNetworkInterFace.generateNetWork(from: dataOfDayArray))
                 unitview.buttonUsageValue!.setTitle(String(format: "%.1f", usageValueMegaByte), for: [])
                 unitview.buttonSavingValue!.setTitle(String(format: "%.1f", savingValueMegaByte), for: [])
                 unitview.buttonUsageValue!.addTarget(self, action: #selector(CommonUtilChartScrollViewController.tapSummaryNetworkUsage(sender:)), for: .touchUpInside)
@@ -281,7 +281,7 @@ class CommonUtilChartScrollViewController: HelpingMonetizeViewController,
                     networkInterFace = DUCNetworkInterFace()
                 }
                 
-                controller.networkIF = networkInterFace.generateNetWork(from: dataOfDayArray)
+                controller.networkIF = DUCNetworkInterFace.generateNetWork(from: dataOfDayArray)
                 controller.titleStr = dataOfDayArray[IFA_DATA_GET_DATE] as? String
             }
         }

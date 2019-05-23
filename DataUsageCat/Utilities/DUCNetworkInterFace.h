@@ -23,18 +23,17 @@ enum{
     //IFA_DATA_GET_TIME,
 };
 
-@interface DUCNetworkInterFace : NSNetService
-{
-    //Nothing
-}
-@property (getter=wifiSend, nonatomic) long long wifiSend;
-@property (getter=wifiReceived, nonatomic) long long wifiReceived;
-@property (getter=wwanSend, nonatomic) long long wwanSend;
-@property (getter=wwanReceived, nonatomic) long long wwanReceived;
+@interface DUCNetworkInterFace : NSObject
+//@interface DUCNetworkInterFace : NSNetService
 
--(DUCNetworkInterFace *)getDataCounters;
+@property (nonatomic) long long wifiSend;
+@property (nonatomic) long long wifiReceived;
+@property (nonatomic) long long wwanSend;
+@property (nonatomic) long long wwanReceived;
+
++(DUCNetworkInterFace *)getDataCounters;
 //@property (NS_NONATOMIC_IOSONLY, getter=dataCounters, readonly, copy) NSArray *dataCounters;
--(DUCNetworkInterFace *)generateNetWorkInterFaceFromArray:(NSArray *)currentArray;
++(DUCNetworkInterFace *)generateNetWorkInterFaceFromArray:(NSArray *)currentArray;
 //+(long long)getLongLongValueFromArray:(NSArray *)array
 //                                       andObjectIndex:(int)index;
 

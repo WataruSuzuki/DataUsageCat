@@ -25,7 +25,7 @@ class UtilManagedObject: NSObject {
     var arrayUsageThisMonth: [AnyObject]?
     var dataUsageCount: DUCNetworkInterFace?
     var lastSavedUsageCount: DUCNetworkInterFace?
-    
+
     func updateNetworkUsageManagedObj(cmnu: CurrentMonthNetworkUsage, updateType: UpdateType, updateTargetIndex: DataIndex, newUsageData: DUCNetworkInterFace, context: NSManagedObjectContext) {
         
         if UpdateType.NEW != updateType {
@@ -65,7 +65,7 @@ class UtilManagedObject: NSObject {
         let wifiReceived = (target.wifi_received != nil ? target.wifi_received : fallbackValue)
         let wwanSend = (target.wwan_sent != nil ? target.wwan_sent : fallbackValue)
         let wwanReceived = (target.wwan_received != nil ? target.wwan_received : fallbackValue)
-        return DUCNetworkInterFace().generateNetWork(from: [wifiSend!, wifiReceived!, wwanSend!, wwanReceived!])
+        return DUCNetworkInterFace.generateNetWork(from: [wifiSend!, wifiReceived!, wwanSend!, wwanReceived!])
     }
     
     func getDateComponents(date: Date) -> DateComponents {
@@ -78,7 +78,7 @@ class UtilManagedObject: NSObject {
         let wwanSend = newDataCount.wwanSend - beforeDataCount.wwanSend
         let wwanReceived = newDataCount.wwanReceived - beforeDataCount.wwanReceived
         
-        return DUCNetworkInterFace().generateNetWork(from: [NSNumber(value: wifiSend), NSNumber(value: wifiReceived), NSNumber(value: wwanSend), NSNumber(value: wwanReceived)])
+        return DUCNetworkInterFace.generateNetWork(from: [NSNumber(value: wifiSend), NSNumber(value: wifiReceived), NSNumber(value: wwanSend), NSNumber(value: wwanReceived)])
     }
     
     func checkBootTimeAndIfDataResult(last_boot_time: Double) -> Bool {
@@ -226,7 +226,7 @@ class UtilManagedObject: NSObject {
     }
     
     func fetchMonthNetworkUsage(context: NSManagedObjectContext) {
-        let nowDataCount = DUCNetworkInterFace().getDataCounters()
+        let nowDataCount = DUCNetworkInterFace.getDataCounters()
         let formatDataCount = DUCNetworkInterFace()
         var nextDataCount = formatDataCount
         //var cmnuArray: [AnyObject]? = nil
@@ -275,7 +275,7 @@ class UtilManagedObject: NSObject {
             }
             
             self.updateNetworkUsageManagedObj(cmnu: cmnuOffset!, updateType: .REFLESH, updateTargetIndex: .OFFSET, newUsageData: nowDataCount!, context: context)
-            nextDataCount = UtilNetworkIF().addOffsetValueToUsageData(currentData: nowDataCount!, lastSavedData: lastSaved, offsetData: lastSavedOffset)
+            nextDataCount = UtilNetworkIF.addOffsetValueToUsageData(currentData: nowDataCount!, lastSavedData: lastSaved, offsetData: lastSavedOffset)
             self.updateNetworkUsageManagedObj(cmnu: cmnuCurrent!, updateType: .REFLESH, updateTargetIndex: .CURRENT, newUsageData: nextDataCount, context: context)
             self.updateChartThisMonth(beforeDataCounts: lastSaved, newDataCounts: nextDataCount, context: context)
             lastSavedUsageCount = lastSaved
@@ -351,7 +351,7 @@ class UtilManagedObject: NSObject {
         let reverseArray = recentArray.reversed()
         //var reverseArray = recentArray.reverseObjectEnumerator().allObjects
         for day in reverseArray {
-            recentUsageValue += Int64(UtilNetworkIF.getUsageValue(networkIf: DUCNetworkInterFace().generateNetWork(from: day as! [AnyObject])))
+            recentUsageValue += Int64(UtilNetworkIF.getUsageValue(networkIf: DUCNetworkInterFace.generateNetWork(from: day as! [AnyObject])))
             if dayCount == 3 {
                 break
             }

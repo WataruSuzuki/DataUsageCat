@@ -145,7 +145,7 @@ class MainViewController: CommonUtilChartScrollViewController,
     private func setupAdMob() {
         PurchaseService.shared.confirmPersonalizedConsent(publisherIds: [KeyIdAdMob.PUBLISHER_ID], privacyPolicyUrl: privacyPolicyUrl) { (success) in
             if success {
-                //GADMobileAds.sharedInstance().start(completionHandler: nil)
+                //TODO -> GADMobileAds.sharedInstance().start(completionHandler: nil)
 
                 if UIDevice.current.userInterfaceIdiom == .pad {
                     self.updateViewUsageResult(size: self.view.frame.size, orientation: UIApplication.shared.statusBarOrientation)

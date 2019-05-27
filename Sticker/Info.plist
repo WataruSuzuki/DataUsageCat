@@ -19,7 +19,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>9.0.0</string>
 	<key>CFBundleVersion</key>
-	<string>1000.36</string>
+	<string>1000.39</string>
 	<key>NSExtension</key>
 	<dict>
 		<key>NSExtensionPointIdentifier</key>

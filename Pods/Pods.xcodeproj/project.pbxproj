@@ -5036,22 +5036,6 @@
 			};
 			name = Debug;
 		};
-		12EEFB1317B32B12E5EA756F1A5797F5 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 57F4A52FEBCBE6800FB799689F27B9CD /* PersonalizedAdConsent.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/PersonalizedAdConsent";
-				INFOPLIST_FILE = "Target Support Files/PersonalizedAdConsent/ResourceBundle-PersonalizedAdConsent-PersonalizedAdConsent-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				PRODUCT_NAME = PersonalizedAdConsent;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Debug;
-		};
 		17969FCEF225B3C5E1FC0F1519E9BB68 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 57F4A52FEBCBE6800FB799689F27B9CD /* PersonalizedAdConsent.xcconfig */;
@@ -6003,6 +5987,23 @@
 			};
 			name = Release;
 		};
+		AC027E44719E92BF1A3BD7D4553EC168 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 57F4A52FEBCBE6800FB799689F27B9CD /* PersonalizedAdConsent.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/PersonalizedAdConsent";
+				IBSC_MODULE = PersonalizedAdConsent;
+				INFOPLIST_FILE = "Target Support Files/PersonalizedAdConsent/ResourceBundle-PersonalizedAdConsent-PersonalizedAdConsent-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_NAME = PersonalizedAdConsent;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
 		AD7BB18C779A99B957810F453764F945 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DF2BAEB87155D61F81D4CD7525F6F18B /* TinyConstraints.xcconfig */;
@@ -6032,22 +6033,6 @@
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		C0BC475EA0B7AAB461CA1E34F28BDF2C /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 57F4A52FEBCBE6800FB799689F27B9CD /* PersonalizedAdConsent.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/PersonalizedAdConsent";
-				INFOPLIST_FILE = "Target Support Files/PersonalizedAdConsent/ResourceBundle-PersonalizedAdConsent-PersonalizedAdConsent-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				PRODUCT_NAME = PersonalizedAdConsent;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
 			};
 			name = Release;
 		};
@@ -6489,6 +6474,23 @@
 			};
 			name = Release;
 		};
+		F655EA3205BA214C5D5220055F1B02C4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 57F4A52FEBCBE6800FB799689F27B9CD /* PersonalizedAdConsent.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/PersonalizedAdConsent";
+				IBSC_MODULE = PersonalizedAdConsent;
+				INFOPLIST_FILE = "Target Support Files/PersonalizedAdConsent/ResourceBundle-PersonalizedAdConsent-PersonalizedAdConsent-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_NAME = PersonalizedAdConsent;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
 		F93042B16E2AD3CB541D0E37233B0D40 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 551EC3ABAE265C522AF38276A4841F6D /* GoogleUtilities.xcconfig */;
@@ -6682,8 +6684,8 @@
 		6331ACB053E7F35DDD838AFD4385F2F0 /* Build configuration list for PBXNativeTarget "PersonalizedAdConsent-PersonalizedAdConsent" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				12EEFB1317B32B12E5EA756F1A5797F5 /* Debug */,
-				C0BC475EA0B7AAB461CA1E34F28BDF2C /* Release */,
+				F655EA3205BA214C5D5220055F1B02C4 /* Debug */,
+				AC027E44719E92BF1A3BD7D4553EC168 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

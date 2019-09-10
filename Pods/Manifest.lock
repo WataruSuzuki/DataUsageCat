@@ -108,7 +108,7 @@ DEPENDENCIES:
   - ZFDragableModalTransition
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - BubbleTransition
     - Firebase
     - FirebaseAnalytics
@@ -178,4 +178,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: e0b283cd0d7575ba5cc1ae4a2eb1e51393b8e811
 
-COCOAPODS: 1.7.4
+COCOAPODS: 1.8.3

@@ -35,6 +35,46 @@ class DataUsageCatUITests: XCTestCase {
     func testExample() {
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+        
+        let app = XCUIApplication()
+        app/*@START_MENU_TOKEN@*/.buttons["remaining"]/*[[".segmentedControls.buttons[\"remaining\"]",".buttons[\"remaining\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app/*@START_MENU_TOKEN@*/.buttons["save of month"]/*[[".segmentedControls.buttons[\"save of month\"]",".buttons[\"save of month\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app.buttons["cat good"].tap()
+        
+        closeAd(app: app)
+        app.tables/*@START_MENU_TOKEN@*/.cells.containing(.staticText, identifier:"Map app")/*[[".cells.containing(.staticText, identifier:\"About 8802.0times\")",".cells.containing(.staticText, identifier:\"Map app\")"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.buttons["More Info"].tap()
+        
+        closeAd(app: app)
+        app.navigationBars["Map app"].buttons["Comment from Cat"].tap()
+        
+        closeAd(app: app)
+        app.navigationBars["Comment from Cat"].buttons["Stop"].tap()
+        app.buttons["1.1"].tap()
+        
+        closeAd(app: app)
+        app.toolbars["Toolbar"]/*@START_MENU_TOKEN@*/.buttons["About this month"]/*[[".segmentedControls.buttons[\"About this month\"]",".buttons[\"About this month\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app.navigationBars["About this month"].buttons["Stop"].tap()
+        
+        tapJarashi(app: app)
+        
+        closeAd(app: app)
+        app.navigationBars["Settings"].buttons["Done"].tap()
+        app.buttons["More Info"].tap()
+        
+        closeAd(app: app)
+        app.navigationBars["About this App"].buttons["Back"].tap()
     }
     
+    private func closeAd(app: XCUIApplication) {
+        sleep(2)
+        let closeAdvertisementButton = app.buttons["Close Advertisement"]
+        if closeAdvertisementButton.exists {
+            closeAdvertisementButton.tap()
+        }
+    }
+    
+    private func tapJarashi(app: XCUIApplication) {
+        let jarashi = app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element(boundBy: 0).children(matching: .button).element
+        jarashi.tap()
+    }
 }

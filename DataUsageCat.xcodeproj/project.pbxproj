@@ -603,10 +603,9 @@
 			};
 			buildConfigurationList = 9687A2AD1D281F1500C6B9C1 /* Build configuration list for PBXProject "DataUsageCat" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 				Base,
 				ja,

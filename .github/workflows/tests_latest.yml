@@ -1,0 +1,14 @@
+name: tests latest iOS
+
+on:
+  push:
+    branches:
+    - master
+
+jobs:
+  test-iOS-latest:
+    runs-on: macOS-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Test script
+      run: ./.github/workflows/xcodebuild.sh "latest"

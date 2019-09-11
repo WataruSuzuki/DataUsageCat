@@ -32,27 +32,36 @@ class DataUsageCatUITests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
+    func testExample001() {
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
         
         let app = XCUIApplication()
-        app/*@START_MENU_TOKEN@*/.buttons["remaining"]/*[[".segmentedControls.buttons[\"remaining\"]",".buttons[\"remaining\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        app/*@START_MENU_TOKEN@*/.buttons["save of month"]/*[[".segmentedControls.buttons[\"save of month\"]",".buttons[\"save of month\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        let permissionAlert = app.alerts["“DataUsageCat” Would Like to Send You Notifications"]
+        if permissionAlert.exists {
+            permissionAlert.scrollViews.otherElements.buttons["Allow"].tap()
+        }
+        
+        app.buttons["remaining"].tap()
+        app.buttons["save of month"].tap()
+    }
+
+    private func testExample002(dummyParam: Int) {
+        let app = XCUIApplication()
         app.buttons["cat good"].tap()
         
         closeAd(app: app)
-        app.tables/*@START_MENU_TOKEN@*/.cells.containing(.staticText, identifier:"Map app")/*[[".cells.containing(.staticText, identifier:\"About 8802.0times\")",".cells.containing(.staticText, identifier:\"Map app\")"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.buttons["More Info"].tap()
+        app.tables.cells.containing(.staticText, identifier:"Map app").buttons["More Info"].tap()
         
         closeAd(app: app)
         app.navigationBars["Map app"].buttons["Comment from Cat"].tap()
         
         closeAd(app: app)
         app.navigationBars["Comment from Cat"].buttons["Stop"].tap()
-        app.buttons["1.1"].tap()
+        app.buttons["buttonCurrentMonthValue"].tap()
         
         closeAd(app: app)
-        app.toolbars["Toolbar"]/*@START_MENU_TOKEN@*/.buttons["About this month"]/*[[".segmentedControls.buttons[\"About this month\"]",".buttons[\"About this month\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app.toolbars["Toolbar"].buttons["About this month"].tap()
         app.navigationBars["About this month"].buttons["Stop"].tap()
         
         tapJarashi(app: app)

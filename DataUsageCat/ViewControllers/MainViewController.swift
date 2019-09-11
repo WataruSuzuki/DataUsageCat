@@ -253,6 +253,7 @@ class MainViewController: CommonUtilChartScrollViewController,
         default:
             break
         }
+        buttonCurrentMonthValue.accessibilityIdentifier = "buttonCurrentMonthValue"
     }
     
     func setViewTitle() {

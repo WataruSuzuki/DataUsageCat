@@ -28,7 +28,7 @@ class UtilManagedObject: NSObject {
 
     func updateNetworkUsageManagedObj(cmnu: CurrentMonthNetworkUsage, updateType: UpdateType, updateTargetIndex: DataIndex, newUsageData: DUCNetworkInterFace, context: NSManagedObjectContext) {
         
-        if UpdateType.NEW != updateType {
+        if UpdateType.new != updateType {
             #if ENABLE_SWIFT_LOG
                 print("updateNetworkUsageManagedObj updateTarget = \(updateTargetIndex)")
                 print("updateNetworkUsageManagedObj managedObject = \(cmnu)")
@@ -53,10 +53,10 @@ class UtilManagedObject: NSObject {
     
     func createNetworkUsageManagedObj(usageData: DUCNetworkInterFace, withManagedObj context: NSManagedObjectContext) {
         let objCurrent = NSEntityDescription.insertNewObject(forEntityName: "CurrentMonthNetworkUsage", into: context) as! CurrentMonthNetworkUsage
-        self.updateNetworkUsageManagedObj(cmnu: objCurrent, updateType: UpdateType.NEW, updateTargetIndex: DataIndex.CURRENT, newUsageData: usageData, context: context)
+        self.updateNetworkUsageManagedObj(cmnu: objCurrent, updateType: UpdateType.new, updateTargetIndex: DataIndex.current, newUsageData: usageData, context: context)
         
         let objOffset = NSEntityDescription.insertNewObject(forEntityName: "CurrentMonthNetworkUsage", into: context) as! CurrentMonthNetworkUsage
-        self.updateNetworkUsageManagedObj(cmnu: objOffset, updateType: UpdateType.NEW, updateTargetIndex: DataIndex.OFFSET, newUsageData: usageData, context: context)
+        self.updateNetworkUsageManagedObj(cmnu: objOffset, updateType: UpdateType.new, updateTargetIndex: DataIndex.offset, newUsageData: usageData, context: context)
     }
     
     func getNetworkInterFaceFromCMNU(target: CurrentMonthNetworkUsage) -> DUCNetworkInterFace {
@@ -242,8 +242,8 @@ class UtilManagedObject: NSObject {
             dataUsageCount = nowDataCount
         } else {
             var isNeedCacheClear = true
-            cmnuCurrent = cmnuArray?[UtilManagedObject.DataIndex.CURRENT.rawValue] as? CurrentMonthNetworkUsage
-            cmnuOffset = cmnuArray?[UtilManagedObject.DataIndex.OFFSET.rawValue] as? CurrentMonthNetworkUsage
+            cmnuCurrent = cmnuArray?[UtilManagedObject.DataIndex.current.rawValue] as? CurrentMonthNetworkUsage
+            cmnuOffset = cmnuArray?[UtilManagedObject.DataIndex.offset.rawValue] as? CurrentMonthNetworkUsage
             var lastSaved = self.getNetworkInterFaceFromCMNU(target: cmnuCurrent!)
             var lastSavedOffset = self.getNetworkInterFaceFromCMNU(target: cmnuOffset!)
             let last_boot_time = cmnuCurrent!.last_boot_time!.doubleValue
@@ -274,9 +274,9 @@ class UtilManagedObject: NSObject {
                 lastSavedOffset = formatDataCount
             }
             
-            self.updateNetworkUsageManagedObj(cmnu: cmnuOffset!, updateType: .REFLESH, updateTargetIndex: .OFFSET, newUsageData: nowDataCount!, context: context)
+            self.updateNetworkUsageManagedObj(cmnu: cmnuOffset!, updateType: .refresh, updateTargetIndex: .offset, newUsageData: nowDataCount!, context: context)
             nextDataCount = UtilNetworkIF.addOffsetValueToUsageData(currentData: nowDataCount!, lastSavedData: lastSaved, offsetData: lastSavedOffset)
-            self.updateNetworkUsageManagedObj(cmnu: cmnuCurrent!, updateType: .REFLESH, updateTargetIndex: .CURRENT, newUsageData: nextDataCount, context: context)
+            self.updateNetworkUsageManagedObj(cmnu: cmnuCurrent!, updateType: .refresh, updateTargetIndex: .current, newUsageData: nextDataCount, context: context)
             self.updateChartThisMonth(beforeDataCounts: lastSaved, newDataCounts: nextDataCount, context: context)
             lastSavedUsageCount = lastSaved
             dataUsageCount = nextDataCount
@@ -446,15 +446,13 @@ class UtilManagedObject: NSObject {
         return container
     }()
     
-    enum  DataIndex: Int {
-        case CURRENT = 0,
-        OFFSET,
-        MAX
+    enum DataIndex: Int, CaseIterable {
+        case current = 0,
+        offset
     }
     
-    enum UpdateType : Int {
-        case NEW = 0,
-        REFLESH,
-        MAX
+    enum UpdateType : Int, CaseIterable {
+        case new = 0,
+        refresh
     }
 }

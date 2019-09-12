@@ -286,6 +286,24 @@
 			path = ManagedObjects;
 			sourceTree = "<group>";
 		};
+		9674845F23D9D8B300A5E947 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				96F8F05C1D28A7860083BEDB /* UtilManagedObject.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		9674846023D9D96B00A5E947 /* InterfaceBuilders */ = {
+			isa = PBXGroup;
+			children = (
+				9687A2C11D281F1600C6B9C1 /* LaunchScreen.storyboard */,
+				96007AEC1D604AF8006BAF2C /* Main_iPad.storyboard */,
+				96F8F0AE1D28A7E70083BEDB /* Main_iPhone.storyboard */,
+			);
+			name = InterfaceBuilders;
+			sourceTree = "<group>";
+		};
 		9687A2A91D281F1500C6B9C1 = {
 			isa = PBXGroup;
 			children = (
@@ -313,6 +331,8 @@
 		9687A2B41D281F1600C6B9C1 /* DataUsageCat */ = {
 			isa = PBXGroup;
 			children = (
+				96F8F0341D28A7860083BEDB /* Models */,
+				9674845F23D9D8B300A5E947 /* Controllers */,
 				964215E41D28AB0500E7E29A /* GoogleService-Info.plist */,
 				96F8F0331D28A7860083BEDB /* DataUsageCat.entitlements */,
 				96F8F0521D28A7860083BEDB /* Settings.bundle */,
@@ -320,17 +340,13 @@
 				96F8F0601D28A7860083BEDB /* ViewControllers */,
 				96F8F06A1D28A7870083BEDB /* Views */,
 				9687A2B51D281F1600C6B9C1 /* AppDelegate.swift */,
+				9674846023D9D96B00A5E947 /* InterfaceBuilders */,
 				9687A2BF1D281F1600C6B9C1 /* Assets.xcassets */,
-				9687A2C11D281F1600C6B9C1 /* LaunchScreen.storyboard */,
 				96F8F0A81D28A7E70083BEDB /* InfoPlist.strings */,
 				96F8F0AA1D28A7E70083BEDB /* Localizable.strings */,
-				96007AEC1D604AF8006BAF2C /* Main_iPad.storyboard */,
-				96F8F0AE1D28A7E70083BEDB /* Main_iPhone.storyboard */,
 				9687A2C41D281F1600C6B9C1 /* Info.plist */,
-				9687A2BC1D281F1600C6B9C1 /* DataUsageCat.xcdatamodeld */,
 				96F8F0301D28A6BB0083BEDB /* DataUsageCat-Bridging-Header.h */,
 				96F8F0351D28A7860083BEDB /* Resources */,
-				96F8F0341D28A7860083BEDB /* Models */,
 			);
 			path = DataUsageCat;
 			sourceTree = "<group>";
@@ -365,6 +381,7 @@
 		96F8F0341D28A7860083BEDB /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				9687A2BC1D281F1600C6B9C1 /* DataUsageCat.xcdatamodeld */,
 				9674845E23D9D57300A5E947 /* ManagedObjects */,
 			);
 			path = Models;
@@ -427,7 +444,6 @@
 				96F8F0591D28A7860083BEDB /* KeysOf3rdParty.swift */,
 				96F8F05A1D28A7860083BEDB /* UtilCloudKit.swift */,
 				96F8F05B1D28A7860083BEDB /* UtilLocalNotification.swift */,
-				96F8F05C1D28A7860083BEDB /* UtilManagedObject.swift */,
 				96F8F05D1D28A7860083BEDB /* UtilNCMB.swift */,
 				96F8F05E1D28A7860083BEDB /* UtilNetworkIF.swift */,
 				96F8F05F1D28A7860083BEDB /* UtilUserDefaults.swift */,

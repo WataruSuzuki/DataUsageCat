@@ -275,6 +275,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		9674845E23D9D57300A5E947 /* ManagedObjects */ = {
+			isa = PBXGroup;
+			children = (
+				964215DB1D28AA5100E7E29A /* CurrentMonthNetworkUsage+CoreDataClass.swift */,
+				964215DC1D28AA5100E7E29A /* CurrentMonthNetworkUsage+CoreDataProperties.swift */,
+				964215DD1D28AA5100E7E29A /* DayNetworkUsage+CoreDataClass.swift */,
+				964215DE1D28AA5100E7E29A /* DayNetworkUsage+CoreDataProperties.swift */,
+			);
+			path = ManagedObjects;
+			sourceTree = "<group>";
+		};
 		9687A2A91D281F1500C6B9C1 = {
 			isa = PBXGroup;
 			children = (
@@ -354,10 +365,7 @@
 		96F8F0341D28A7860083BEDB /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				964215DB1D28AA5100E7E29A /* CurrentMonthNetworkUsage+CoreDataClass.swift */,
-				964215DC1D28AA5100E7E29A /* CurrentMonthNetworkUsage+CoreDataProperties.swift */,
-				964215DD1D28AA5100E7E29A /* DayNetworkUsage+CoreDataClass.swift */,
-				964215DE1D28AA5100E7E29A /* DayNetworkUsage+CoreDataProperties.swift */,
+				9674845E23D9D57300A5E947 /* ManagedObjects */,
 			);
 			path = Models;
 			sourceTree = "<group>";

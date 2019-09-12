@@ -136,8 +136,8 @@ class UtilCloudKit: NSObject {
         return false
     }
     
-    func createCKNotificationInfo() -> CKNotificationInfo {
-        let info = CKNotificationInfo()
+    func createCKNotificationInfo() -> CKSubscription.NotificationInfo {
+        let info = CKSubscription.NotificationInfo()
         info.soundName = ""
         info.shouldSendContentAvailable = true
         

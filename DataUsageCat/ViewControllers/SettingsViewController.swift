@@ -197,7 +197,7 @@ class SettingsViewController: HelpingMonetizeViewController,
                 self.isShowPickerDate = !self.isShowPickerDate
                 UIView.animate(withDuration: 0.4, animations: {
                     let indexPath = IndexPath.init(row: SettingBasicRow.LIMIT_VALUE.rawValue, section: SettingBasicSection.BASIC.rawValue)
-                    self.settingsTableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.fade)
+                    self.settingsTableView.reloadRows(at: [indexPath], with: UITableView.RowAnimation.fade)
                 })
                 
             default:

@@ -561,7 +561,7 @@
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = F35G39V2UB;
 						DevelopmentTeamName = "WATARU SUZUKI";
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1130;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
@@ -582,7 +582,7 @@
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = F35G39V2UB;
 						DevelopmentTeamName = "WATARU SUZUKI";
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1130;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 9687A2B11D281F1500C6B9C1;
 					};
@@ -590,7 +590,7 @@
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = F35G39V2UB;
 						DevelopmentTeamName = "WATARU SUZUKI";
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1130;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 9687A2B11D281F1500C6B9C1;
 					};
@@ -1070,7 +1070,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "DataUsageCat/DataUsageCat-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -1095,7 +1095,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "DataUsageCat/DataUsageCat-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -1109,7 +1109,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = jp.co.JchanKchan.DataUsageCatTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DataUsageCat.app/DataUsageCat";
 			};
 			name = Debug;
@@ -1124,7 +1124,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = jp.co.JchanKchan.DataUsageCatTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DataUsageCat.app/DataUsageCat";
 			};
 			name = Release;
@@ -1137,7 +1137,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = jp.co.JchanKchan.DataUsageCatUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = DataUsageCat;
 			};
 			name = Debug;
@@ -1150,7 +1150,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = jp.co.JchanKchan.DataUsageCatUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = DataUsageCat;
 			};
 			name = Release;

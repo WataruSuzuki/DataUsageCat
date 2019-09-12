@@ -81,7 +81,7 @@ class DetailSettingViewController: HelpingMonetizeViewController,
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let CellIdentifier = "CellDetailSettings"
-        let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: CellIdentifier)
+        let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: CellIdentifier)
         if indexPath.section == SectionTypeSwitch.DETAIL_SWITCH.rawValue {
             let switchOnOff = UISwitch(frame: .zero)
             switchOnOff.isOn = self.getSwitchSettingValue()

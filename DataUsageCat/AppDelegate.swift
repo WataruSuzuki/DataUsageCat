@@ -33,11 +33,11 @@ class AppDelegate: UIResponder,
     var countAdMobInterstitial: Int = 0
     let cmnuManagedObj = UtilManagedObject()
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         NCMB.setApplicationKey(KeyIdNCMB.API, clientKey: KeyIdNCMB.CLIENT)
         FirebaseApp.configure()
         
-        application.setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
+        application.setMinimumBackgroundFetchInterval(UIApplication.backgroundFetchIntervalMinimum)
         if #available(iOS 10.0, *) {
             UNUserNotificationCenter.current().delegate = self
         } else {
@@ -53,7 +53,7 @@ class AppDelegate: UIResponder,
         if #available(iOS 10, *) {
             //do nothing.
         } else {
-            if let localNotification = launchOptions?[UIApplicationLaunchOptionsKey.localNotification] as? UILocalNotification {
+            if let localNotification = launchOptions?[UIApplication.LaunchOptionsKey.localNotification] as? UILocalNotification {
                 handleSilentPushNCMB(notification: localNotification, applicationState: .background)
             }
         }
@@ -129,7 +129,7 @@ class AppDelegate: UIResponder,
         handleSilentPushNCMB(notification: notification, applicationState: application.applicationState)
     }
     
-    func handleSilentPushNCMB(notification: UILocalNotification, applicationState: UIApplicationState) {
+    func handleSilentPushNCMB(notification: UILocalNotification, applicationState: UIApplication.State) {
         guard notification.alertBody == UtilLocalNotification().bodyCatStartWorking else {
             return
         }

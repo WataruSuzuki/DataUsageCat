@@ -106,7 +106,7 @@ class DetailThisMonthUsageViewController: CommonUtilChartScrollViewController
     func updateContainerAnotherView(vc: UIViewController) {
         let isAddNextVC = (vc is SummaryNetworkUsageTableViewController ? true : false)
         if (isAddNextVC/* || self.storyBoardName == "4inch_iPhone"*/) {
-            self.addChildViewController(vc)
+            self.addChild(vc)
             if isAddNextVC {
                 vc.view.frame = self.anotherContentView.bounds
                 self.anotherContentView.addSubview(vc.view)
@@ -116,8 +116,8 @@ class DetailThisMonthUsageViewController: CommonUtilChartScrollViewController
         }
 
         self.currentViewController?.view.removeFromSuperview()
-        vc.didMove(toParentViewController: self)
-        self.currentViewController?.removeFromParentViewController()
+        vc.didMove(toParent: self)
+        self.currentViewController?.removeFromParent()
         self.currentViewController = vc
     }
 

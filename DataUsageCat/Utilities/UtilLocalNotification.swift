@@ -102,7 +102,7 @@ class UtilLocalNotification: NSObject {
             content.subtitle = subTitle
             content.body = body
             if !soundName.isEmpty {
-                content.sound = UNNotificationSound(named: soundName)
+                content.sound = UNNotificationSound(named: convertToUNNotificationSoundName(soundName))
             }
             
             let time = date.timeIntervalSince(Date())
@@ -155,9 +155,9 @@ class UtilLocalNotification: NSObject {
     func showConfirmNotificationPermission() {
         let controller = UIAlertController(title: NSLocalizedString("title_ignore_notification", comment:""), message: NSLocalizedString("msg_ignore_notification", comment:""), preferredStyle: .alert)
         controller.addAction(UIAlertAction(title: actionAlert, style: .default, handler: { (UIAlertAction) in
-            let url = URL(string: UIApplicationOpenSettingsURLString)!
+            let url = URL(string: UIApplication.openSettingsURLString)!
             if #available(iOS 10.0, *) {
-                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                UIApplication.shared.open(url, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
             } else {
                 UIApplication.shared.openURL(url)
             }
@@ -168,4 +168,14 @@ class UtilLocalNotification: NSObject {
             delegate.window?.rootViewController?.present(controller, animated: true, completion: nil)
         }
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToUNNotificationSoundName(_ input: String) -> UNNotificationSoundName {
+	return UNNotificationSoundName(rawValue: input)
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIApplication.OpenExternalURLOptionsKey(rawValue: key), value)})
 }

@@ -59,7 +59,7 @@ class MainViewController: CommonUtilChartScrollViewController,
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        NotificationCenter.default.addObserver(self, selector: #selector(MainViewController.mainViewControllerWillAppear), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MainViewController.mainViewControllerWillAppear), name: UIApplication.willEnterForegroundNotification, object: nil)
         
         if .pad == UIDevice.current.userInterfaceIdiom {
             imageMeterBackGround.image = UIImage(named: "meter_bg")

@@ -13,8 +13,8 @@
 extern NSString * const DATE_FORMAT_FOR_CSV;
 extern NSString * const DATETIME_FORMAT_FOR_CSV;
 
-+(BOOL)isLocaleJapanese;
-+(NSString *)getFormatedDateStrByStyle:(NSDateFormatterStyle)style
++ (BOOL)isLocaleJapanese;
++ (NSString *)getFormatedDateStrByStyle:(NSDateFormatterStyle)style
                            withDateStr:(NSString *)dateStr;
 
 @end

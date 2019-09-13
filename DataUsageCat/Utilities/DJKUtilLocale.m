@@ -13,7 +13,7 @@
 NSString * const DATE_FORMAT_FOR_CSV = @"yyyy.MM.dd";
 NSString * const DATETIME_FORMAT_FOR_CSV = @"yyyy.MM.dd HH:mm";
 
-+(BOOL)isLocaleJapanese{
++ (BOOL)isLocaleJapanese{
     NSArray *languages = [NSLocale preferredLanguages];
     // 取得したリストの0番目に、現在選択されている言語の言語コード(日本語なら”ja”)が格納されるので、NSStringに格納します.
     NSString *languageID = languages[0];
@@ -30,7 +30,7 @@ NSString * const DATETIME_FORMAT_FOR_CSV = @"yyyy.MM.dd HH:mm";
     return NO;
 }
 
-+(NSString *)getFormatedDateStrByStyle:(NSDateFormatterStyle)style
++ (NSString *)getFormatedDateStrByStyle:(NSDateFormatterStyle)style
                            withDateStr:(NSString *)dateStr
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];

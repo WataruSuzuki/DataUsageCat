@@ -25,7 +25,7 @@ enum{
                     withNewArray:(NSArray *)arrayNewAdditions
                         andMonth:(int)monthIndex;
 - (void)removeCsvFile;
-+(NSArray *)getUsageResultFromCsv:(NSArray *)thisMonthArray
++ (NSArray *)getUsageResultFromCsv:(NSArray *)thisMonthArray
                      andLastMonth:(NSArray *)lastMonthArray;
 
 @end

@@ -276,7 +276,7 @@
     return success;
 }
 
-+(NSArray *)getUsageResultFromCsv:(NSArray *)thisMonthArray
++ (NSArray *)getUsageResultFromCsv:(NSArray *)thisMonthArray
                      andLastMonth:(NSArray *)lastMonthArray
 {
     NSArray *savedArray = [lastMonthArray arrayByAddingObjectsFromArray:thisMonthArray];

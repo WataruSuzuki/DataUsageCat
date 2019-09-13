@@ -31,10 +31,10 @@ enum{
 @property (nonatomic) long long wwanSend;
 @property (nonatomic) long long wwanReceived;
 
-+(DUCNetworkInterFace *)getDataCounters;
++ (DUCNetworkInterFace *)getDataCounters;
 //@property (NS_NONATOMIC_IOSONLY, getter=dataCounters, readonly, copy) NSArray *dataCounters;
-+(DUCNetworkInterFace *)generateNetWorkInterFaceFromArray:(NSArray *)currentArray;
-//+(long long)getLongLongValueFromArray:(NSArray *)array
++ (DUCNetworkInterFace *)generateNetWorkInterFaceFromArray:(NSArray *)currentArray;
+//+ (long long)getLongLongValueFromArray:(NSArray *)array
 //                                       andObjectIndex:(int)index;
 
 @end

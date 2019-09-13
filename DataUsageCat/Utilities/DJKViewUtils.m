@@ -31,7 +31,7 @@ const float DISP_AD_OFFSET_OFF = (50.0);
     return self;
 }
 
-+(void)setConstraintCenterX:(UIView *)targetView
++ (void)setConstraintCenterX:(UIView *)targetView
                 CurrentView:(UIView *)currentView
 {
     NSLayoutConstraint *layoutCenterX =
@@ -45,7 +45,7 @@ const float DISP_AD_OFFSET_OFF = (50.0);
     [currentView addConstraint:layoutCenterX];
 }
 
-+(CGRect)changeHeightToDisplaySize:(CGRect)frame beforeSize:(int)beforeSize afterSize:(int)afterSize{
++ (CGRect)changeHeightToDisplaySize:(CGRect)frame beforeSize:(int)beforeSize afterSize:(int)afterSize{
     CGRect retFrame;
     
     retFrame = frame;
@@ -54,7 +54,7 @@ const float DISP_AD_OFFSET_OFF = (50.0);
     return retFrame;
 }
 
-+(void)initScrollViewForPaging:(UIScrollView *)scrollView
++ (void)initScrollViewForPaging:(UIScrollView *)scrollView
                withPageNumbers:(NSUInteger)numberPages
              andTargetDelegate:(id)delegate
 {
@@ -71,7 +71,7 @@ const float DISP_AD_OFFSET_OFF = (50.0);
     scrollView.delegate = delegate;
 }
 
-+(NSUInteger)getPageOfScrollView:(UIScrollView *)scrollView
++ (NSUInteger)getPageOfScrollView:(UIScrollView *)scrollView
 {
     // switch the indicator when more than 50% of the previous/next page is visible
     CGFloat pageWidth = CGRectGetWidth(scrollView.frame);
@@ -80,7 +80,7 @@ const float DISP_AD_OFFSET_OFF = (50.0);
     return page;
 }
 
-+(void)offsetScrollViewBeforeInit:(UIView *)targetView
++ (void)offsetScrollViewBeforeInit:(UIView *)targetView
                       offsetWidth:(CGFloat)width
 {
     CGRect frame = targetView.frame;
@@ -88,7 +88,7 @@ const float DISP_AD_OFFSET_OFF = (50.0);
     targetView.frame = frame;
 }
 
-+(void)blinkButton:(UIButton *)button
++ (void)blinkButton:(UIButton *)button
       withDuration:(float)duration
    withRepeatCount:(int)repeatCount
 {
@@ -101,7 +101,7 @@ const float DISP_AD_OFFSET_OFF = (50.0);
     [button.layer addAnimation:blinkAnimation forKey:@"blink"];
 }
 
-+(UIView *)getKeyboardsAccessoriesWithTargetTextView:(UITextView *)targetTextView
++ (UIView *)getKeyboardsAccessoriesWithTargetTextView:(UITextView *)targetTextView
                                    withLeftImageName:(NSString *)leftImageName
                                   withRightImageName:(NSString *)rightImageName
                                       withLeftTarget:(SEL)leftTarget

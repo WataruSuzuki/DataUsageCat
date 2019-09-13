@@ -15,7 +15,7 @@
 //@synthesize wwanSend;
 //@synthesize wwanReceived;
 
-+(DUCNetworkInterFace *)getDataCounters
++ (DUCNetworkInterFace *)getDataCounters
 {
     BOOL   success;
     struct ifaddrs *addrs;
@@ -27,7 +27,7 @@
 #if TARGET_OS_SIMULATOR
     long long WWANSent     =  100000000LL;//0.1GB
     long long WWANReceived = 2000000000LL;//2.0GB
-              WWANReceived =  6LL *100LL/*MB*/ *1000LL/*KB*/ *1000LL/*Byte*/;
+    WWANReceived =  6LL *100LL/*MB*/ *1000LL/*KB*/ *1000LL/*Byte*/;
 #else//TARGET_OS_SIMULATOR
     long long WWANSent = 0LL;
     long long WWANReceived = 0LL;
@@ -110,7 +110,7 @@
     return ret;
 }
 
-+(long long)getLongLongValueFromArray:(NSArray *)array
++ (long long)getLongLongValueFromArray:(NSArray *)array
                        andObjectIndex:(int)index
 {
     NSNumber *numberObj =(NSNumber *)array[index];
@@ -119,7 +119,7 @@
     return ret;
 }
 
-+(DUCNetworkInterFace *)generateNetWorkInterFaceFromArray:(NSArray *)currentArray
++ (DUCNetworkInterFace *)generateNetWorkInterFaceFromArray:(NSArray *)currentArray
 {
     NSArray *array = nil;
     DUCNetworkInterFace *networkInterFace = [DUCNetworkInterFace new];

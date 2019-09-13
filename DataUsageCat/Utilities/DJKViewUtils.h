@@ -22,21 +22,21 @@ extern const float TIME_DELAY_1SECOND;
 extern const float DISP_AD_OFFSET_ON;
 extern const float DISP_AD_OFFSET_OFF;
 
-+(void)setConstraintCenterX:(UIView *)targetView
++ (void)setConstraintCenterX:(UIView *)targetView
                 CurrentView:(UIView *)currentView;
-+(CGRect)changeHeightToDisplaySize:(CGRect)frame beforeSize:(int)beforeSize afterSize:(int)afterSize;
-+(void)initScrollViewForPaging:(UIScrollView *)scrollView
++ (CGRect)changeHeightToDisplaySize:(CGRect)frame beforeSize:(int)beforeSize afterSize:(int)afterSize;
++ (void)initScrollViewForPaging:(UIScrollView *)scrollView
                withPageNumbers:(NSUInteger)numberPages
              andTargetDelegate:(id)delegate;
-+(NSUInteger)getPageOfScrollView:(UIScrollView *)scrollView;
-+(void)offsetScrollViewBeforeInit:(UIView *)targetView
++ (NSUInteger)getPageOfScrollView:(UIScrollView *)scrollView;
++ (void)offsetScrollViewBeforeInit:(UIView *)targetView
                       offsetWidth:(CGFloat)width;
 
-+(void)blinkButton:(UIButton *)button
++ (void)blinkButton:(UIButton *)button
       withDuration:(float)duration
    withRepeatCount:(int)repeatCount;
 
-+(UIView *)getKeyboardsAccessoriesWithTargetTextView:(UITextView *)targetTextView
++ (UIView *)getKeyboardsAccessoriesWithTargetTextView:(UITextView *)targetTextView
                                    withLeftImageName:(NSString *)leftImageName
                                   withRightImageName:(NSString *)rightImageName
                                       withLeftTarget:(SEL)leftTarget

@@ -32,6 +32,7 @@ class AppDelegate: UIResponder,
     var storyBoardName: String!
     var countAdMobInterstitial: Int = 0
     let cmnuManagedObj = UtilManagedObject()
+    let packetStore = PacketUsageStore.shared
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         NCMB.setApplicationKey(KeyIdNCMB.API, clientKey: KeyIdNCMB.CLIENT)
@@ -44,7 +45,7 @@ class AppDelegate: UIResponder,
             UtilLocalNotification().registUserNotification(application: application)
         }
         
-        cmnuManagedObj.getNetworkUsageArrayData(context: cmnuManagedObj.managedObjectContext)
+        cmnuManagedObj.getNetworkUsageArrayData(context: packetStore.context)
         isUnlockAd = false
         //TODO -> utilNADView = DJKUtilNendAd()
         //TODO -> utilNADView?.initNADInterstitial(KeyIdNend.KEY_INTERSTITIAL, withSpodId: KeyIdNend.ID_INTERSTITIAL)
@@ -91,8 +92,8 @@ class AppDelegate: UIResponder,
     }
     
     func executeDataUsageCheckingInBackground() {
-        cmnuManagedObj.getNetworkUsageArrayData(context: cmnuManagedObj.managedObjectContext)
-        cmnuManagedObj.fetchMonthNetworkUsage(context: cmnuManagedObj.managedObjectContext)
+        cmnuManagedObj.getNetworkUsageArrayData(context: packetStore.context)
+        cmnuManagedObj.fetchMonthNetworkUsage(context: packetStore.context)
         
         let queue = OperationQueue()
         queue.addOperation({

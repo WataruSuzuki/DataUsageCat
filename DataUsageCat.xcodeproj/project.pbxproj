@@ -18,6 +18,7 @@
 		964215E51D28AB0500E7E29A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 964215E41D28AB0500E7E29A /* GoogleService-Info.plist */; };
 		964215E71D28AB0F00E7E29A /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 964215E61D28AB0F00E7E29A /* CloudKit.framework */; };
 		9660BF501D83E280006A3FF1 /* DetailAboutThisAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9660BF4F1D83E280006A3FF1 /* DetailAboutThisAppViewController.swift */; };
+		9674846223D9DA7000A5E947 /* PacketUsageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9674846123D9DA7000A5E947 /* PacketUsageStore.swift */; };
 		9687A2B61D281F1600C6B9C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9687A2B51D281F1600C6B9C1 /* AppDelegate.swift */; };
 		9687A2BE1D281F1600C6B9C1 /* DataUsageCat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9687A2BC1D281F1600C6B9C1 /* DataUsageCat.xcdatamodeld */; };
 		9687A2C01D281F1600C6B9C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9687A2BF1D281F1600C6B9C1 /* Assets.xcassets */; };
@@ -139,6 +140,7 @@
 		964215E41D28AB0500E7E29A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		964215E61D28AB0F00E7E29A /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		9660BF4F1D83E280006A3FF1 /* DetailAboutThisAppViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailAboutThisAppViewController.swift; sourceTree = "<group>"; };
+		9674846123D9DA7000A5E947 /* PacketUsageStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacketUsageStore.swift; sourceTree = "<group>"; };
 		9687A2B21D281F1600C6B9C1 /* DataUsageCat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DataUsageCat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9687A2B51D281F1600C6B9C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9687A2BD1D281F1600C6B9C1 /* DataUsageCat.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataUsageCat.xcdatamodel; sourceTree = "<group>"; };
@@ -383,6 +385,7 @@
 			children = (
 				9687A2BC1D281F1600C6B9C1 /* DataUsageCat.xcdatamodeld */,
 				9674845E23D9D57300A5E947 /* ManagedObjects */,
+				9674846123D9DA7000A5E947 /* PacketUsageStore.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -845,6 +848,7 @@
 				96F8F0911D28A7870083BEDB /* KeysOf3rdParty.swift in Sources */,
 				96F8F0A01D28A7870083BEDB /* SummaryNetworkUsageTableViewController.swift in Sources */,
 				964215E11D28AA5100E7E29A /* CurrentMonthNetworkUsage+CoreDataProperties.swift in Sources */,
+				9674846223D9DA7000A5E947 /* PacketUsageStore.swift in Sources */,
 				96F8F0981D28A7870083BEDB /* AboutAimViewController.swift in Sources */,
 				96F8F09B1D28A7870083BEDB /* DetailThisMonthUsageViewController.swift in Sources */,
 				964215E01D28AA5100E7E29A /* CurrentMonthNetworkUsage+CoreDataClass.swift in Sources */,

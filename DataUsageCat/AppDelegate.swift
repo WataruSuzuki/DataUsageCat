@@ -31,7 +31,7 @@ class AppDelegate: UIResponder,
     var isUnlockAd: Bool = false
     var storyBoardName: String!
     var countAdMobInterstitial: Int = 0
-    let cmnuManagedObj = UtilManagedObject()
+    let recorder = PacketUsageRecorder()
     let packetStore = PacketUsageStore.shared
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
@@ -45,7 +45,7 @@ class AppDelegate: UIResponder,
             UtilLocalNotification().registUserNotification(application: application)
         }
         
-        cmnuManagedObj.getNetworkUsageArrayData(context: packetStore.context)
+        recorder.getNetworkUsageArrayData(context: packetStore.context)
         isUnlockAd = false
         //TODO -> utilNADView = DJKUtilNendAd()
         //TODO -> utilNADView?.initNADInterstitial(KeyIdNend.KEY_INTERSTITIAL, withSpodId: KeyIdNend.ID_INTERSTITIAL)
@@ -92,12 +92,12 @@ class AppDelegate: UIResponder,
     }
     
     func executeDataUsageCheckingInBackground() {
-        cmnuManagedObj.getNetworkUsageArrayData(context: packetStore.context)
-        cmnuManagedObj.fetchMonthNetworkUsage(context: packetStore.context)
+        recorder.getNetworkUsageArrayData(context: packetStore.context)
+        recorder.fetchMonthNetworkUsage(context: packetStore.context)
         
         let queue = OperationQueue()
         queue.addOperation({
-            self.cmnuManagedObj.checkRecentLimitUsage()
+            self.recorder.checkRecentLimitUsage()
             OperationQueue.main.addOperation({
                 // (UIの更新はメインスレッドから行う必要がある)
                 if #available(iOS 10, *) {

@@ -94,7 +94,7 @@ class DetailThisMonthUsageViewController: CommonUtilChartScrollViewController
         case ViewControllerIndex.SUMMARY_NETWORK.rawValue:
             let summaryNetworkUsage = self.storyboard!.instantiateViewController(withIdentifier: "SummaryNetworkUsageTableViewController") as! SummaryNetworkUsageTableViewController
             let delegate = UIApplication.shared.delegate as! AppDelegate
-            summaryNetworkUsage.networkIF = delegate.cmnuManagedObj.dataUsageCount
+            summaryNetworkUsage.networkIF = delegate.recorder.dataUsageCount
             self.updateContainerAnotherView(vc: summaryNetworkUsage)
             self.navigationItem.title = NSLocalizedString("breakdown_this_month", comment: "")
             

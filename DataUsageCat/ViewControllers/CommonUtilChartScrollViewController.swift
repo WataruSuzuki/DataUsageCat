@@ -54,7 +54,7 @@ class CommonUtilChartScrollViewController: HelpingMonetizeViewController,
         let delegate = UIApplication.shared.delegate as! AppDelegate
         let duc_ud = UtilUserDefaults()
         self.userDefaultLimit = duc_ud.limitUsageValue
-        self.csvForThisMonthUsage = delegate.cmnuManagedObj.getUsageResultFromCSV(chartDisp2Month: duc_ud.chartDisp2Month)
+        self.csvForThisMonthUsage = delegate.recorder.getUsageResultFromCSV(chartDisp2Month: duc_ud.chartDisp2Month)
         
         if let usages = self.csvForThisMonthUsage {
             self.totalWeekPageNum = (usages.count / SelectedWeekChartView.PageScroll.MAX_PAGE.rawValue)

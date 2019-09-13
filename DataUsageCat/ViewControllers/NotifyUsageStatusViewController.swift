@@ -48,7 +48,7 @@ class NotifyUsageStatusViewController: HelpingMonetizeViewController,
     override func viewDidLoad() {
         super.viewDidLoad()
         let delegate = UIApplication.shared.delegate as! AppDelegate
-        self.dataUsageCount = delegate.cmnuManagedObj.dataUsageCount
+        self.dataUsageCount = delegate.recorder.dataUsageCount
         let duc_ud = UtilUserDefaults()
         self.userDefaultLimit = duc_ud.limitUsageValue
         self.setViewNotifyUsageStatus()

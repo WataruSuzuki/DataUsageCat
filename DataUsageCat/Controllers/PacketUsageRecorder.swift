@@ -1,5 +1,5 @@
 //
-//  UtilManagedObject.swift
+//  PacketUsageRecorder.swift
 //  DataUsageCat
 //
 //  Created by Wataru Suzuki on 2016/05/20.
@@ -15,9 +15,8 @@
 
 import UIKit
 import CoreData
-//import DJKUtilities
 
-class UtilManagedObject: NSObject {
+class PacketUsageRecorder: NSObject {
     
     let DUC_PRODUCT_ID_UNLOCK_ALL_AD = "jp.co.JchanKchan.DataUsageCat.unlock_all_ad"
     let LIMIT_RECENT_USAGE = Int64(700000000)//((1000000000LL - 300000000LL))
@@ -242,8 +241,8 @@ class UtilManagedObject: NSObject {
             dataUsageCount = nowDataCount
         } else {
             var isNeedCacheClear = true
-            cmnuCurrent = cmnuArray?[UtilManagedObject.DataIndex.current.rawValue] as? CurrentMonthNetworkUsage
-            cmnuOffset = cmnuArray?[UtilManagedObject.DataIndex.offset.rawValue] as? CurrentMonthNetworkUsage
+            cmnuCurrent = cmnuArray?[PacketUsageRecorder.DataIndex.current.rawValue] as? CurrentMonthNetworkUsage
+            cmnuOffset = cmnuArray?[PacketUsageRecorder.DataIndex.offset.rawValue] as? CurrentMonthNetworkUsage
             var lastSaved = self.getNetworkInterFaceFromCMNU(target: cmnuCurrent!)
             var lastSavedOffset = self.getNetworkInterFaceFromCMNU(target: cmnuOffset!)
             let last_boot_time = cmnuCurrent!.last_boot_time!.doubleValue

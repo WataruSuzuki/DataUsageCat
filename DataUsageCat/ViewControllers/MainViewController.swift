@@ -129,8 +129,8 @@ class MainViewController: CommonUtilChartScrollViewController,
         let delegate = UIApplication.shared.delegate as! AppDelegate
         let duc_ud = UtilUserDefaults()
         self.userDefaultLimit = duc_ud.limitUsageValue
-        delegate.cmnuManagedObj.fetchMonthNetworkUsage(context: delegate.packetStore.context)
-        dataUsageCount = delegate.cmnuManagedObj.dataUsageCount
+        delegate.recorder.fetchMonthNetworkUsage(context: delegate.packetStore.context)
+        dataUsageCount = delegate.recorder.dataUsageCount
         if #available(iOS 10.0, *) {
             UtilLocalNotification().catRestartDataMonitoring()
         }

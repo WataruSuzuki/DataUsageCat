@@ -148,11 +148,11 @@ class SelectedWeekChartView: UIView {
         }
     }
     
-    func setChartBarFrames(usageValueArray: [Any], withUsageViewArray viewArray: [UIView], withSavingArray savingArray: [UIView]) {
+    private func setChartBarFrames(usageValueArray: [DUCNetworkInterFace], withUsageViewArray viewArray: [UIView], withSavingArray savingArray: [UIView]) {
         for count in 0 ..< usageValueArray.count {
             let usageView = viewArray[count]
             let wifiView = savingArray[count]
-            if let dataOfDay = DUCNetworkInterFace.generateNetWork(from: usageValueArray[count] as! [AnyObject]) {
+            if let dataOfDay = DUCNetworkInterFace(wifiSend: usageValueArray[count].wifiSend, wifiReceived: usageValueArray[count].wifiReceived, wwanSend: usageValueArray[count].wwanSend, wwanReceived: usageValueArray[count].wwanReceived, dateStr: "") {
                 let usageValue = dataOfDay.wwanSend + dataOfDay.wwanReceived
                 let savingValue = dataOfDay.wifiSend + dataOfDay.wifiReceived
                 let referenceValue = self.getDayReferenceValue(userMax: userDefaultLimit)
@@ -238,8 +238,8 @@ class SelectedWeekChartView: UIView {
         return ret
     }
     
-    class func updateArrayDispThisWeekWithPage(page: Int, unitPerPage perPageNum: Int, withNextPosition position: Int, withDataArray dataArray: [Any]) -> [Any] {
-        var arrayThisWeek = [Any]()
+    class func updateArrayDispThisWeekWithPage(page: Int, unitPerPage perPageNum: Int, withNextPosition position: Int, withDataArray dataArray: [DUCNetworkInterFace]) -> [DUCNetworkInterFace] {
+        var arrayThisWeek = [DUCNetworkInterFace]()
         var index = (page - position)
         
         for _ in 0..<perPageNum {
@@ -249,8 +249,8 @@ class SelectedWeekChartView: UIView {
                 break;
             }
             if (index < 0 || dataArray.count <= 0) {
-                let emptyArray = [0, 0, 0, 0, ""] as [Any]
-                arrayThisWeek.append(emptyArray as AnyObject)
+                let emptyArray = DUCNetworkInterFace()!
+                arrayThisWeek.append(emptyArray)
             } else {
                 arrayThisWeek.append(dataArray[index])
             }
@@ -260,7 +260,14 @@ class SelectedWeekChartView: UIView {
         return arrayThisWeek
     }
     
-    class func createWeekChartPage(weekPage: Int, withDay selectedDayPage: Int, withParentView parentView: UIScrollView, arrayThisMonth arrayThisMonthUsage: [Any], unitPerPage: Int, userDefaultLimit limit: Float, IsCurrentPage isVisiblePage: Bool) -> SelectedWeekChartView {
+    class func createWeekChartPage(
+        weekPage: Int,
+        selectedDayPage: Int,
+        parentView: UIScrollView,
+        arrayThisMonthUsage: [DUCNetworkInterFace],
+        unitPerPage: Int,
+        userDefaultLimit: Float,
+        isVisiblePage: Bool) -> SelectedWeekChartView {
         let newChartview = SelectedWeekChartView.instanceFromNib(currentView: parentView)
         newChartview.initChartViewColor()
         newChartview.frame.origin.y = 0
@@ -271,7 +278,7 @@ class SelectedWeekChartView: UIView {
         //print("parentView.frame = \(parentView.frame)")
         //print("newChartview.frame = \(newChartview.frame)")
         
-        newChartview.userDefaultLimit = limit
+        newChartview.userDefaultLimit = userDefaultLimit
         let position = getPositionOfWeek(page: selectedDayPage, withTotalPage: Int(arrayThisMonthUsage.count), unitPerPage: unitPerPage)
         newChartview.setFocusViewImageDispStatus(position: position)
         

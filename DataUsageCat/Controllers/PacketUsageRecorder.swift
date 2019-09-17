@@ -59,25 +59,40 @@ class PacketUsageRecorder: NSObject {
     }
     
     func getNetworkInterFaceFromCMNU(target: CurrentMonthNetworkUsage) -> DUCNetworkInterFace {
-        let fallbackValue = NSNumber(value: 0)
-        let wifiSend = (target.wifi_sent != nil ? target.wifi_sent : fallbackValue)
-        let wifiReceived = (target.wifi_received != nil ? target.wifi_received : fallbackValue)
-        let wwanSend = (target.wwan_sent != nil ? target.wwan_sent : fallbackValue)
-        let wwanReceived = (target.wwan_received != nil ? target.wwan_received : fallbackValue)
-        return DUCNetworkInterFace.generateNetWork(from: [wifiSend!, wifiReceived!, wwanSend!, wwanReceived!])
+        let fallbackValue = Int64(0)
+        
+        let wifiSend = (target.wifi_sent?.int64Value ?? fallbackValue)
+        let wifiReceived = (target.wifi_received?.int64Value ?? fallbackValue)
+        let wwanSend = (target.wwan_sent?.int64Value ?? fallbackValue)
+        let wwanReceived = (target.wwan_received?.int64Value ?? fallbackValue)
+        
+        return DUCNetworkInterFace(
+            wifiSend: wifiSend,
+            wifiReceived: wifiReceived,
+            wwanSend: wwanSend,
+            wwanReceived: wwanReceived,
+            dateStr: ""
+        )
     }
     
     func getDateComponents(date: Date) -> DateComponents {
         return Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)
     }
     
-    func getNextRecord(beforeDataCount: DUCNetworkInterFace, newDataCount: DUCNetworkInterFace) -> DUCNetworkInterFace {
+    private func getNextRecord(beforeDataCount: DUCNetworkInterFace, newDataCount: DUCNetworkInterFace) -> DUCNetworkInterFace {
         let wifiSend = newDataCount.wifiSend - beforeDataCount.wifiSend
         let wifiReceived = newDataCount.wifiReceived - beforeDataCount.wifiReceived
         let wwanSend = newDataCount.wwanSend - beforeDataCount.wwanSend
         let wwanReceived = newDataCount.wwanReceived - beforeDataCount.wwanReceived
+        let dateStr = beforeDataCount.dateStr
         
-        return DUCNetworkInterFace.generateNetWork(from: [NSNumber(value: wifiSend), NSNumber(value: wifiReceived), NSNumber(value: wwanSend), NSNumber(value: wwanReceived)])
+        return DUCNetworkInterFace(
+            wifiSend: wifiSend,
+            wifiReceived: wifiReceived,
+            wwanSend: wwanSend,
+            wwanReceived: wwanReceived,
+            dateStr: dateStr
+        )
     }
     
     func checkBootTimeAndIfDataResult(last_boot_time: Double) -> Bool {
@@ -226,7 +241,8 @@ class PacketUsageRecorder: NSObject {
     
     func fetchMonthNetworkUsage(context: NSManagedObjectContext) {
         let nowDataCount = DUCNetworkInterFace.getDataCounters()
-        let formatDataCount = DUCNetworkInterFace()
+        let formatDataCount = DUCNetworkInterFace()!
+        
         var nextDataCount = formatDataCount
         //var cmnuArray: [AnyObject]? = nil
         var cmnuCurrent: CurrentMonthNetworkUsage? = nil
@@ -285,15 +301,24 @@ class PacketUsageRecorder: NSObject {
         }
     }
     
-    func getUsageResultFromCSV(chartDisp2Month: Bool) -> [Any] {
-        let ret: [Any]
-        if chartDisp2Month {
-            ret = DUCCsvHelper.getUsageResult(fromCsv: self.arrayUsageThisMonth, andLastMonth: self.arrayUsageLastMonth)
-        } else {
-            ret = DUCCsvHelper.getUsageResult(fromCsv: self.arrayUsageThisMonth, andLastMonth: [Any]())
+    func getUsageResultFromCSV(chartDisp2Month: Bool) -> [DUCNetworkInterFace] {
+        let csvNSArrays = DUCCsvHelper.getUsageResult(fromCsv: self.arrayUsageThisMonth, andLastMonth: (chartDisp2Month ? self.arrayUsageLastMonth : [Any]())) as NSArray
+        let swiftNSArray: [NSArray] = csvNSArrays.compactMap({ $0 as? NSArray })
+        let packetUsages = swiftNSArray.map { (nsArray) -> DUCNetworkInterFace in
+            DUCNetworkInterFace(
+                wifiSend: convertCsvValue(nsArray: nsArray, index: IFA_DATA_WIFI_SEND),
+                wifiReceived: convertCsvValue(nsArray: nsArray, index: IFA_DATA_WIFI_RECEIVED),
+                wwanSend: convertCsvValue(nsArray: nsArray, index: IFA_DATA_WWAN_SEND),
+                wwanReceived: convertCsvValue(nsArray: nsArray, index: IFA_DATA_WWAN_RECEIVED),
+                dateStr: nsArray[IFA_DATA_GET_DATE] as? String)
         }
-        
-        return ret
+
+        return packetUsages
+    }
+    
+    private func convertCsvValue(nsArray: NSArray, index: Int) -> Int64 {
+        guard let value = nsArray[index] as? NSNumber else { return Int64(0) }
+        return value.int64Value
     }
     
     func updateChartThisMonth(beforeDataCounts: DUCNetworkInterFace, newDataCounts: DUCNetworkInterFace, context: NSManagedObjectContext) {
@@ -343,14 +368,14 @@ class PacketUsageRecorder: NSObject {
         }
     }
     
-    func getRecentUsageValues(recentArray: [Any]) -> Int64 {
+    func getRecentUsageValues(recentArray: [DUCNetworkInterFace]) -> Int64 {
         var recentUsageValue = Int64(0)
         var dayCount: Int = 1
         
         let reverseArray = recentArray.reversed()
         //var reverseArray = recentArray.reverseObjectEnumerator().allObjects
         for day in reverseArray {
-            recentUsageValue += Int64(UtilNetworkIF.getUsageValue(networkIf: DUCNetworkInterFace.generateNetWork(from: day as! [AnyObject])))
+            recentUsageValue += Int64(UtilNetworkIF.getUsageValue(networkIf: day))
             if dayCount == 3 {
                 break
             }

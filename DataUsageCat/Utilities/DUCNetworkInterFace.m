@@ -10,10 +10,31 @@
 
 @implementation DUCNetworkInterFace
 
-//@synthesize wifiSend;
-//@synthesize wifiReceived;
-//@synthesize wwanSend;
-//@synthesize wwanReceived;
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        
+    }
+    return self;
+}
+
+- (instancetype)initWithWifiSend:(long long)wifiSend
+                    wifiReceived:(long long)wifiReceived
+                        wwanSend:(long long)wwanSend
+                    wwanReceived:(long long)wwanReceived
+                         dateStr:(NSString *)dateStr
+{
+    self = [super init];
+    if (self) {
+        _wifiSend = wifiSend;
+        _wifiReceived = wifiReceived;
+        _wwanSend = wwanSend;
+        _wwanReceived = wwanReceived;
+        _dateStr = dateStr;
+    }
+    return self;
+}
 
 + (DUCNetworkInterFace *)getDataCounters
 {
@@ -93,7 +114,8 @@
         freeifaddrs(addrs);
     }
     
-    return [DUCNetworkInterFace generateNetWorkInterFaceFromArray:@[@(WiFiSent),@(WiFiReceived),@(WWANSent),@(WWANReceived)]];
+    return [[DUCNetworkInterFace alloc] initWithWifiSend:WiFiSent wifiReceived:WiFiReceived wwanSend:WWANSent wwanReceived:WWANReceived dateStr:@""];
+    //return [DUCNetworkInterFace generateNetWorkInterFaceFromArray:@[@(WiFiSent),@(WiFiReceived),@(WWANSent),@(WWANReceived)]];
 }
 
 + (long long)getNetworkStatiscIfiValue:(int)ifiValue
@@ -119,22 +141,22 @@
     return ret;
 }
 
-+ (DUCNetworkInterFace *)generateNetWorkInterFaceFromArray:(NSArray *)currentArray
-{
-    NSArray *array = nil;
-    DUCNetworkInterFace *networkInterFace = [DUCNetworkInterFace new];
-    //DUCNetworkInterFace *networkInterFace = [[DUCNetworkInterFace alloc] init];
-    if (nil != currentArray) {
-        array = currentArray;
-        
-        networkInterFace.wifiSend = [DUCNetworkInterFace getLongLongValueFromArray:array andObjectIndex:IFA_DATA_WIFI_SEND];
-        networkInterFace.wifiReceived = [DUCNetworkInterFace getLongLongValueFromArray:array andObjectIndex:IFA_DATA_WIFI_RECEIVED];
-        
-        networkInterFace.wwanSend = [DUCNetworkInterFace getLongLongValueFromArray:array andObjectIndex:IFA_DATA_WWAN_SEND];
-        networkInterFace.wwanReceived = [DUCNetworkInterFace getLongLongValueFromArray:array andObjectIndex:IFA_DATA_WWAN_RECEIVED];
-    }
-    
-    return networkInterFace;
-}
+//+ (DUCNetworkInterFace *)generateNetWorkInterFaceFromArray:(NSArray *)currentArray
+//{
+//    NSArray *array = nil;
+//    DUCNetworkInterFace *networkInterFace = [DUCNetworkInterFace new];
+//    //DUCNetworkInterFace *networkInterFace = [[DUCNetworkInterFace alloc] init];
+//    if (nil != currentArray) {
+//        array = currentArray;
+//        
+//        networkInterFace.wifiSend = [DUCNetworkInterFace getLongLongValueFromArray:array andObjectIndex:IFA_DATA_WIFI_SEND];
+//        networkInterFace.wifiReceived = [DUCNetworkInterFace getLongLongValueFromArray:array andObjectIndex:IFA_DATA_WIFI_RECEIVED];
+//        
+//        networkInterFace.wwanSend = [DUCNetworkInterFace getLongLongValueFromArray:array andObjectIndex:IFA_DATA_WWAN_SEND];
+//        networkInterFace.wwanReceived = [DUCNetworkInterFace getLongLongValueFromArray:array andObjectIndex:IFA_DATA_WWAN_RECEIVED];
+//    }
+//    
+//    return networkInterFace;
+//}
 
 @end

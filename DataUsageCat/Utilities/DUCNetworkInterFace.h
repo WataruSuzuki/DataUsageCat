@@ -24,16 +24,24 @@ enum{
 };
 
 @interface DUCNetworkInterFace : NSObject
-//@interface DUCNetworkInterFace : NSNetService
+
+- (instancetype)init NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithWifiSend:(long long)wifiSend
+                    wifiReceived:(long long)wifiReceived
+                        wwanSend:(long long)wwanSend
+                    wwanReceived:(long long)wwanReceived
+                         dateStr:(NSString *)dateStr NS_DESIGNATED_INITIALIZER;
 
 @property (nonatomic) long long wifiSend;
 @property (nonatomic) long long wifiReceived;
 @property (nonatomic) long long wwanSend;
 @property (nonatomic) long long wwanReceived;
 
+@property (nonatomic, strong) NSString* dateStr;
+
 + (DUCNetworkInterFace *)getDataCounters;
 //@property (NS_NONATOMIC_IOSONLY, getter=dataCounters, readonly, copy) NSArray *dataCounters;
-+ (DUCNetworkInterFace *)generateNetWorkInterFaceFromArray:(NSArray *)currentArray;
+//+ (DUCNetworkInterFace *)generateNetWorkInterFaceFromArray:(NSArray *)currentArray;
 //+ (long long)getLongLongValueFromArray:(NSArray *)array
 //                                       andObjectIndex:(int)index;
 

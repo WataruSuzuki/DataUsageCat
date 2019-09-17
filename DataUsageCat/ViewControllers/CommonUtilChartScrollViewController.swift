@@ -18,7 +18,7 @@ class CommonUtilChartScrollViewController: HelpingMonetizeViewController,
     var currentDayPage: Int = 0
     var currentWeekPage: Int = 0
     var totalWeekPageNum: Int = 0
-    var csvForThisMonthUsage: [Any]?
+    var csvForThisMonthUsage: [DUCNetworkInterFace]?
     var currentChartview: SelectedWeekChartView!
     var selectedDayUnitViewArrays: [AnyObject]!
     var selectedWeekChartViewArrays: [AnyObject]!
@@ -101,17 +101,18 @@ class CommonUtilChartScrollViewController: HelpingMonetizeViewController,
         unitview.frame = frame
         
         if let usages = self.csvForThisMonthUsage {
-            if let dataOfDayArray = usages[page] as? [AnyObject] {
+            let dataOfDayArray = usages[page]
+            //if let dataOfDayArray = usages[page] {
                 let referenceValue = SelectedWeekChartView().getDayReferenceValue(userMax: self.userDefaultLimit)
-                let usageValue = UtilNetworkIF.getUsageValue(networkIf: DUCNetworkInterFace.generateNetWork(from: dataOfDayArray))
+                let usageValue = UtilNetworkIF.getUsageValue(networkIf: dataOfDayArray)
                 unitview.buttonUsageValue!.setTitleColor(SelectedWeekChartView.getUsageChartBarColor(usageValue: usageValue, withMaxReference: referenceValue), for: [])
-                let usageValueMegaByte = UtilNetworkIF.getCellularDataUsageByMegaByte(dataUsage: DUCNetworkInterFace.generateNetWork(from: dataOfDayArray))
-                let savingValueMegaByte = UtilNetworkIF.getWifiDataUsageByMegaByte(dataUsage: DUCNetworkInterFace.generateNetWork(from: dataOfDayArray))
+                let usageValueMegaByte = UtilNetworkIF.getCellularDataUsageByMegaByte(dataUsage: dataOfDayArray)
+                let savingValueMegaByte = UtilNetworkIF.getWifiDataUsageByMegaByte(dataUsage: dataOfDayArray)
                 unitview.buttonUsageValue!.setTitle(String(format: "%.1f", usageValueMegaByte), for: [])
                 unitview.buttonSavingValue!.setTitle(String(format: "%.1f", savingValueMegaByte), for: [])
                 unitview.buttonUsageValue!.addTarget(self, action: #selector(CommonUtilChartScrollViewController.tapSummaryNetworkUsage(sender:)), for: .touchUpInside)
                 unitview.buttonSavingValue!.addTarget(self, action: #selector(CommonUtilChartScrollViewController.tapSummaryNetworkUsage(sender:)), for: .touchUpInside)
-                let dayOfMonthStr = dataOfDayArray[IFA_DATA_GET_DATE] as! String
+            let dayOfMonthStr = dataOfDayArray.dateStr
                 unitview.labelDayOfMonth!.text = DJKUtilLocale.getFormatedDateStr(by: DateFormatter.Style.full, withDateStr: dayOfMonthStr)
                 unitview.labelUsageTitle!.text = NSLocalizedString("wwan", comment:"")
                 unitview.labelSavingTitle!.text = NSLocalizedString("wifi", comment:"")
@@ -119,7 +120,7 @@ class CommonUtilChartScrollViewController: HelpingMonetizeViewController,
                 self.selectedDayScrollView.addSubview(unitview)
                 
                 updateUnitViewHiddenStatus(unitview: unitview, isVisible: !isVisiblePage)
-            }
+            //}
         }
     }
     
@@ -219,7 +220,17 @@ class CommonUtilChartScrollViewController: HelpingMonetizeViewController,
         }
         
         if let usages = self.csvForThisMonthUsage {
-            let newChartView = SelectedWeekChartView.createWeekChartPage(weekPage: weekPage, withDay: selectedDayPage, withParentView: self.weekChartScrollView, arrayThisMonth: usages, unitPerPage: (SelectedWeekChartView.PageScroll.MAX_PAGE.rawValue), userDefaultLimit: self.userDefaultLimit, IsCurrentPage: isVisiblePage)
+            let newChartView = SelectedWeekChartView.createWeekChartPage(
+                weekPage: weekPage,
+                selectedDayPage: selectedDayPage,
+                parentView: self.weekChartScrollView,
+                arrayThisMonthUsage:
+                usages,
+                unitPerPage: SelectedWeekChartView.PageScroll.MAX_PAGE.rawValue,
+                userDefaultLimit: self.userDefaultLimit,
+                isVisiblePage: isVisiblePage
+            )
+//            let newChartView = SelectedWeekChartView.createWeekChartPage(weekPage: weekPage, selectedDayPage: selectedDayPage, withParentView: self.weekChartScrollView, arrayThisMonth: usages, unitPerPage: (SelectedWeekChartView.PageScroll.MAX_PAGE.rawValue), userDefaultLimit: self.userDefaultLimit, IsCurrentPage: isVisiblePage)
             if isVisiblePage {
                 self.currentChartview = newChartView
                 self.setGestureHandlerForFocusView(viewArray: self.currentChartview!.arrayFocusView)
@@ -276,14 +287,12 @@ class CommonUtilChartScrollViewController: HelpingMonetizeViewController,
     
     func prepareShowSummaryNetworkUsage(controller: SummaryNetworkUsageTableViewController) {
         if let usages = self.csvForThisMonthUsage {
-            if let dataOfDayArray = usages[Int(self.currentDayPage)] as? [AnyObject] {
-                if nil == networkInterFace {
-                    networkInterFace = DUCNetworkInterFace()
-                }
-                
-                controller.networkIF = DUCNetworkInterFace.generateNetWork(from: dataOfDayArray)
-                controller.titleStr = dataOfDayArray[IFA_DATA_GET_DATE] as? String
+            let day = usages[self.currentDayPage]
+            if nil == networkInterFace {
+                networkInterFace = DUCNetworkInterFace()
             }
+            controller.networkIF = day
+            controller.titleStr = day.dateStr
         }
     }
     

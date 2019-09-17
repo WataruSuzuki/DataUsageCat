@@ -32,7 +32,7 @@ class UtilNetworkIF: NetService {
         let WWANSent = getResultValue(newValue: currentData.wwanSend, lastSavedData: lastSavedUsage.wwanSend, offsetData: offsetUsage.wwanSend)
         let WWANReceived = getResultValue(newValue: currentData.wwanReceived, lastSavedData: lastSavedUsage.wwanReceived, offsetData: offsetUsage.wwanReceived)
         
-        return DUCNetworkInterFace.generateNetWork(from: [(NSNumber(value: WiFiSent)), (NSNumber(value: WiFiReceived)), (NSNumber(value: WWANSent)), (NSNumber(value: WWANReceived))])
+        return DUCNetworkInterFace(wifiSend: WiFiSent, wifiReceived: WiFiReceived, wwanSend: WWANSent, wwanReceived: WWANReceived, dateStr: nil)
     }
     
     class func getUsageValue(networkIf: DUCNetworkInterFace) -> Int64 {

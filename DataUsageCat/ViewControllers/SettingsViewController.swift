@@ -6,10 +6,6 @@
 //  Copyright © 2015年 Wataru Suzuki. All rights reserved.
 //
 
-/* Hello Swift, Goodbye Obj-C.
- * converted by 'objc2swift' https://github.com/yahoojapan/objc2swift
- * original source: ViewControllers/SettingsViewController.h, ViewControllers/SettingsViewController.m
- */
 import UIKit
 
 protocol SettingsViewControllerDelegate: class {
@@ -21,11 +17,8 @@ class SettingsViewController: HelpingMonetizeViewController,
 {
 
     var isShowPickerDate: Bool = false
-    //TODO -> var utilNADView: DJKUtilNendAd?
-    //TODO -> var nendBannerView: NADView!
     weak var delegate: SettingsViewControllerDelegate?
 
-    //@IBOutlet var iAd_BannerView: ADBannerView!
     @IBOutlet weak var settingsTableView: UITableView!
     @IBOutlet weak var barButtonDone: UIBarButtonItem!
 
@@ -38,9 +31,6 @@ class SettingsViewController: HelpingMonetizeViewController,
         if delegate.isUnlockAd {
         } else {
             if UIDevice.current.userInterfaceIdiom == .pad {
-                //TODO -> utilNADView = delegate.utilNADView
-                //TODO -> nendBannerView = utilNADView?.setupNendBannerView(self.view.frame, uiUserInterfaceIdiom: .phone, sizeType: SIZE_NEND_BANNER_320_50, apiKey: KeyIdAppBankSSP.KEY_BANNER_320_50, spotId: KeyIdAppBankSSP.ID_BANNER_320_50)
-                
                 //TODO -> self.view.addSubview(nendBannerView)
             } else {
                 addAdMobBannerView(unitId: KeyIdAdMob.BANNER_PHONE)
@@ -55,16 +45,6 @@ class SettingsViewController: HelpingMonetizeViewController,
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.settingsTableView.reloadData()
-        let delegate = UIApplication.shared.delegate as! AppDelegate
-        if delegate.isUnlockAd {
-        } else {
-            //TODO -> utilNADView?.notifyBannerResume(nendBannerView)
-        }
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        //TODO -> utilNADView?.notifyBannerPause()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

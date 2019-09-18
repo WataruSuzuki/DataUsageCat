@@ -6,11 +6,6 @@
 //  Copyright © 2015年 Wataru Suzuki. All rights reserved.
 //
 
-/* Hello Swift, Goodbye Obj-C.
-* converted by 'objc2swift' https://github.com/yahoojapan/objc2swift
-* original source: MainViewController.h, MainViewController.m
-*/
-
 import UIKit
 import CoreData
 import BubbleTransition
@@ -30,16 +25,12 @@ class MainViewController: CommonUtilChartScrollViewController,
     let zoomTransitionAnimator = RMPZoomTransitionAnimator()
     
     var needleAngle: Float = OFFSET_START_ANGLE
-    //var myPopoverController: UIPopoverController?
     var statusImageFilename: String = UsageProgessStats.GOOD.getStatusPartsName()
-    //TODO -> var utilNADView: DJKUtilNendAd?
-    //var adgMngr: ADGManagerViewController?
     var dataUsageCount: DUCNetworkInterFace?
     var isPrepareShowDayUsage: Bool = false
     
     private let privacyPolicyUrl = "https://github.com/WataruSuzuki/DataUsageCat/blob/master/PRIVACY_POLICY.md"
     
-    //@IBOutlet var iAd_BannerView: ADBannerView!
     @IBOutlet weak var meterNeedleImage: UIImageView!
     @IBOutlet weak var buttonTopCatStatusImage: UIButton!
     @IBOutlet weak var imageMeterBackGround: UIImageView!

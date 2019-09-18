@@ -6,18 +6,11 @@
 //  Copyright © 2015年 Wataru Suzuki. All rights reserved.
 //
 
-/* Hello Swift, Goodbye Obj-C.
-* converted by 'objc2swift' https://github.com/yahoojapan/objc2swift
-* original source: ViewControllers/DetailSettingViewController.h, ViewControllers/DetailSettingViewController.m
-*/
 import UIKit
 
 class DetailSettingViewController: HelpingMonetizeViewController,
     UITableViewDelegate, UITableViewDataSource
 {
-
-    //TODO -> var utilNADView: DJKUtilNendAd?
-    //TODO -> var nendBannerView: NADView!
     var settingType: Int = DetailSettingType.DATE.rawValue
     var secretButtonTappedCount = 0
 
@@ -34,8 +27,6 @@ class DetailSettingViewController: HelpingMonetizeViewController,
         if delegate.isUnlockAd {
         } else {
             if UIDevice.current.userInterfaceIdiom == .pad {
-                //TODO -> utilNADView = delegate.utilNADView
-                //TODO -> nendBannerView = utilNADView?.setupNendBannerView(self.view.frame, uiUserInterfaceIdiom: .phone, sizeType: SIZE_NEND_BANNER_320_50, apiKey: KeyIdAppBankSSP.KEY_BANNER_320_50, spotId: KeyIdAppBankSSP.ID_BANNER_320_50)
                 //TODO -> self.view.addSubview(nendBannerView!)
             } else {
                 addAdMobBannerView(unitId: KeyIdAdMob.BANNER_PHONE)
@@ -49,13 +40,10 @@ class DetailSettingViewController: HelpingMonetizeViewController,
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //TODO -> utilNADView?.notifyBannerResume(nendBannerView)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        //TODO -> utilNADView?.notifyBannerPause()
-        //TODO -> utilNADView?.allRemoveFromSuperview()
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {

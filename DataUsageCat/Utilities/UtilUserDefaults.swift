@@ -6,13 +6,6 @@
 //  Copyright (c) 2014年 Wataru Suzuki. All rights reserved.
 //
 
-/*
- * "Hello Swift, Goodbye Obj-C."
- * Converted by 'objc2swift'
- *
- * https://github.com/yahoojapan/objc2swift
- */
-
 class UtilUserDefaults: UserDefaults {
     
     let ud = UserDefaults.standard

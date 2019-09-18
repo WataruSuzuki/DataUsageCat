@@ -6,10 +6,6 @@
 //  Copyright © 2015年 Wataru Suzuki. All rights reserved.
 //
 
-/* Hello Swift, Goodbye Obj-C.
- * converted by 'objc2swift' https://github.com/yahoojapan/objc2swift
- * original source: ViewControllers/NotifyUsageStatusViewController.h, ViewControllers/NotifyUsageStatusViewController.m
- */
 import UIKit
 
 protocol NotifyUsageStatusViewControllerDelegate: class {
@@ -29,8 +25,6 @@ class NotifyUsageStatusViewController: HelpingMonetizeViewController,
     var userDefaultLimit: Float = 7.0
     var dataUsageCount: DUCNetworkInterFace?
     var aimTypeArray: [Double]!
-    //TODO -> var utilNADView: DJKUtilNendAd?
-    //TODO -> var nendBannerView: NADView?
     var statusImageFilename: String?
     
     weak var delegate: NotifyUsageStatusViewControllerDelegate?
@@ -57,8 +51,6 @@ class NotifyUsageStatusViewController: HelpingMonetizeViewController,
         if delegate.isUnlockAd {
         } else {
             if UIDevice.current.userInterfaceIdiom == .pad {
-                //TODO -> utilNADView = delegate.utilNADView
-                //TODO -> nendBannerView = utilNADView?.setupNendBannerView(self.view.frame, uiUserInterfaceIdiom: .phone, sizeType: SIZE_NEND_BANNER_320_50, apiKey: KeyIdAppBankSSP.KEY_BANNER_320_50, spotId: KeyIdAppBankSSP.ID_BANNER_320_50)
                 //TODO -> self.view.addSubview(nendBannerView!)
             } else {
                 addAdMobBannerView(unitId: KeyIdAdMob.BANNER_PHONE)
@@ -89,12 +81,10 @@ class NotifyUsageStatusViewController: HelpingMonetizeViewController,
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //TODO -> utilNADView?.notifyBannerResume(nendBannerView)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        //TODO -> utilNADView?.notifyBannerPause()
     }
 
     override func viewDidAppear(_ animated: Bool) {

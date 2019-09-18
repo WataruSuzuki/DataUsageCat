@@ -15,8 +15,6 @@ class DetailAboutThisAppViewController: HelpingMonetizeViewController {
     
     var detailImage: UIImage!
     var detailText = ""
-    //TODO -> var utilNADView: DJKUtilNendAd?
-    //TODO -> var nendBannerView: NADView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,18 +27,6 @@ class DetailAboutThisAppViewController: HelpingMonetizeViewController {
         setupAdBannerView(delegate: delegate)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        //TODO -> utilNADView?.notifyBannerResume(nendBannerView)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        //TODO -> utilNADView?.notifyBannerPause()
-    }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -48,9 +34,6 @@ class DetailAboutThisAppViewController: HelpingMonetizeViewController {
     
     func setupAdBannerView(delegate: AppDelegate) {
         if UIDevice.current.userInterfaceIdiom == .pad {
-            //TODO -> utilNADView = delegate.utilNADView
-            //TODO -> nendBannerView = utilNADView?.setupNendBannerView(self.view.frame, uiUserInterfaceIdiom: .phone, sizeType: SIZE_NEND_BANNER_320_50, apiKey: KeyIdAppBankSSP.KEY_BANNER_320_50, spotId: KeyIdAppBankSSP.ID_BANNER_320_50)
-            
             //TODO -> self.view.addSubview(nendBannerView)
         } else {
             addAdMobBannerView(unitId: KeyIdAdMob.BANNER_PHONE)

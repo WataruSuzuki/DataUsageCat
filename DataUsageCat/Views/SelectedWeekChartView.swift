@@ -6,12 +6,6 @@
 //  Copyright (c) 2014年 Wataru Suzuki. All rights reserved.
 //
 
-/*
- * "Hello Swift, Goodbye Obj-C."
- * Converted by 'objc2swift'
- *
- * https://github.com/yahoojapan/objc2swift
- */
 import UIKit
 
 class SelectedWeekChartView: UIView {
@@ -57,7 +51,7 @@ class SelectedWeekChartView: UIView {
     class func instanceFromNib(currentView: UIView) -> SelectedWeekChartView {
         let nib = UINib(nibName: "SelectedWeekChartView", bundle: nil)
         let newChartView = nib.instantiate(withOwner: nil, options: nil)[0] as! SelectedWeekChartView
-        
+
         newChartView.frame.size.width = currentView.window!.frame.size.width
         newChartView.frame.size.height = currentView.frame.size.height
         newChartView.setViewArray()

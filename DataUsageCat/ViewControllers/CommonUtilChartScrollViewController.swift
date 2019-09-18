@@ -20,8 +20,8 @@ class CommonUtilChartScrollViewController: HelpingMonetizeViewController,
     var totalWeekPageNum: Int = 0
     var csvForThisMonthUsage: [DUCNetworkInterFace]?
     var currentChartview: SelectedWeekChartView!
-    var selectedDayUnitViewArrays: [AnyObject]!
-    var selectedWeekChartViewArrays: [AnyObject]!
+    var selectedDayUnitViewArrays: [UIView]!
+    var selectedWeekChartViewArrays: [UIView]!
     
     @IBOutlet weak var selectedDayScrollView: UIScrollView!
     @IBOutlet weak var weekChartScrollView: UIScrollView!
@@ -55,7 +55,7 @@ class CommonUtilChartScrollViewController: HelpingMonetizeViewController,
         let duc_ud = UtilUserDefaults()
         self.userDefaultLimit = duc_ud.limitUsageValue
         self.csvForThisMonthUsage = delegate.recorder.getUsageResultFromCSV(chartDisp2Month: duc_ud.chartDisp2Month)
-        
+
         if let usages = self.csvForThisMonthUsage {
             self.totalWeekPageNum = (usages.count / SelectedWeekChartView.PageScroll.MAX_PAGE.rawValue)
             if 0 != (usages.count % SelectedWeekChartView.PageScroll.MAX_PAGE.rawValue) {
@@ -89,7 +89,7 @@ class CommonUtilChartScrollViewController: HelpingMonetizeViewController,
         }
     }
     
-    func loadSelectedDayUnitViewWithPage(page: Int, IsCurrentPage isVisiblePage: Bool) {
+    private func loadSelectedDayUnitViewWithPage(page: Int, IsCurrentPage isVisiblePage: Bool) {
         if 0 > page || page >= selectedDayUnitViewArrays!.count {
             return
         }
@@ -102,25 +102,25 @@ class CommonUtilChartScrollViewController: HelpingMonetizeViewController,
         
         if let usages = self.csvForThisMonthUsage {
             let dataOfDayArray = usages[page]
-            //if let dataOfDayArray = usages[page] {
-                let referenceValue = SelectedWeekChartView().getDayReferenceValue(userMax: self.userDefaultLimit)
-                let usageValue = UtilNetworkIF.getUsageValue(networkIf: dataOfDayArray)
-                unitview.buttonUsageValue!.setTitleColor(SelectedWeekChartView.getUsageChartBarColor(usageValue: usageValue, withMaxReference: referenceValue), for: [])
-                let usageValueMegaByte = UtilNetworkIF.getCellularDataUsageByMegaByte(dataUsage: dataOfDayArray)
-                let savingValueMegaByte = UtilNetworkIF.getWifiDataUsageByMegaByte(dataUsage: dataOfDayArray)
-                unitview.buttonUsageValue!.setTitle(String(format: "%.1f", usageValueMegaByte), for: [])
-                unitview.buttonSavingValue!.setTitle(String(format: "%.1f", savingValueMegaByte), for: [])
-                unitview.buttonUsageValue!.addTarget(self, action: #selector(CommonUtilChartScrollViewController.tapSummaryNetworkUsage(sender:)), for: .touchUpInside)
-                unitview.buttonSavingValue!.addTarget(self, action: #selector(CommonUtilChartScrollViewController.tapSummaryNetworkUsage(sender:)), for: .touchUpInside)
+            
+            let referenceValue = SelectedWeekChartView().getDayReferenceValue(userMax: self.userDefaultLimit)
+            let usageValue = UtilNetworkIF.getUsageValue(networkIf: dataOfDayArray)
+            unitview.buttonUsageValue!.setTitleColor(SelectedWeekChartView.getUsageChartBarColor(usageValue: usageValue, withMaxReference: referenceValue), for: [])
+            let usageValueMegaByte = UtilNetworkIF.getCellularDataUsageByMegaByte(dataUsage: dataOfDayArray)
+            let savingValueMegaByte = UtilNetworkIF.getWifiDataUsageByMegaByte(dataUsage: dataOfDayArray)
+            unitview.buttonUsageValue!.setTitle(String(format: "%.1f", usageValueMegaByte), for: [])
+            unitview.buttonSavingValue!.setTitle(String(format: "%.1f", savingValueMegaByte), for: [])
+            unitview.buttonUsageValue!.addTarget(self, action: #selector(CommonUtilChartScrollViewController.tapSummaryNetworkUsage(sender:)), for: .touchUpInside)
+            unitview.buttonSavingValue!.addTarget(self, action: #selector(CommonUtilChartScrollViewController.tapSummaryNetworkUsage(sender:)), for: .touchUpInside)
+            
             let dayOfMonthStr = dataOfDayArray.dateStr
-                unitview.labelDayOfMonth!.text = DJKUtilLocale.getFormatedDateStr(by: DateFormatter.Style.full, withDateStr: dayOfMonthStr)
-                unitview.labelUsageTitle!.text = NSLocalizedString("wwan", comment:"")
-                unitview.labelSavingTitle!.text = NSLocalizedString("wifi", comment:"")
-                
-                self.selectedDayScrollView.addSubview(unitview)
-                
-                updateUnitViewHiddenStatus(unitview: unitview, isVisible: !isVisiblePage)
-            //}
+            unitview.labelDayOfMonth!.text = DJKUtilLocale.getFormatedDateStr(by: DateFormatter.Style.full, withDateStr: dayOfMonthStr)
+            unitview.labelUsageTitle!.text = NSLocalizedString("wwan", comment:"")
+            unitview.labelSavingTitle!.text = NSLocalizedString("wifi", comment:"")
+            
+            self.selectedDayScrollView.addSubview(unitview)
+            
+            updateUnitViewHiddenStatus(unitview: unitview, isVisible: !isVisiblePage)
         }
     }
     
@@ -238,7 +238,7 @@ class CommonUtilChartScrollViewController: HelpingMonetizeViewController,
         }
     }
     
-    func loadScrollViewWithPage(page: Int, IsCurrentPage isVisiblePage: Bool) {
+    private func loadScrollViewWithPage(page: Int, IsCurrentPage isVisiblePage: Bool) {
         if 0 > page || page >= selectedDayUnitViewArrays!.count {
             return
         }
@@ -266,8 +266,8 @@ class CommonUtilChartScrollViewController: HelpingMonetizeViewController,
         }
     }
     
-    func loadSelectedWeekChartViewArrays(pageNum: Int) -> [AnyObject] {
-        var newArrays = [AnyObject]()
+    private func loadSelectedWeekChartViewArrays(pageNum: Int) -> [UIView] {
+        var newArrays = [UIView]()
         for _ in 0 ..< pageNum {
             newArrays.append(SelectedWeekChartView.instanceFromNib(currentView: self.view))
         }
@@ -275,8 +275,8 @@ class CommonUtilChartScrollViewController: HelpingMonetizeViewController,
         return newArrays
     }
     
-    func loadSelectedDayUnitViewArrays(pageNum: Int) -> [AnyObject] {
-        var newArrays = [AnyObject]()
+    private func loadSelectedDayUnitViewArrays(pageNum: Int) -> [UIView] {
+        var newArrays = [UIView]()
         for _ in (SelectedWeekChartView.PageScroll.FIRST_DAY.rawValue) ..< pageNum {
             newArrays.append(SelectedDayUnitView.instanceFromNib())
             //newArrays.append(SelectedDayUnitView())

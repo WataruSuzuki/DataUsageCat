@@ -6,10 +6,7 @@
 //  Copyright © 2015年 Wataru Suzuki. All rights reserved.
 //
 
-/* Hello Swift, Goodbye Obj-C.
- * converted by 'objc2swift' https://github.com/yahoojapan/objc2swift
- * original source: ViewControllers/DetailThisMonthUsageViewController.h, ViewControllers/DetailThisMonthUsageViewController.m
- */
+
 import UIKit
 
 class DetailThisMonthUsageViewController: CommonUtilChartScrollViewController

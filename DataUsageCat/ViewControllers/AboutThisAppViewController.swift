@@ -6,10 +6,6 @@
 //  Copyright © 2015年 Wataru Suzuki. All rights reserved.
 //
 
-/* Hello Swift, Goodbye Obj-C.
- * converted by 'objc2swift' https://github.com/yahoojapan/objc2swift
- * original source: ViewControllers/AboutThisAppViewController.h, ViewControllers/AboutThisAppViewController.m
- */
 import UIKit
 
 protocol AboutThisAppViewControllerDelegate: class {
@@ -26,8 +22,6 @@ class AboutThisAppViewController: HelpingMonetizeViewController,
     @IBOutlet weak var tableViewAboutThisApp: UITableView!
 
     var storyBoardName: String!
-    //TODO -> var utilNADView: DJKUtilNendAd?
-    //TODO -> var nendBannerView: NADView!
     //var admobInterstitial: GADInterstitial!
     weak var delegate: AboutThisAppViewControllerDelegate?
 
@@ -70,27 +64,11 @@ class AboutThisAppViewController: HelpingMonetizeViewController,
     }
 
     func setupAdBannerView(delegate: AppDelegate) {
-        //TODO -> utilNADView = delegate.utilNADView
-        //TODO -> nendBannerView = utilNADView?.setupNendBannerView(self.view.frame, uiUserInterfaceIdiom: .phone, sizeType: SIZE_NEND_BANNER_320_50, apiKey: KeyIdAppBankSSP.KEY_BANNER_320_50, spotId: KeyIdAppBankSSP.ID_BANNER_320_50)
         //TODO -> self.view.addSubview(nendBannerView)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        let delegate = UIApplication.shared.delegate as! AppDelegate
-        if delegate.isUnlockAd {
-            if /* nil != utilNADView */false {
-                //nendBannerView.removeFromSuperview()
-                //utilNADView = nil
-                //iAd_BannerView.removeFromSuperview()
-            }
-        }
-
-        //TODO -> utilNADView?.notifyBannerResume(nendBannerView)
     }
 
     override func viewDidAppear(_ animated: Bool) {

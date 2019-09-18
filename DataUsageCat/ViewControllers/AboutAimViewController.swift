@@ -6,11 +6,6 @@
 //  Copyright (c) 2015年 Wataru Suzuki. All rights reserved.
 //
 
-/* Hello Swift, Goodbye Obj-C.
-* converted by 'objc2swift' https://github.com/yahoojapan/objc2swift
-* original source: AboutAimViewController.h, AboutAimViewController.m
-*/
-
 import UIKit
 
 class AboutAimViewController: HelpingMonetizeViewController {
@@ -33,8 +28,6 @@ class AboutAimViewController: HelpingMonetizeViewController {
         NSLocalizedString("aim_message_map", comment: "")
     ]
 
-    //TODO -> var utilNADView: DJKUtilNendAd?
-    //TODO -> var nendBannerView: NADView!
     @IBOutlet weak var textViewAimDiscription: UITextView!
     
     override func viewDidLoad() {
@@ -49,8 +42,6 @@ class AboutAimViewController: HelpingMonetizeViewController {
         if delegate.isUnlockAd {
         } else {
             if UIDevice.current.userInterfaceIdiom == .pad {
-                //TODO -> utilNADView = delegate.utilNADView
-                //TODO -> nendBannerView = utilNADView?.setupNendBannerView(self.view.frame, uiUserInterfaceIdiom: .phone, sizeType: SIZE_NEND_BANNER_320_50, apiKey: KeyIdAppBankSSP.KEY_BANNER_320_50, spotId: KeyIdAppBankSSP.ID_BANNER_320_50)
                 //TODO -> self.view.addSubview(nendBannerView!)
             } else {
                 addAdMobBannerView(unitId: KeyIdAdMob.BANNER_PHONE)
@@ -65,7 +56,6 @@ class AboutAimViewController: HelpingMonetizeViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //TODO -> utilNADView?.notifyBannerResume(nendBannerView)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -76,7 +66,6 @@ class AboutAimViewController: HelpingMonetizeViewController {
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        //TODO -> utilNADView?.notifyBannerPause()
     }
 
 }

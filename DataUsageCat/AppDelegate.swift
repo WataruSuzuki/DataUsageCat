@@ -6,14 +6,7 @@
 //  Copyright © 2015年 Wataru Suzuki. All rights reserved.
 //
 
-/* Hello Swift, Goodbye Obj-C.
-* converted by 'objc2swift' https://github.com/yahoojapan/objc2swift
-* original source: AppDelegateObjC.h, AppDelegateObjC.m
-*/
-
-
 import UIKit
-//import CoreData
 import UserNotifications
 import Firebase
 
@@ -24,9 +17,6 @@ class AppDelegate: UIResponder,
 {
 
     var window: UIWindow?
-
-    //TODO -> var utilNADView: DJKUtilNendAd?
-    //var utilADGMngrVC: DJKUtilADGMngrVC!
     
     var isUnlockAd: Bool = false
     var storyBoardName: String!
@@ -47,9 +37,6 @@ class AppDelegate: UIResponder,
         
         recorder.getNetworkUsageArrayData(context: packetStore.context)
         isUnlockAd = false
-        //TODO -> utilNADView = DJKUtilNendAd()
-        //TODO -> utilNADView?.initNADInterstitial(KeyIdNend.KEY_INTERSTITIAL, withSpodId: KeyIdNend.ID_INTERSTITIAL)
-        //utilADGMngrVC = DJKUtilADGMngrVC()
         
         if #available(iOS 10, *) {
             //do nothing.
@@ -179,19 +166,6 @@ class AppDelegate: UIResponder,
         completionHandler(.newData)
     }
 
-    func applicationWillResignActive(_ application: UIApplication) {
-        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-        // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
-    }
-
-    func applicationDidEnterBackground(_ application: UIApplication) {
-        //TODO -> utilNADView?.notifyBannerPause()
-    }
-
-    func applicationWillEnterForeground(_ application: UIApplication) {
-        //TODO -> utilNADView?.notifyBannerResume(utilNADView?.nend_BannerView)
-    }
-
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         if UtilUserDefaults().silentNotificationSetting {
@@ -206,8 +180,6 @@ class AppDelegate: UIResponder,
     
     func updateValueUnLockAd() {
         isUnlockAd = false
-        //TODO -> utilNADView?.isUnlockAd = isUnlockAd
-        //utilADGMngrVC!.isUnlockAd = isUnlockAd
     }
 }
 

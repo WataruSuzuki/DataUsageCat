@@ -6,22 +6,14 @@
 //  Copyright (c) 2015年 Wataru Suzuki. All rights reserved.
 //
 
-/*
- * "Hello Swift, Goodbye Obj-C."
- * Converted by 'objc2swift'
- *
- * https://github.com/yahoojapan/objc2swift
- */
-
 import UIKit
 import CoreData
 
 class PacketUsageRecorder: NSObject {
     
-    let DUC_PRODUCT_ID_UNLOCK_ALL_AD = "jp.co.JchanKchan.DataUsageCat.unlock_all_ad"
     let LIMIT_RECENT_USAGE = Int64(700000000)//((1000000000LL - 300000000LL))
-    var arrayUsageLastMonth: [AnyObject]?
-    var arrayUsageThisMonth: [AnyObject]?
+    var lastMonthCsvObjs = [AnyObject]()
+    var currentMonthCsvObjs = [AnyObject]()
     var dataUsageCount: DUCNetworkInterFace?
     var lastSavedUsageCount: DUCNetworkInterFace?
 
@@ -47,10 +39,9 @@ class PacketUsageRecorder: NSObject {
             NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
             abort()
         }
-        //return managedObject
     }
     
-    func createNetworkUsageManagedObj(usageData: DUCNetworkInterFace, withManagedObj context: NSManagedObjectContext) {
+    private func createNetworkUsageManagedObj(usageData: DUCNetworkInterFace, withManagedObj context: NSManagedObjectContext) {
         let objCurrent = NSEntityDescription.insertNewObject(forEntityName: "CurrentMonthNetworkUsage", into: context) as! CurrentMonthNetworkUsage
         self.updateNetworkUsageManagedObj(cmnu: objCurrent, updateType: UpdateType.new, updateTargetIndex: DataIndex.current, newUsageData: usageData, context: context)
         
@@ -58,7 +49,7 @@ class PacketUsageRecorder: NSObject {
         self.updateNetworkUsageManagedObj(cmnu: objOffset, updateType: UpdateType.new, updateTargetIndex: DataIndex.offset, newUsageData: usageData, context: context)
     }
     
-    func getNetworkInterFaceFromCMNU(target: CurrentMonthNetworkUsage) -> DUCNetworkInterFace {
+    private func convert(target: CurrentMonthNetworkUsage) -> DUCNetworkInterFace {
         let fallbackValue = Int64(0)
         
         let wifiSend = (target.wifi_sent?.int64Value ?? fallbackValue)
@@ -75,7 +66,7 @@ class PacketUsageRecorder: NSObject {
         )
     }
     
-    func getDateComponents(date: Date) -> DateComponents {
+    private func getDateComponents(date: Date) -> DateComponents {
         return Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)
     }
     
@@ -95,14 +86,11 @@ class PacketUsageRecorder: NSObject {
         )
     }
     
-    func checkBootTimeAndIfDataResult(last_boot_time: Double) -> Bool {
-        if last_boot_time >= ProcessInfo.processInfo.systemUptime {
-            return true
-        }
-        return false
+    private func checkBootTimeAndIfDataResult(last_boot_time: Double) -> Bool {
+        return last_boot_time >= ProcessInfo.processInfo.systemUptime
     }
     
-    func checkUpdateMonth(lastSavedDateComps: DateComponents) -> Bool {
+    private func checkUpdateMonth(lastSavedDateComps: DateComponents) -> Bool {
         if UtilUserDefaults().resetOfMonth && self.checkChangeOfDate(lastSavedDateComps: lastSavedDateComps) {
             return true
         }
@@ -247,69 +235,76 @@ class PacketUsageRecorder: NSObject {
         return managedObject
     }
     
+    private func updatedMonthUsage(context: NSManagedObjectContext, monthUsages: [CurrentMonthNetworkUsage], nowDataCount: DUCNetworkInterFace?) {
+        let currentUsage = monthUsages[DataIndex.current.rawValue]
+        let offsetUsage = monthUsages[DataIndex.offset.rawValue]
+        var nextDataCount: DUCNetworkInterFace!
+        let formatDataCount = DUCNetworkInterFace()!
+
+        var isNeedCacheClear = true
+        
+        var lastSaved = convert(target: currentUsage)
+        var lastSavedOffset = convert(target: offsetUsage)
+        let lastBootTime = currentUsage.last_boot_time?.doubleValue ?? 0.0
+        let lastDateComps = self.getDateComponents(date: currentUsage.last_save_time! as Date)
+        
+        if checkUpdateMonth(lastSavedDateComps: lastDateComps) {
+            lastSaved = formatDataCount
+            self.deleteEntityData(entityName: "DayNetworkUsage", managedObjectContext: context)
+            UtilUserDefaults().updateCoreData = true
+            
+            lastMonthCsvObjs = [AnyObject]()
+            lastMonthCsvObjs += currentMonthCsvObjs
+            currentMonthCsvObjs = [AnyObject]()
+            let queue = OperationQueue()
+            queue.addOperation({
+                let csvHelper = DUCCsvHelper()
+                //先月分データをcsvに保存.
+                self.lastMonthCsvObjs = csvHelper.writeCsvFile(self.lastMonthCsvObjs, withNewArray: nil, andMonth: Int32(FILE_INDEX_LAST_MONTH)) as [AnyObject]
+                OperationQueue.main.addOperation({
+                    // (UIの更新はメインスレッドから行う必要がある)
+                })
+                
+            })
+            isNeedCacheClear = true
+        }
+        
+        if self.checkBootTimeAndIfDataResult(last_boot_time: lastBootTime) {
+            lastSavedOffset = formatDataCount
+        }
+        
+        self.updateNetworkUsageManagedObj(cmnu: offsetUsage, updateType: .refresh, updateTargetIndex: .offset, newUsageData: nowDataCount!, context: context)
+        nextDataCount = UtilNetworkIF.addOffsetValueToUsageData(currentData: nowDataCount!, lastSavedData: lastSaved, offsetData: lastSavedOffset)
+        
+        self.updateNetworkUsageManagedObj(cmnu: currentUsage, updateType: .refresh, updateTargetIndex: .current, newUsageData: nextDataCount, context: context)
+        
+        updateChartThisMonth(beforeDataCounts: lastSaved, newDataCounts: nextDataCount, context: context)
+        lastSavedUsageCount = lastSaved
+        dataUsageCount = nextDataCount
+        
+        if isNeedCacheClear {
+            DUCCsvHelper().removeCsvFile()
+        }
+    }
+    
     func fetchMonthNetworkUsage(context: NSManagedObjectContext) {
         let nowDataCount = DUCNetworkInterFace.getDataCounters()
-        let formatDataCount = DUCNetworkInterFace()!
         
-        var nextDataCount = formatDataCount
-        var currentUsage: CurrentMonthNetworkUsage? = nil
-        var offsetUsage: CurrentMonthNetworkUsage? = nil
-        let cmnuArray: [AnyObject]? = fetchMonthUsages(context: context, initKey: "index")
-        if nil == cmnuArray || 0 == cmnuArray!.count {
+        if let monthUsages = fetchMonthUsages(context: context, initKey: "index"), !monthUsages.isEmpty {
+            updatedMonthUsage(context: context, monthUsages: monthUsages, nowDataCount: nowDataCount)
+        } else {
             /*
              ここは初回で、前回端末起動からの使用量が取得されるのでcsv保存しない.
              */
             UtilUserDefaults().updateCoreData = true
             self.createNetworkUsageManagedObj(usageData: nowDataCount!, withManagedObj: context)
             dataUsageCount = nowDataCount
-        } else {
-            var isNeedCacheClear = true
-            currentUsage = cmnuArray?[PacketUsageRecorder.DataIndex.current.rawValue] as? CurrentMonthNetworkUsage
-            offsetUsage = cmnuArray?[PacketUsageRecorder.DataIndex.offset.rawValue] as? CurrentMonthNetworkUsage
-            var lastSaved = self.getNetworkInterFaceFromCMNU(target: currentUsage!)
-            var lastSavedOffset = self.getNetworkInterFaceFromCMNU(target: offsetUsage!)
-            let last_boot_time = currentUsage!.last_boot_time!.doubleValue
-            let lastDateComps = self.getDateComponents(date: currentUsage!.last_save_time! as Date)
-            if self.checkUpdateMonth(lastSavedDateComps: lastDateComps) {
-                lastSaved = formatDataCount
-                self.deleteEntityData(entityName: "DayNetworkUsage", managedObjectContext: context)
-                UtilUserDefaults().updateCoreData = true
-                
-                arrayUsageLastMonth = [AnyObject]()
-                //arrayUsageLastMonth?.append(arrayUsageThisMonth!)
-                arrayUsageLastMonth! += arrayUsageThisMonth!
-                arrayUsageThisMonth = [AnyObject]()
-                let queue = OperationQueue()
-                queue.addOperation({
-                    let csvHelper = DUCCsvHelper()
-                    //先月分データをcsvに保存.
-                    self.arrayUsageLastMonth = csvHelper.writeCsvFile(self.arrayUsageLastMonth!, withNewArray: nil, andMonth: Int32(FILE_INDEX_LAST_MONTH)) as [AnyObject]
-                    OperationQueue.main.addOperation({
-                        // (UIの更新はメインスレッドから行う必要がある)
-                    })
-                    
-                })
-                isNeedCacheClear = true
-            }
-            
-            if self.checkBootTimeAndIfDataResult(last_boot_time: last_boot_time) {
-                lastSavedOffset = formatDataCount
-            }
-            
-            self.updateNetworkUsageManagedObj(cmnu: offsetUsage!, updateType: .refresh, updateTargetIndex: .offset, newUsageData: nowDataCount!, context: context)
-            nextDataCount = UtilNetworkIF.addOffsetValueToUsageData(currentData: nowDataCount!, lastSavedData: lastSaved, offsetData: lastSavedOffset)
-            self.updateNetworkUsageManagedObj(cmnu: currentUsage!, updateType: .refresh, updateTargetIndex: .current, newUsageData: nextDataCount, context: context)
-            self.updateChartThisMonth(beforeDataCounts: lastSaved, newDataCounts: nextDataCount, context: context)
-            lastSavedUsageCount = lastSaved
-            dataUsageCount = nextDataCount
-            if isNeedCacheClear {
-                DUCCsvHelper().removeCsvFile()
-            }
         }
     }
     
     func getUsageResultFromCSV(chartDisp2Month: Bool) -> [DUCNetworkInterFace] {
-        let csvNSArrays = DUCCsvHelper.getUsageResult(fromCsv: self.arrayUsageThisMonth, andLastMonth: (chartDisp2Month ? self.arrayUsageLastMonth : [Any]())) as NSArray
+        let csvNSArrays = DUCCsvHelper.getUsageResult(fromCsv: currentMonthCsvObjs, andLastMonth: (chartDisp2Month ? self.lastMonthCsvObjs : [Any]())) as NSArray
+        
         let swiftNSArray: [NSArray] = csvNSArrays.compactMap({ $0 as? NSArray })
         let packetUsages = swiftNSArray.map { (nsArray) -> DUCNetworkInterFace in
             DUCNetworkInterFace(
@@ -328,7 +323,7 @@ class PacketUsageRecorder: NSObject {
         return value.int64Value
     }
     
-    func updateChartThisMonth(beforeDataCounts: DUCNetworkInterFace, newDataCounts: DUCNetworkInterFace, context: NSManagedObjectContext) {
+    private func updateChartThisMonth(beforeDataCounts: DUCNetworkInterFace, newDataCounts: DUCNetworkInterFace, context: NSManagedObjectContext) {
         let newRecord = self.getNextRecord(beforeDataCount: beforeDataCounts, newDataCount: newDataCounts)
         let obj = self.updateChartMonthManagedObj(usageData: newRecord, managedObjectContext: context)
         
@@ -337,25 +332,25 @@ class PacketUsageRecorder: NSObject {
         // Storyboardの変更を行う場合（4インチ以下のデバイス）にはdidFinishLaunchingWithOptionsを
         // 経由する前にここに到達するためarrayUsageThisMonthがnilとなることからunwrapだとcrashする...
         //
-        arrayUsageThisMonth?.append(self.getArrayFromChartObj(target: obj) as AnyObject)
+        currentMonthCsvObjs.append(self.getArrayFromChartObj(target: obj) as AnyObject)
         /* これではダメ -> -> -> *///arrayUsageThisMonth!.append(self.cmnuManagedObj!.getArrayFromChartObj(obj))
     }
     
     func getNetworkUsageArrayData(context: NSManagedObjectContext) {
         let csvHelper = DUCCsvHelper()
-        if (nil == arrayUsageThisMonth || 0 == arrayUsageThisMonth!.count) {
-            arrayUsageThisMonth = csvHelper.readCsvFile(Int32(FILE_INDEX_THIS_MONTH)) as [AnyObject]
+        if (currentMonthCsvObjs.isEmpty) {
+            currentMonthCsvObjs = csvHelper.readCsvFile(Int32(FILE_INDEX_THIS_MONTH)) as [AnyObject]
             
             if let dayNetworkUsageObj = fetchDayUsages(context: context, initKey: "saved_date") {
                 for obj in dayNetworkUsageObj {
                     let array = self.getArrayFromChartObj(target: obj)
-                    arrayUsageThisMonth!.append(array as AnyObject)
+                    currentMonthCsvObjs.append(array as AnyObject)
                 }
             }
         }
         
-        if (nil == arrayUsageLastMonth || 0 == arrayUsageLastMonth!.count) {
-            arrayUsageLastMonth = csvHelper.readCsvFile(Int32(FILE_INDEX_LAST_MONTH)) as [AnyObject]
+        if (lastMonthCsvObjs.isEmpty) {
+            lastMonthCsvObjs = csvHelper.readCsvFile(Int32(FILE_INDEX_LAST_MONTH)) as [AnyObject]
         }
     }
     

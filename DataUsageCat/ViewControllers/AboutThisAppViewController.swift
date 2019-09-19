@@ -16,13 +16,11 @@ class AboutThisAppViewController: HelpingMonetizeViewController,
     UITableViewDelegate, UITableViewDataSource
 {
 
-    //@IBOutlet var iAd_BannerView: ADBannerView!
     @IBOutlet weak var textView_messageAboutThisApp: UITextView!
     @IBOutlet weak var buttonAppSettings: UIButton!
     @IBOutlet weak var tableViewAboutThisApp: UITableView!
 
     var storyBoardName: String!
-    //var admobInterstitial: GADInterstitial!
     weak var delegate: AboutThisAppViewControllerDelegate?
 
     @IBAction func done(sender: AnyObject) {

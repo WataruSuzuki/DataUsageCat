@@ -14,7 +14,6 @@ class DetailSettingViewController: HelpingMonetizeViewController,
     var settingType: Int = DetailSettingType.DATE.rawValue
     var secretButtonTappedCount = 0
 
-    //@IBOutlet var iAd_BannerView: ADBannerView!
     @IBOutlet weak var detailSettingsTableView: UITableView!
     @IBOutlet weak var buttonSecretMenu: UIButton!
 

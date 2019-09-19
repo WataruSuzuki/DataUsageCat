@@ -109,7 +109,15 @@ class PacketUsageRecorder: NSObject {
         return false
     }
     
-    func getResultsOfFetchRequest(context: NSManagedObjectContext, withEntityName entityName: String, andKey initKey: String) -> [AnyObject] {
+    private func fetchMonthUsages(context: NSManagedObjectContext, initKey: String) -> [CurrentMonthNetworkUsage]? {
+        return fetchDatabase(context: context, entityName: "CurrentMonthNetworkUsage", initKey: initKey) as? [CurrentMonthNetworkUsage]
+    }
+    
+    private func fetchDayUsages(context: NSManagedObjectContext, initKey: String) -> [DayNetworkUsage]? {
+        return fetchDatabase(context: context, entityName: "DayNetworkUsage", initKey: initKey) as? [DayNetworkUsage]
+    }
+    
+    private func fetchDatabase(context: NSManagedObjectContext, entityName: String, initKey: String) -> [AnyObject]? {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
         let sortDescriptors = [NSSortDescriptor(key: initKey, ascending: true)]
         fetchRequest.sortDescriptors = sortDescriptors
@@ -119,7 +127,7 @@ class PacketUsageRecorder: NSObject {
         } catch {
             let nserror = error as NSError
             NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
-            abort()
+            return nil
         }
     }
     
@@ -244,10 +252,9 @@ class PacketUsageRecorder: NSObject {
         let formatDataCount = DUCNetworkInterFace()!
         
         var nextDataCount = formatDataCount
-        //var cmnuArray: [AnyObject]? = nil
-        var cmnuCurrent: CurrentMonthNetworkUsage? = nil
-        var cmnuOffset: CurrentMonthNetworkUsage? = nil
-        let cmnuArray: [AnyObject]? = self.getResultsOfFetchRequest(context: context, withEntityName: "CurrentMonthNetworkUsage", andKey: "index")
+        var currentUsage: CurrentMonthNetworkUsage? = nil
+        var offsetUsage: CurrentMonthNetworkUsage? = nil
+        let cmnuArray: [AnyObject]? = fetchMonthUsages(context: context, initKey: "index")
         if nil == cmnuArray || 0 == cmnuArray!.count {
             /*
              ここは初回で、前回端末起動からの使用量が取得されるのでcsv保存しない.
@@ -257,12 +264,12 @@ class PacketUsageRecorder: NSObject {
             dataUsageCount = nowDataCount
         } else {
             var isNeedCacheClear = true
-            cmnuCurrent = cmnuArray?[PacketUsageRecorder.DataIndex.current.rawValue] as? CurrentMonthNetworkUsage
-            cmnuOffset = cmnuArray?[PacketUsageRecorder.DataIndex.offset.rawValue] as? CurrentMonthNetworkUsage
-            var lastSaved = self.getNetworkInterFaceFromCMNU(target: cmnuCurrent!)
-            var lastSavedOffset = self.getNetworkInterFaceFromCMNU(target: cmnuOffset!)
-            let last_boot_time = cmnuCurrent!.last_boot_time!.doubleValue
-            let lastDateComps = self.getDateComponents(date: cmnuCurrent!.last_save_time! as Date)
+            currentUsage = cmnuArray?[PacketUsageRecorder.DataIndex.current.rawValue] as? CurrentMonthNetworkUsage
+            offsetUsage = cmnuArray?[PacketUsageRecorder.DataIndex.offset.rawValue] as? CurrentMonthNetworkUsage
+            var lastSaved = self.getNetworkInterFaceFromCMNU(target: currentUsage!)
+            var lastSavedOffset = self.getNetworkInterFaceFromCMNU(target: offsetUsage!)
+            let last_boot_time = currentUsage!.last_boot_time!.doubleValue
+            let lastDateComps = self.getDateComponents(date: currentUsage!.last_save_time! as Date)
             if self.checkUpdateMonth(lastSavedDateComps: lastDateComps) {
                 lastSaved = formatDataCount
                 self.deleteEntityData(entityName: "DayNetworkUsage", managedObjectContext: context)
@@ -289,9 +296,9 @@ class PacketUsageRecorder: NSObject {
                 lastSavedOffset = formatDataCount
             }
             
-            self.updateNetworkUsageManagedObj(cmnu: cmnuOffset!, updateType: .refresh, updateTargetIndex: .offset, newUsageData: nowDataCount!, context: context)
+            self.updateNetworkUsageManagedObj(cmnu: offsetUsage!, updateType: .refresh, updateTargetIndex: .offset, newUsageData: nowDataCount!, context: context)
             nextDataCount = UtilNetworkIF.addOffsetValueToUsageData(currentData: nowDataCount!, lastSavedData: lastSaved, offsetData: lastSavedOffset)
-            self.updateNetworkUsageManagedObj(cmnu: cmnuCurrent!, updateType: .refresh, updateTargetIndex: .current, newUsageData: nextDataCount, context: context)
+            self.updateNetworkUsageManagedObj(cmnu: currentUsage!, updateType: .refresh, updateTargetIndex: .current, newUsageData: nextDataCount, context: context)
             self.updateChartThisMonth(beforeDataCounts: lastSaved, newDataCounts: nextDataCount, context: context)
             lastSavedUsageCount = lastSaved
             dataUsageCount = nextDataCount
@@ -338,22 +345,17 @@ class PacketUsageRecorder: NSObject {
         let csvHelper = DUCCsvHelper()
         if (nil == arrayUsageThisMonth || 0 == arrayUsageThisMonth!.count) {
             arrayUsageThisMonth = csvHelper.readCsvFile(Int32(FILE_INDEX_THIS_MONTH)) as [AnyObject]
-            //if nil == cmnuManagedObj {
-            //cmnuManagedObj = DUCUtilManagedObject()
-            //}
             
-            let dayNetworkUsageObj = self.getResultsOfFetchRequest(context: context, withEntityName: "DayNetworkUsage", andKey: "saved_date") //as! [AnyObject]
-            for obj in dayNetworkUsageObj {
-                let array: [AnyObject] = self.getArrayFromChartObj(target: obj as! DayNetworkUsage)
-                //arrayUsageThisMonth! += array
-                arrayUsageThisMonth!.append(array as AnyObject)
-                //arrayUsageThisMonth!.addObject(array)
+            if let dayNetworkUsageObj = fetchDayUsages(context: context, initKey: "saved_date") {
+                for obj in dayNetworkUsageObj {
+                    let array = self.getArrayFromChartObj(target: obj)
+                    arrayUsageThisMonth!.append(array as AnyObject)
+                }
             }
         }
         
         if (nil == arrayUsageLastMonth || 0 == arrayUsageLastMonth!.count) {
             arrayUsageLastMonth = csvHelper.readCsvFile(Int32(FILE_INDEX_LAST_MONTH)) as [AnyObject]
-            //arrayUsageLastMonth = csvHelper.readCsvFile(FILE_INDEX_LAST_MONTH)
         }
     }
     

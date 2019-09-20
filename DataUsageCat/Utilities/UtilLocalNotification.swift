@@ -53,7 +53,7 @@ class UtilLocalNotification: NSObject {
         #if DEBUG
             let isDisp = true
         #else
-            let isDisp = UtilUserDefaults().debugCloudKitSilentPush
+            let isDisp = UserPreferences.shared.debugCloudKitSilentPush
         #endif//DEBUG
         if isDisp {
             let catEmotion = (isSuccess ? catSmiling : catSurprised)

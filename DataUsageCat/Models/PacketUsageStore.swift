@@ -60,7 +60,7 @@ class PacketUsageStore: NSObject {
     lazy var context: NSManagedObjectContext = {
         // Returns the managed object context for the application (which is already bound to the persistent store coordinator for the application.) This property is optional since there are legitimate error conditions that could cause the creation of the context to fail.
         if #available(iOS 10.0, *) {
-            if UtilUserDefaults().updateCoreData {
+            if UserPreferences.shared.updateCoreData {
                 return self.persistentContainer.viewContext
             }
         }

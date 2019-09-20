@@ -84,7 +84,7 @@ class DetailSettingViewController: HelpingMonetizeViewController,
                     
                 case SectionTypeOther.DETAIL_RESET_CHART.rawValue:
                     let switchOnOff = UISwitch(frame: .zero)
-                    switchOnOff.isOn = UtilUserDefaults().chartDisp2Month
+                    switchOnOff.isOn = UserPreferences.shared.chartDisp2Month
                     switchOnOff.addTarget(self, action: #selector(DetailSettingViewController.changeSwitchResetChart(sw:)), for: .valueChanged)
                     cell.textLabel!.text = NSLocalizedString("reset_chart_display", comment:"")
                     cell.accessoryView = switchOnOff
@@ -102,13 +102,13 @@ class DetailSettingViewController: HelpingMonetizeViewController,
 
     func getSwitchSettingValue() -> Bool {
         var ret: Bool = false
-        let duc_ud = UtilUserDefaults()
+        let preference = UserPreferences.shared
         switch settingType {
         case DetailSettingType.DATE.rawValue:
-            ret = duc_ud.resetOfMonth
+            ret = preference.resetOfMonth
             
         case DetailSettingType.NOTIFICATION.rawValue:
-            ret = duc_ud.usageNotificationSetting
+            ret = preference.usageNotificationSetting
             
         default:
             break
@@ -133,18 +133,18 @@ class DetailSettingViewController: HelpingMonetizeViewController,
     }
 
     @objc func changeSwitchResetChart(sw: UISwitch) {
-        let duc_ud = UtilUserDefaults()
-        duc_ud.chartDisp2Month = sw.isOn
+        let preference = UserPreferences.shared
+        preference.chartDisp2Month = sw.isOn
     }
 
     @objc func changeSwitch(sw: UISwitch) {
-        let duc_ud = UtilUserDefaults()
+        let preference = UserPreferences.shared
         switch settingType {
         case DetailSettingType.DATE.rawValue:
-            duc_ud.resetOfMonth = sw.isOn
+            preference.resetOfMonth = sw.isOn
             
         case DetailSettingType.NOTIFICATION.rawValue:
-            duc_ud.usageNotificationSetting = sw.isOn
+            preference.usageNotificationSetting = sw.isOn
             
         default:
             break

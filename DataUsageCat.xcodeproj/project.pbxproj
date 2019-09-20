@@ -57,7 +57,7 @@
 		96F8F0941D28A7870083BEDB /* PacketUsageRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F8F05C1D28A7860083BEDB /* PacketUsageRecorder.swift */; };
 		96F8F0951D28A7870083BEDB /* UtilNCMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F8F05D1D28A7860083BEDB /* UtilNCMB.swift */; };
 		96F8F0961D28A7870083BEDB /* UtilNetworkIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F8F05E1D28A7860083BEDB /* UtilNetworkIF.swift */; };
-		96F8F0971D28A7870083BEDB /* UtilUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F8F05F1D28A7860083BEDB /* UtilUserDefaults.swift */; };
+		96F8F0971D28A7870083BEDB /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F8F05F1D28A7860083BEDB /* UserPreferences.swift */; };
 		96F8F0981D28A7870083BEDB /* AboutAimViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F8F0611D28A7860083BEDB /* AboutAimViewController.swift */; };
 		96F8F0991D28A7870083BEDB /* CommonUtilChartScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F8F0621D28A7860083BEDB /* CommonUtilChartScrollViewController.swift */; };
 		96F8F09A1D28A7870083BEDB /* DetailSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F8F0631D28A7860083BEDB /* DetailSettingViewController.swift */; };
@@ -192,7 +192,7 @@
 		96F8F05C1D28A7860083BEDB /* PacketUsageRecorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PacketUsageRecorder.swift; sourceTree = "<group>"; };
 		96F8F05D1D28A7860083BEDB /* UtilNCMB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilNCMB.swift; sourceTree = "<group>"; };
 		96F8F05E1D28A7860083BEDB /* UtilNetworkIF.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilNetworkIF.swift; sourceTree = "<group>"; };
-		96F8F05F1D28A7860083BEDB /* UtilUserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilUserDefaults.swift; sourceTree = "<group>"; };
+		96F8F05F1D28A7860083BEDB /* UserPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
 		96F8F0611D28A7860083BEDB /* AboutAimViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutAimViewController.swift; sourceTree = "<group>"; };
 		96F8F0621D28A7860083BEDB /* CommonUtilChartScrollViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonUtilChartScrollViewController.swift; sourceTree = "<group>"; };
 		96F8F0631D28A7860083BEDB /* DetailSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailSettingViewController.swift; sourceTree = "<group>"; };
@@ -386,6 +386,7 @@
 				9687A2BC1D281F1600C6B9C1 /* DataUsageCat.xcdatamodeld */,
 				9674845E23D9D57300A5E947 /* ManagedObjects */,
 				9674846123D9DA7000A5E947 /* PacketUsageStore.swift */,
+				96F8F05F1D28A7860083BEDB /* UserPreferences.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -449,7 +450,6 @@
 				96F8F05B1D28A7860083BEDB /* UtilLocalNotification.swift */,
 				96F8F05D1D28A7860083BEDB /* UtilNCMB.swift */,
 				96F8F05E1D28A7860083BEDB /* UtilNetworkIF.swift */,
-				96F8F05F1D28A7860083BEDB /* UtilUserDefaults.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -852,7 +852,7 @@
 				96F8F0981D28A7870083BEDB /* AboutAimViewController.swift in Sources */,
 				96F8F09B1D28A7870083BEDB /* DetailThisMonthUsageViewController.swift in Sources */,
 				964215E01D28AA5100E7E29A /* CurrentMonthNetworkUsage+CoreDataClass.swift in Sources */,
-				96F8F0971D28A7870083BEDB /* UtilUserDefaults.swift in Sources */,
+				96F8F0971D28A7870083BEDB /* UserPreferences.swift in Sources */,
 				96F8F0A11D28A7870083BEDB /* PickerViewCell.swift in Sources */,
 				CCD08EAE23166EB3007116AA /* DJKViewUtils.m in Sources */,
 				96F8F0A31D28A7870083BEDB /* SelectedDayUnitView.swift in Sources */,

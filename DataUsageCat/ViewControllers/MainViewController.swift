@@ -118,8 +118,8 @@ class MainViewController: CommonUtilChartScrollViewController,
             return
         }
         let delegate = UIApplication.shared.delegate as! AppDelegate
-        let duc_ud = UtilUserDefaults()
-        self.userDefaultLimit = duc_ud.limitUsageValue
+        let preference = UserPreferences.shared
+        self.userDefaultLimit = preference.limitUsageValue
         delegate.recorder.fetchMonthNetworkUsage(context: delegate.packetStore.context)
         dataUsageCount = delegate.recorder.dataUsageCount
         if #available(iOS 10.0, *) {

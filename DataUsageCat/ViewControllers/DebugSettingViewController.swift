@@ -84,7 +84,7 @@ class DebugSettingViewController: UITableViewController {
             case .catSilentIsWorking:
                 UtilCloudKit().updateAllDeviceRecordObject()
             case .catRestartDataMonitoring:
-                if UtilUserDefaults().silentNotificationSetting {
+                if UserPreferences.shared.silentNotificationSetting {
                     UIApplication.shared.registerForRemoteNotifications()
                 } else {
                     if #available(iOS 10.0, *) {
@@ -100,16 +100,16 @@ class DebugSettingViewController: UITableViewController {
     }
     
     @objc func setSilentNotificationSetting(sw: UISwitch) {
-        UtilUserDefaults().silentNotificationSetting = sw.isOn
+        UserPreferences.shared.silentNotificationSetting = sw.isOn
     }
     
     @objc func setDebugCloudKitSilentPush(sw: UISwitch) {
-        UtilUserDefaults().debugCloudKitSilentPush = sw.isOn
+        UserPreferences.shared.debugCloudKitSilentPush = sw.isOn
     }
     
     @objc func setDebugLegacySubscription(sw: UISwitch) {
         UtilCloudKit().deleteAllPublicSubscription()
-        UtilUserDefaults().debugLegacySubscription = sw.isOn
+        UserPreferences.shared.debugLegacySubscription = sw.isOn
     }
     /*
     // Override to support conditional editing of the table view.
@@ -148,18 +148,18 @@ class DebugSettingViewController: UITableViewController {
         func handleSwitch() -> UISwitch {
             let myUISwitch = UISwitch()
             
-            let duc_ud = UtilUserDefaults()
+            let preference = UserPreferences.shared
             switch self {
             case .silentNotificationSetting:
-                myUISwitch.isOn = duc_ud.silentNotificationSetting
+                myUISwitch.isOn = preference.silentNotificationSetting
                 myUISwitch.addTarget(self, action: #selector(DebugSettingViewController.setSilentNotificationSetting(sw:)), for: .valueChanged)
                 
             case .debugCloudKitSilentPush:
-                myUISwitch.isOn = duc_ud.debugCloudKitSilentPush
+                myUISwitch.isOn = preference.debugCloudKitSilentPush
                 myUISwitch.addTarget(self, action: #selector(DebugSettingViewController.setDebugCloudKitSilentPush(sw:)), for: .valueChanged)
                 
             case .debugLegacySubscription:
-                myUISwitch.isOn = duc_ud.debugLegacySubscription
+                myUISwitch.isOn = preference.debugLegacySubscription
                 myUISwitch.addTarget(self, action: #selector(DebugSettingViewController.setDebugLegacySubscription(sw:)), for: .valueChanged)
                 
             default:

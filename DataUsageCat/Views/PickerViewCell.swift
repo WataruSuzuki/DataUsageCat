@@ -27,16 +27,16 @@ class PickerViewCell: UITableViewCell,
     }
     
     func setPickerViewType(type: PickerType) {
-        let duc_ud = UtilUserDefaults()
+        let preference = UserPreferences.shared
         self.typeOfComponents = type
         switch self.typeOfComponents! {
         case .LIMIT_DATE:
             labelTitle.text = NSLocalizedString("reset_date", comment:"")
-            addedPickerView.selectRow(duc_ud.resetOfDay - 1, inComponent: 0, animated: false)
+            addedPickerView.selectRow(preference.resetOfDay - 1, inComponent: 0, animated: false)
             
         case .LIMIT_USAGE_VALUE:
             labelTitle.text = NSLocalizedString("limit_usage_value", comment:"")
-            var limitValue = Int(duc_ud.limitUsageValue)
+            var limitValue = Int(preference.limitUsageValue)
             var digit = Int(self.getDigitOffsetValue())
             for component in 0 ..< PickerComp.DIGIT_UNIT.rawValue {
                 addedPickerView.selectRow((limitValue / digit), inComponent: component, animated: false)
@@ -135,7 +135,7 @@ class PickerViewCell: UITableViewCell,
     }
     
     func pickerViewResetOfDay(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        UtilUserDefaults().resetOfDay = (row + 1)
+        UserPreferences.shared.resetOfDay = (row + 1)
     }
     
     func pickerViewLimitValue(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
@@ -155,7 +155,7 @@ class PickerViewCell: UITableViewCell,
         if 0 > nextValue {
             nextValue = 7
         }
-        UtilUserDefaults().limitUsageValue = Float(nextValue)
+        UserPreferences.shared.limitUsageValue = Float(nextValue)
     }
     
     class func reuseCellDetailSettingDate(tableView: UITableView, cellForRowAtIndexPath indexPath: IndexPath, detailPickerType pickerType: PickerType) -> UITableViewCell {

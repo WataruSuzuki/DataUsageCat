@@ -65,7 +65,7 @@ class AppDelegate: UIResponder,
     
     //#pragma mark - Application's background
     func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        if UtilUserDefaults().silentNotificationSetting {
+        if UserPreferences.shared.silentNotificationSetting {
             #if DEBUG
                 UtilCloudKit().updateSingleRecordObject()
             #else
@@ -141,7 +141,7 @@ class AppDelegate: UIResponder,
     }
     
     func application(_ app: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        if UtilUserDefaults().silentNotificationSetting {
+        if UserPreferences.shared.silentNotificationSetting {
             UtilNCMB().registDeviceTokenToNCMB(deviceToken: deviceToken)
         } else {
             UtilCloudKit().fetchPublicSubscription()
@@ -155,7 +155,7 @@ class AppDelegate: UIResponder,
     }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        if UtilUserDefaults().silentNotificationSetting {
+        if UserPreferences.shared.silentNotificationSetting {
             UtilNCMB().setNextNCMBSilentPushSchedule()
             UtilCloudKit().updateSingleRecordObject()
         } else {
@@ -168,7 +168,7 @@ class AppDelegate: UIResponder,
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        if UtilUserDefaults().silentNotificationSetting {
+        if UserPreferences.shared.silentNotificationSetting {
             UtilCloudKit().updateAllDeviceRecordObject()
         }
     }

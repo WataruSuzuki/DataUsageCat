@@ -1,14 +1,20 @@
 //
-//  UtilUserDefaults.swift
+//  UserPreferences.swift
 //  DataUsageCat
 //
 //  Created by Wataru Suzuki on 2014/08/20.
 //  Copyright (c) 2014年 Wataru Suzuki. All rights reserved.
 //
 
-class UtilUserDefaults: UserDefaults {
-    
-    let ud = UserDefaults.standard
+class UserPreferences: NSObject {
+    static let shared: UserPreferences = {
+        return UserPreferences()
+    }()
+
+    private override init() {
+    }
+
+    private let ud = UserDefaults.standard
     
     private struct Default {
         static let limit_usage_value = Float(7.0)

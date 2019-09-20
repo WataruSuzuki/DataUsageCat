@@ -43,8 +43,8 @@ class NotifyUsageStatusViewController: HelpingMonetizeViewController,
         super.viewDidLoad()
         let delegate = UIApplication.shared.delegate as! AppDelegate
         self.dataUsageCount = delegate.recorder.dataUsageCount
-        let duc_ud = UtilUserDefaults()
-        self.userDefaultLimit = duc_ud.limitUsageValue
+        let preference = UserPreferences.shared
+        self.userDefaultLimit = preference.limitUsageValue
         self.setViewNotifyUsageStatus()
         self.title = NSLocalizedString("comment_from_cat", comment:"")
         

@@ -28,7 +28,7 @@ class UtilNCMB: NSObject {
     }
     
     func setDeliveryNCMBPush(intervalTime: Double) {
-        guard UtilUserDefaults().silentNotificationSetting else {
+        guard UserPreferences.shared.silentNotificationSetting else {
             return
         }
         let push = NCMBPush()

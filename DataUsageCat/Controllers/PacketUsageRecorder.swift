@@ -91,7 +91,7 @@ class PacketUsageRecorder: NSObject {
     }
     
     private func checkUpdateMonth(lastSavedDateComps: DateComponents) -> Bool {
-        if UtilUserDefaults().resetOfMonth && self.checkChangeOfDate(lastSavedDateComps: lastSavedDateComps) {
+        if UserPreferences.shared.resetOfMonth && self.checkChangeOfDate(lastSavedDateComps: lastSavedDateComps) {
             return true
         }
         return false
@@ -186,7 +186,7 @@ class PacketUsageRecorder: NSObject {
     func checkChangeOfDate(lastSavedDateComps: DateComponents) -> Bool {
         let date = Date()
         let dateComps = self.getDateComponents(date: date)
-        let resetOfDay = Int(UtilUserDefaults().resetOfDay)
+        let resetOfDay = Int(UserPreferences.shared.resetOfDay)
         
         switch resetOfDay {
         case 0, 1:
@@ -251,7 +251,7 @@ class PacketUsageRecorder: NSObject {
         if checkUpdateMonth(lastSavedDateComps: lastDateComps) {
             lastSaved = formatDataCount
             self.deleteEntityData(entityName: "DayNetworkUsage", managedObjectContext: context)
-            UtilUserDefaults().updateCoreData = true
+            UserPreferences.shared.updateCoreData = true
             
             lastMonthCsvObjs = [AnyObject]()
             lastMonthCsvObjs += currentMonthCsvObjs
@@ -296,7 +296,7 @@ class PacketUsageRecorder: NSObject {
             /*
              ここは初回で、前回端末起動からの使用量が取得されるのでcsv保存しない.
              */
-            UtilUserDefaults().updateCoreData = true
+            UserPreferences.shared.updateCoreData = true
             self.createNetworkUsageManagedObj(usageData: nowDataCount!, withManagedObj: context)
             dataUsageCount = nowDataCount
         }
@@ -355,7 +355,7 @@ class PacketUsageRecorder: NSObject {
     }
     
     func checkRecentLimitUsage() {
-        if UtilUserDefaults().usageNotificationSetting {
+        if UserPreferences.shared.usageNotificationSetting {
             let usageArrayCsv = self.getUsageResultFromCSV(chartDisp2Month: true)
             let utilNotification = UtilLocalNotification()
             if (LIMIT_RECENT_USAGE < self.getRecentUsageValues(recentArray: usageArrayCsv)

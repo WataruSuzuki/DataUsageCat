@@ -124,19 +124,19 @@ class SettingsViewController: HelpingMonetizeViewController,
             cell = tableView.dequeueReusableCell(withIdentifier: "CellSettings", for: indexPath )
         }
         
-        let duc_ud = UtilUserDefaults()
+        let preference = UserPreferences.shared
         switch indexPath.section {
         case SettingBasicSection.BASIC.rawValue:
             switch indexPath.row {
             case SettingBasicRow.LIMIT_VALUE.rawValue:
                 cell.textLabel!.text = NSLocalizedString("limit_usage_value", comment:"")
-                let limitValue = duc_ud.limitUsageValue
+                let limitValue = preference.limitUsageValue
                 cell.detailTextLabel!.text = "\(limitValue) GB"
                 
             case SettingBasicRow.RESET_MONTH.rawValue:
                 cell.textLabel!.text = NSLocalizedString("reset_every_month", comment:"")
                 
-                if duc_ud.resetOfMonth {
+                if preference.resetOfMonth {
                     cell.detailTextLabel!.text = "ON"
                 } else {
                     cell.detailTextLabel!.text = "OFF"
@@ -150,7 +150,7 @@ class SettingsViewController: HelpingMonetizeViewController,
             case SettingAdvanceRow.NOTIFICATION.rawValue:
                 cell.textLabel!.text = NSLocalizedString("notification", comment:"")
                 
-                if duc_ud.usageNotificationSetting {
+                if preference.usageNotificationSetting {
                     cell.detailTextLabel!.text = "ON"
                 } else {
                     cell.detailTextLabel!.text = "OFF"

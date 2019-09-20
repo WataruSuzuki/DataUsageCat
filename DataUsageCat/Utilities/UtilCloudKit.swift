@@ -59,7 +59,7 @@ class UtilCloudKit: NSObject {
     }
     
     func replenishDevicePredicates(items: [Dictionary<String, Any>]) {
-        UtilUserDefaults().cloudKitSubscriptionPredicate = items
+        UserPreferences.shared.cloudKitSubscriptionPredicate = items
     }
     
     func savePublicSubscription() {
@@ -82,7 +82,7 @@ class UtilCloudKit: NSObject {
         if !isRegistedSubscription() {
             self.savePublicSubscription()
         } else {
-            let ID = UtilUserDefaults().cloudKitSubscriptionID
+            let ID = UserPreferences.shared.cloudKitSubscriptionID
             myCKContainer.publicCloudDatabase.fetch(withSubscriptionID: ID, completionHandler: { (fetchedSubscription, error) in
                 if nil == error {
                     UtilLocalNotification().debugSilentPush(message: fetchedSubscription.debugDescription, funcName: #function, isSuccess: true)
@@ -99,7 +99,7 @@ class UtilCloudKit: NSObject {
             self.handleDebugInfo(error: error, funcName: #function, message: (deletedID != nil ? deletedID! : "nothing"))
             if nil == error {
                 self.mySubscription = nil
-                UtilUserDefaults().cloudKitSubscriptionID = ""
+                UserPreferences.shared.cloudKitSubscriptionID = ""
             }
         }
     }
@@ -115,7 +115,7 @@ class UtilCloudKit: NSObject {
     }
     
     func isRegistedSubscription() -> Bool {
-        if !UtilUserDefaults().cloudKitSubscriptionID.isEmpty {
+        if !UserPreferences.shared.cloudKitSubscriptionID.isEmpty {
             return true
         }
         
@@ -125,12 +125,12 @@ class UtilCloudKit: NSObject {
             let subscription = CKQuerySubscription(recordType: type, predicate: predicate, options: [.firesOnRecordCreation, .firesOnRecordDeletion, .firesOnRecordUpdate])
             subscription.notificationInfo = createCKNotificationInfo()
             mySubscription = subscription
-            UtilUserDefaults().cloudKitSubscriptionID = subscription.subscriptionID
+            UserPreferences.shared.cloudKitSubscriptionID = subscription.subscriptionID
         } else {
             let subscription = CKSubscription(recordType: type, predicate: predicate, options: [.firesOnRecordCreation, .firesOnRecordDeletion, .firesOnRecordUpdate])
             subscription.notificationInfo = createCKNotificationInfo()
             mySubscription = subscription
-            UtilUserDefaults().cloudKitSubscriptionID = subscription.subscriptionID
+            UserPreferences.shared.cloudKitSubscriptionID = subscription.subscriptionID
         }
         
         return false
@@ -154,7 +154,7 @@ class UtilCloudKit: NSObject {
     }
     
     func updateSingleRecordObject() {
-        var items = UtilUserDefaults().cloudKitSubscriptionPredicate
+        var items = UserPreferences.shared.cloudKitSubscriptionPredicate
         if items.count == 0 {
             replenishDevicePredicates(items: everySingleDevicePredicate())
         } else {
@@ -164,7 +164,7 @@ class UtilCloudKit: NSObject {
             let deviceName = predicate[keyDevice] as! String
             updateDeviceRecordObject(predicate: devicePredicate, deviceName: deviceName)
             items.remove(at: target)
-            UtilUserDefaults().cloudKitSubscriptionPredicate = items
+            UserPreferences.shared.cloudKitSubscriptionPredicate = items
         }
     }
     
@@ -193,7 +193,7 @@ class UtilCloudKit: NSObject {
     
     func handleSaveSubscription(ID: String?, message: String, error: Error?) {
         if ID != nil {
-            UtilUserDefaults().cloudKitSubscriptionID = ID!
+            UserPreferences.shared.cloudKitSubscriptionID = ID!
         } else {
             self.deleteAllPublicSubscription()
         }

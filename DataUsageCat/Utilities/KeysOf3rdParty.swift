@@ -8,17 +8,6 @@
 
 import Foundation
 
-struct KeyIdNend {
-    static let KEY_BANNER_320_50 = "hoge"
-    static let ID_BANNER_320_50 = "fuga"
-    static let KEY_BANNER_320_100 = "hoge"
-    static let ID_BANNER_320_100 = "fuga"
-    static let KEY_BANNER_PAD = "hoge"
-    static let ID_BANNER_PAD = "fuga"
-    static let KEY_INTERSTITIAL = "hoge"
-    static let ID_INTERSTITIAL = "fuga"
-}
-
 struct KeyIdNCMB {
     static let API = "hoge"
     static let CLIENT = "fuga"

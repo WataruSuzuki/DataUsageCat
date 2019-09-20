@@ -40,20 +40,6 @@ class UtilCloudKit: NSObject {
     func everySingleDevicePredicate() -> [Dictionary<String, Any>] {
         var items = [Dictionary<String, Any>]()
         items.append([keyPredicate: createDevicePredicate(deviceName: "iOS"), keyDevice: "iOS"])
-//        if let deviceList = DeviceUtil.getDeviceList() {
-//            for device in deviceList {
-//                if let deviceName = device.key as? String {
-//                    if deviceName.contains("iPhone")
-//                    || deviceName.contains("iPad")
-//                    || deviceName.contains("iPod")
-//                    {
-//                        items.append([keyPredicate: createDevicePredicate(deviceName: deviceName), keyDevice: deviceName])
-//                    } else {
-//                        print(deviceName)
-//                    }
-//                }
-//            }
-//        }
 
         return items
     }

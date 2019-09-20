@@ -17,20 +17,20 @@ class PacketUsageRecorder: NSObject {
     var dataUsageCount: DUCNetworkInterFace?
     var lastSavedUsageCount: DUCNetworkInterFace?
 
-    func updateNetworkUsageManagedObj(cmnu: CurrentMonthNetworkUsage, updateType: UpdateType, updateTargetIndex: DataIndex, newUsageData: DUCNetworkInterFace, context: NSManagedObjectContext) {
+    private func saveUsageObject(_ currentUsage: CurrentMonthNetworkUsage, type: UpdateType, index: DataIndex, newUsageData: DUCNetworkInterFace, context: NSManagedObjectContext) {
         
-        if UpdateType.new != updateType {
+        if UpdateType.new != type {
             #if ENABLE_SWIFT_LOG
-                print("updateNetworkUsageManagedObj updateTarget = \(updateTargetIndex)")
-                print("updateNetworkUsageManagedObj managedObject = \(cmnu)")
-                print("updateNetworkUsageManagedObj UPDATE_TYPE_REFLESH")
+                print("saveUsageObject updateTarget = \(updateTargetIndex)")
+                print("saveUsageObject managedObject = \(cmnu)")
+                print("saveUsageObject UPDATE_TYPE_REFLESH")
             #endif//ENABLE_SWIFT_LOG
         } else {
             #if ENABLE_SWIFT_LOG
-                print("updateNetworkUsageManagedObj UPDATE_TYPE_NEW")
+                print("saveUsageObject UPDATE_TYPE_NEW")
             #endif//ENABLE_SWIFT_LOG
         }
-        let managedObject = getManagedObject(updateData: newUsageData, target: cmnu, targetIndex: updateTargetIndex)
+        let managedObject = getManagedObject(updateData: newUsageData, target: currentUsage, targetIndex: index)
         
         do {
             try managedObject.managedObjectContext!.save()
@@ -43,10 +43,10 @@ class PacketUsageRecorder: NSObject {
     
     private func createNetworkUsageManagedObj(usageData: DUCNetworkInterFace, withManagedObj context: NSManagedObjectContext) {
         let objCurrent = NSEntityDescription.insertNewObject(forEntityName: "CurrentMonthNetworkUsage", into: context) as! CurrentMonthNetworkUsage
-        self.updateNetworkUsageManagedObj(cmnu: objCurrent, updateType: UpdateType.new, updateTargetIndex: DataIndex.current, newUsageData: usageData, context: context)
+        saveUsageObject(objCurrent, type: UpdateType.new, index: DataIndex.current, newUsageData: usageData, context: context)
         
         let objOffset = NSEntityDescription.insertNewObject(forEntityName: "CurrentMonthNetworkUsage", into: context) as! CurrentMonthNetworkUsage
-        self.updateNetworkUsageManagedObj(cmnu: objOffset, updateType: UpdateType.new, updateTargetIndex: DataIndex.offset, newUsageData: usageData, context: context)
+        saveUsageObject(objOffset, type: UpdateType.new, index: DataIndex.offset, newUsageData: usageData, context: context)
     }
     
     private func convert(target: CurrentMonthNetworkUsage) -> DUCNetworkInterFace {
@@ -183,7 +183,7 @@ class PacketUsageRecorder: NSObject {
         return managedObject
     }
     
-    func checkChangeOfDate(lastSavedDateComps: DateComponents) -> Bool {
+    private func checkChangeOfDate(lastSavedDateComps: DateComponents) -> Bool {
         let date = Date()
         let dateComps = self.getDateComponents(date: date)
         let resetOfDay = Int(UserPreferences.shared.resetOfDay)
@@ -219,7 +219,7 @@ class PacketUsageRecorder: NSObject {
         return false
     }
     
-    func getChartManagedObj(updateData: DUCNetworkInterFace, context: NSManagedObjectContext) -> DayNetworkUsage {
+    private func getChartManagedObj(updateData: DUCNetworkInterFace, context: NSManagedObjectContext) -> DayNetworkUsage {
         let managedObject = NSEntityDescription.insertNewObject(forEntityName: "DayNetworkUsage", into: context) as! DayNetworkUsage
         
         managedObject.saved_date = NSDate()
@@ -273,12 +273,12 @@ class PacketUsageRecorder: NSObject {
             lastSavedOffset = formatDataCount
         }
         
-        self.updateNetworkUsageManagedObj(cmnu: offsetUsage, updateType: .refresh, updateTargetIndex: .offset, newUsageData: nowDataCount!, context: context)
+        saveUsageObject(offsetUsage, type: .refresh, index: .offset, newUsageData: nowDataCount!, context: context)
         nextDataCount = UtilNetworkIF.addOffsetValueToUsageData(currentData: nowDataCount!, lastSavedData: lastSaved, offsetData: lastSavedOffset)
         
-        self.updateNetworkUsageManagedObj(cmnu: currentUsage, updateType: .refresh, updateTargetIndex: .current, newUsageData: nextDataCount, context: context)
+        saveUsageObject(currentUsage, type: .refresh, index: .current, newUsageData: nextDataCount, context: context)
         
-        updateChartThisMonth(beforeDataCounts: lastSaved, newDataCounts: nextDataCount, context: context)
+        updateChart(beforeDataCounts: lastSaved, newDataCounts: nextDataCount, context: context)
         lastSavedUsageCount = lastSaved
         dataUsageCount = nextDataCount
         
@@ -323,7 +323,7 @@ class PacketUsageRecorder: NSObject {
         return value.int64Value
     }
     
-    private func updateChartThisMonth(beforeDataCounts: DUCNetworkInterFace, newDataCounts: DUCNetworkInterFace, context: NSManagedObjectContext) {
+    private func updateChart(beforeDataCounts: DUCNetworkInterFace, newDataCounts: DUCNetworkInterFace, context: NSManagedObjectContext) {
         let newRecord = self.getNextRecord(beforeDataCount: beforeDataCounts, newDataCount: newDataCounts)
         let obj = self.updateChartMonthManagedObj(usageData: newRecord, managedObjectContext: context)
         

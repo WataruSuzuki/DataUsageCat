@@ -65,8 +65,8 @@ class NotifyUsageStatusViewController: HelpingMonetizeViewController,
 
     func initPercentageDisplay() {
         labelTitlePercentage.text = NSLocalizedString("month_percentage", comment:"")
-        let usageValue = UtilNetworkIF.getUsageValue(networkIf: self.dataUsageCount!)
-        let usageValueGigaByte = UtilNetworkIF.calcByteData(value: usageValue, unit: UtilNetworkIF.ByteUnit.GIGA)
+        let usageValue = PacketUsageConverter.getUsageValue(networkIf: self.dataUsageCount!)
+        let usageValueGigaByte = PacketUsageConverter.calcByteData(value: usageValue, unit: PacketUsageConverter.ByteUnit.giga)
 
         labelValuePercentage.text = String(format: "%.1f", ((usageValueGigaByte / self.userDefaultLimit) * 100)) + "%"
     }
@@ -125,10 +125,10 @@ class NotifyUsageStatusViewController: HelpingMonetizeViewController,
     }
 
     func getAimValue(index: Int) -> Float {
-        let usageValue = UtilNetworkIF.getUsageValue(networkIf: self.dataUsageCount!)
+        let usageValue = PacketUsageConverter.getUsageValue(networkIf: self.dataUsageCount!)
         let remainValue = Int64(self.userDefaultLimit * 1000 * 1000 * 1000) - usageValue
         let aimOffset = self.aimTypeArray[index]
-        let aimValue = UtilNetworkIF.calcByteData(value: remainValue, unit: UtilNetworkIF.ByteUnit.MEGA) * Float(aimOffset)
+        let aimValue = PacketUsageConverter.calcByteData(value: remainValue, unit: PacketUsageConverter.ByteUnit.mega) * Float(aimOffset)
         return aimValue
     }
 

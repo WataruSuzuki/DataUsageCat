@@ -104,10 +104,10 @@ class CommonUtilChartScrollViewController: HelpingMonetizeViewController,
             let dataOfDayArray = usages[page]
             
             let referenceValue = SelectedWeekChartView().getDayReferenceValue(userMax: self.userDefaultLimit)
-            let usageValue = UtilNetworkIF.getUsageValue(networkIf: dataOfDayArray)
+            let usageValue = PacketUsageConverter.getUsageValue(networkIf: dataOfDayArray)
             unitview.buttonUsageValue!.setTitleColor(SelectedWeekChartView.getUsageChartBarColor(usageValue: usageValue, withMaxReference: referenceValue), for: [])
-            let usageValueMegaByte = UtilNetworkIF.getCellularDataUsageByMegaByte(dataUsage: dataOfDayArray)
-            let savingValueMegaByte = UtilNetworkIF.getWifiDataUsageByMegaByte(dataUsage: dataOfDayArray)
+            let usageValueMegaByte = PacketUsageConverter.get(dataUsage: dataOfDayArray, of: .wwan, unit: .mega)
+            let savingValueMegaByte = PacketUsageConverter.get(dataUsage: dataOfDayArray, of: .wifi, unit: .mega)
             unitview.buttonUsageValue!.setTitle(String(format: "%.1f", usageValueMegaByte), for: [])
             unitview.buttonSavingValue!.setTitle(String(format: "%.1f", savingValueMegaByte), for: [])
             unitview.buttonUsageValue!.addTarget(self, action: #selector(CommonUtilChartScrollViewController.tapSummaryNetworkUsage(sender:)), for: .touchUpInside)

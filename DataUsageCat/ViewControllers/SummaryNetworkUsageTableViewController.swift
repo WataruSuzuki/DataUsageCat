@@ -126,11 +126,11 @@ class SummaryNetworkUsageTableViewController: HelpingMonetizeViewController,
         case SectionSummary.DETAIL_DATA_WIFI.rawValue:
             switch indexPath.row {
             case RowDetailWifi.ROW_DETAIL_DATA_WIFI_SEND.rawValue:
-                usageDataToFloat = UtilNetworkIF.calcByteData(value: networkIF!.wifiSend, unit: UtilNetworkIF.ByteUnit.GIGA)
+                usageDataToFloat = PacketUsageConverter.calcByteData(value: networkIF!.wifiSend, unit: PacketUsageConverter.ByteUnit.giga)
                 cell.textLabel!.text = NSLocalizedString("data_send", comment:"")
                 
             case RowDetailWifi.ROW_DETAIL_DATA_WIFI_RECEIVED.rawValue:
-                usageDataToFloat = UtilNetworkIF.calcByteData(value: networkIF!.wifiReceived, unit: UtilNetworkIF.ByteUnit.GIGA)
+                usageDataToFloat = PacketUsageConverter.calcByteData(value: networkIF!.wifiReceived, unit: PacketUsageConverter.ByteUnit.giga)
                 cell.textLabel!.text = NSLocalizedString("data_received", comment:"")
                 
             default:
@@ -142,11 +142,11 @@ class SummaryNetworkUsageTableViewController: HelpingMonetizeViewController,
         case SectionSummary.DETAIL_DATA_WWAN.rawValue:
             switch indexPath.row {
             case RowDetailWwan.ROW_DETAIL_DATA_WWAN_SEND.rawValue:
-                usageDataToFloat = UtilNetworkIF.calcByteData(value: networkIF!.wwanSend, unit: UtilNetworkIF.ByteUnit.GIGA)
+                usageDataToFloat = PacketUsageConverter.calcByteData(value: networkIF!.wwanSend, unit: PacketUsageConverter.ByteUnit.giga)
                 cell.textLabel!.text = NSLocalizedString("data_send", comment:"")
                 
             case RowDetailWwan.ROW_DETAIL_DATA_WWAN_RECEIVED.rawValue:
-                usageDataToFloat = UtilNetworkIF.calcByteData(value: networkIF!.wwanReceived, unit: UtilNetworkIF.ByteUnit.GIGA)
+                usageDataToFloat = PacketUsageConverter.calcByteData(value: networkIF!.wwanReceived, unit: PacketUsageConverter.ByteUnit.giga)
                 cell.textLabel!.text = NSLocalizedString("data_received", comment:"")
                 
             default:

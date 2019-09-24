@@ -180,8 +180,8 @@ class SelectedWeekChartView: UIView {
         if chartValue >= limitOffset {
             return frame
         }
-        let chartValueGigaByte = UtilNetworkIF.calcByteData(value: chartValue, unit: UtilNetworkIF.ByteUnit.GIGA)
-        let limitValueGigaByte = UtilNetworkIF.calcByteData(value: limitOffset, unit: UtilNetworkIF.ByteUnit.GIGA)
+        let chartValueGigaByte = PacketUsageConverter.calcByteData(value: chartValue, unit: PacketUsageConverter.ByteUnit.giga)
+        let limitValueGigaByte = PacketUsageConverter.calcByteData(value: limitOffset, unit: PacketUsageConverter.ByteUnit.giga)
         let offsetHeightValue = (chartValueGigaByte / limitValueGigaByte) 
         frame.size.height = frame.size.height * CGFloat(offsetHeightValue)
         let offsetOriginY = currentFrame.size.height - currentFrame.size.height * CGFloat(offsetHeightValue)

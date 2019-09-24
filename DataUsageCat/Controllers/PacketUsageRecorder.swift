@@ -274,7 +274,7 @@ class PacketUsageRecorder: NSObject {
         }
         
         saveUsageObject(offsetUsage, type: .refresh, index: .offset, newUsageData: nowDataCount!, context: context)
-        nextDataCount = UtilNetworkIF.addOffsetValueToUsageData(currentData: nowDataCount!, lastSavedData: lastSaved, offsetData: lastSavedOffset)
+        nextDataCount = PacketUsageConverter.appendToUsageData(currentData: nowDataCount!, lastSavedData: lastSaved, offsetData: lastSavedOffset)
         
         saveUsageObject(currentUsage, type: .refresh, index: .current, newUsageData: nextDataCount, context: context)
         
@@ -372,7 +372,7 @@ class PacketUsageRecorder: NSObject {
         let reverseArray = recentArray.reversed()
         //var reverseArray = recentArray.reverseObjectEnumerator().allObjects
         for day in reverseArray {
-            recentUsageValue += Int64(UtilNetworkIF.getUsageValue(networkIf: day))
+            recentUsageValue += Int64(PacketUsageConverter.getUsageValue(networkIf: day))
             if dayCount == 3 {
                 break
             }

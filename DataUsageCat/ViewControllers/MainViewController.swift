@@ -199,8 +199,8 @@ class MainViewController: CommonUtilChartScrollViewController,
     
     func setNeedlePosition() {
         let usermax = self.userDefaultLimit
-        let savingUsageValue = UtilNetworkIF.getWifiDataUsageByGigaByte(dataUsage: dataUsageCount!)
-        let usageValue = UtilNetworkIF.getCellularDataUsageByGigaByte(dataUsage: dataUsageCount!)
+        let savingUsageValue = PacketUsageConverter.get(dataUsage: dataUsageCount!, of: .wifi, unit: .giga)
+        let usageValue = PacketUsageConverter.get(dataUsage: dataUsageCount!, of: .wwan, unit: .giga)
         self.startAnimationMeterNeedle(dataUsage: usageValue, DurationTime: TIME_DELAY_1SECOND)
         let num = NSNumber(value: usageValue)
         let delay = Double(TIME_DELAY_1SECOND) * Double(NSEC_PER_SEC)
@@ -528,8 +528,8 @@ class MainViewController: CommonUtilChartScrollViewController,
     
     @IBAction func tapSegmentDataUsageType(sender: AnyObject) {
         let usermax = self.userDefaultLimit
-        let savingUsageValue = UtilNetworkIF.getWifiDataUsageByGigaByte(dataUsage: dataUsageCount!)
-        let usageValue = UtilNetworkIF.getCellularDataUsageByGigaByte(dataUsage: dataUsageCount!)
+        let savingUsageValue = PacketUsageConverter.get(dataUsage: dataUsageCount!, of: .wifi, unit: .giga)
+        let usageValue = PacketUsageConverter.get(dataUsage: dataUsageCount!, of: .wwan, unit: .giga)
         self.setCurrentMonthValueLabelAndButton(usermax: usermax, andWifiUsage: savingUsageValue, andCellularUsage: usageValue)
     }
     

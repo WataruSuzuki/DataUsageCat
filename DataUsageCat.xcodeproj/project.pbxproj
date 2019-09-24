@@ -56,7 +56,7 @@
 		96F8F0931D28A7870083BEDB /* UtilLocalNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F8F05B1D28A7860083BEDB /* UtilLocalNotification.swift */; };
 		96F8F0941D28A7870083BEDB /* PacketUsageRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F8F05C1D28A7860083BEDB /* PacketUsageRecorder.swift */; };
 		96F8F0951D28A7870083BEDB /* UtilNCMB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F8F05D1D28A7860083BEDB /* UtilNCMB.swift */; };
-		96F8F0961D28A7870083BEDB /* UtilNetworkIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F8F05E1D28A7860083BEDB /* UtilNetworkIF.swift */; };
+		96F8F0961D28A7870083BEDB /* PacketUsageConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F8F05E1D28A7860083BEDB /* PacketUsageConverter.swift */; };
 		96F8F0971D28A7870083BEDB /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F8F05F1D28A7860083BEDB /* UserPreferences.swift */; };
 		96F8F0981D28A7870083BEDB /* AboutAimViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F8F0611D28A7860083BEDB /* AboutAimViewController.swift */; };
 		96F8F0991D28A7870083BEDB /* CommonUtilChartScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F8F0621D28A7860083BEDB /* CommonUtilChartScrollViewController.swift */; };
@@ -191,7 +191,7 @@
 		96F8F05B1D28A7860083BEDB /* UtilLocalNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilLocalNotification.swift; sourceTree = "<group>"; };
 		96F8F05C1D28A7860083BEDB /* PacketUsageRecorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PacketUsageRecorder.swift; sourceTree = "<group>"; };
 		96F8F05D1D28A7860083BEDB /* UtilNCMB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilNCMB.swift; sourceTree = "<group>"; };
-		96F8F05E1D28A7860083BEDB /* UtilNetworkIF.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilNetworkIF.swift; sourceTree = "<group>"; };
+		96F8F05E1D28A7860083BEDB /* PacketUsageConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PacketUsageConverter.swift; sourceTree = "<group>"; };
 		96F8F05F1D28A7860083BEDB /* UserPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
 		96F8F0611D28A7860083BEDB /* AboutAimViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutAimViewController.swift; sourceTree = "<group>"; };
 		96F8F0621D28A7860083BEDB /* CommonUtilChartScrollViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonUtilChartScrollViewController.swift; sourceTree = "<group>"; };
@@ -292,6 +292,7 @@
 			isa = PBXGroup;
 			children = (
 				96F8F05C1D28A7860083BEDB /* PacketUsageRecorder.swift */,
+				96F8F05E1D28A7860083BEDB /* PacketUsageConverter.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -449,7 +450,6 @@
 				96F8F05A1D28A7860083BEDB /* UtilCloudKit.swift */,
 				96F8F05B1D28A7860083BEDB /* UtilLocalNotification.swift */,
 				96F8F05D1D28A7860083BEDB /* UtilNCMB.swift */,
-				96F8F05E1D28A7860083BEDB /* UtilNetworkIF.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -872,7 +872,7 @@
 				96F8F08F1D28A7870083BEDB /* DUCCsvHelper.m in Sources */,
 				96F8F0941D28A7870083BEDB /* PacketUsageRecorder.swift in Sources */,
 				964215E21D28AA5100E7E29A /* DayNetworkUsage+CoreDataClass.swift in Sources */,
-				96F8F0961D28A7870083BEDB /* UtilNetworkIF.swift in Sources */,
+				96F8F0961D28A7870083BEDB /* PacketUsageConverter.swift in Sources */,
 				96F8F09D1D28A7870083BEDB /* MainViewController.swift in Sources */,
 				9660BF501D83E280006A3FF1 /* DetailAboutThisAppViewController.swift in Sources */,
 			);

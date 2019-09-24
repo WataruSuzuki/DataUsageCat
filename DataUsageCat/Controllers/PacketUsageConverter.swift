@@ -1,5 +1,5 @@
 //
-//  UtilNetworkIF.swift
+//  PacketUsageConverter.swift
 //  DataUsageCat
 //
 //  Created by Wataru Suzuki on 2016/06/01.
@@ -8,13 +8,8 @@
 
 import UIKit
 
-class UtilNetworkIF: NetService {
+class PacketUsageConverter: NSObject {
     
-    var wifiSend: Int64 = 0
-    var wifiReceived: Int64 = 0
-    var wwanSend: Int64 = 0
-    var wwanReceived: Int64 = 0
-
     private static func getResultValue(newValue: Int64, lastSavedData lastSavedValue: Int64, offsetData offsetValue: Int64) -> Int64 {
         var ret = (lastSavedValue + newValue - offsetValue)
         if 0 != lastSavedValue && lastSavedValue > ret {
@@ -26,7 +21,7 @@ class UtilNetworkIF: NetService {
         return ret
     }
     
-    static func addOffsetValueToUsageData(currentData: DUCNetworkInterFace, lastSavedData lastSavedUsage: DUCNetworkInterFace, offsetData offsetUsage: DUCNetworkInterFace) -> DUCNetworkInterFace {
+    static func appendToUsageData(currentData: DUCNetworkInterFace, lastSavedData lastSavedUsage: DUCNetworkInterFace, offsetData offsetUsage: DUCNetworkInterFace) -> DUCNetworkInterFace {
         let WiFiSent = getResultValue(newValue: currentData.wifiSend, lastSavedData: lastSavedUsage.wifiSend, offsetData: offsetUsage.wifiSend)
         let WiFiReceived = getResultValue(newValue: currentData.wifiReceived, lastSavedData: lastSavedUsage.wifiReceived, offsetData: offsetUsage.wifiReceived)
         let WWANSent = getResultValue(newValue: currentData.wwanSend, lastSavedData: lastSavedUsage.wwanSend, offsetData: offsetUsage.wwanSend)
@@ -43,26 +38,11 @@ class UtilNetworkIF: NetService {
         return networkIf.wifiSend + networkIf.wifiReceived
     }
     
-    class func getWifiDataUsageByGigaByte(dataUsage: DUCNetworkInterFace) -> Float {
-        var wifiUsageValue = calcByteData(value: dataUsage.wifiSend, unit: .GIGA)
-        wifiUsageValue += calcByteData(value: dataUsage.wifiReceived, unit: .GIGA)
-        return wifiUsageValue
-    }
-    
-    class func getCellularDataUsageByGigaByte(dataUsage: DUCNetworkInterFace) -> Float {
-        var usageValue = calcByteData(value: dataUsage.wwanSend, unit: .GIGA)
-        usageValue += calcByteData(value: dataUsage.wwanReceived, unit: .GIGA)
-        return usageValue
-    }
-    
-    class func getCellularDataUsageByMegaByte(dataUsage: DUCNetworkInterFace) -> Float {
-        let wwanValue = dataUsage.wwanSend + dataUsage.wwanReceived
-        return calcByteData(value: wwanValue, unit: .MEGA)
-    }
-    
-    class func getWifiDataUsageByMegaByte(dataUsage: DUCNetworkInterFace) -> Float {
-        let wifiValue = dataUsage.wifiSend + dataUsage.wifiReceived
-        return calcByteData(value: wifiValue, unit: .MEGA)
+    class func get(dataUsage: DUCNetworkInterFace, of: PacketType, unit: ByteUnit) -> Float {
+        let values = (of == .wifi
+            ? dataUsage.wifiSend + dataUsage.wifiReceived
+            : dataUsage.wwanSend + dataUsage.wwanReceived)
+        return calcByteData(value: values, unit: unit)
     }
     
     class func calcByteData(value: Int64, unit: ByteUnit) -> Float {
@@ -71,22 +51,27 @@ class UtilNetworkIF: NetService {
         for num in 1...unit.rawValue {
             calcedValue /= Float(1000)
             #if ENABLE_SWIFT_LOG
-            print("calcedValue = \(calcedValue)" + (ByteUnit(rawValue: num)?.toString())!)
+            print("calcedValue = \(calcedValue)" + (ByteUnit(rawValue: num)?.name())!)
             #endif//ENABLE_SWIFT_LOG
         }
         return calcedValue
     }
     
+    enum PacketType: Int, CaseIterable {
+        case wifi = 0,
+        wwan
+    }
+    
     enum ByteUnit: Int {
-        case KILO = 1,
-        MEGA,
-        GIGA
+        case kilo = 1,
+        mega,
+        giga
         
-        func toString() -> String {
+        func name() -> String {
             switch self {
-            case .KILO: return "KB"
-            case .MEGA: return "MB"
-            case .GIGA: return "GB"
+            case .kilo: return "KB"
+            case .mega: return "MB"
+            case .giga: return "GB"
             }
         }
     }

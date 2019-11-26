@@ -9,6 +9,4 @@
 #import "DJKUtilLocale.h"
 
 #import <NCMB/NCMB.h>
-//#import "YPBubbleTransition.h"
-//#import "RMPZoomTransitionAnimator.h"
 

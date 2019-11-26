@@ -2,8 +2,8 @@
 //  PacketUsageStore.swift
 //  DataUsageCat
 //
-//  Created by 鈴木 航 on 2020/01/23.
-//  Copyright © 2020 鈴木 航. All rights reserved.
+//  Created by Wataru Suzuki on 2020/01/23.
+//  Copyright © 2020 Wataru Suzuki. All rights reserved.
 //
 
 import UIKit

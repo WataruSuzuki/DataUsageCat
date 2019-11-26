@@ -14,7 +14,7 @@ pod install --repo-update
 
 # Change xcode version
   # run: |
-sudo xcode-select -s '/Applications/Xcode_11.3.app/Contents/Developer'
+# sudo xcode-select -s '/Applications/Xcode_11.3.app/Contents/Developer'
 
 # Check environment
   # run: |

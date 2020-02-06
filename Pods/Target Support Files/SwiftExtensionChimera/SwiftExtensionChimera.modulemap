@@ -1,0 +1,6 @@
+framework module SwiftExtensionChimera {
+  umbrella header "SwiftExtensionChimera-umbrella.h"
+
+  export *
+  module * { export * }
+}

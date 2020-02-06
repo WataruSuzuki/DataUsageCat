@@ -25,8 +25,14 @@
 		9687A2C31D281F1600C6B9C1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9687A2C11D281F1600C6B9C1 /* LaunchScreen.storyboard */; };
 		9687A2CE1D281F1600C6B9C1 /* DataUsageCatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9687A2CD1D281F1600C6B9C1 /* DataUsageCatTests.swift */; };
 		9687A2D91D281F1600C6B9C1 /* DataUsageCatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9687A2D81D281F1600C6B9C1 /* DataUsageCatUITests.swift */; };
+		96AD13EA242F672F001A2863 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96AD13E8242F672F001A2863 /* Main.storyboard */; };
+		96AD13F4242F7172001A2863 /* MeterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AD13F3242F7172001A2863 /* MeterView.swift */; };
+		96AD13F6242F7184001A2863 /* MeterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 96AD13F5242F7184001A2863 /* MeterView.xib */; };
+		96AD13F9242F7A17001A2863 /* TopCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AD13F7242F7A17001A2863 /* TopCollectionViewCell.swift */; };
+		96AD13FA242F7A17001A2863 /* TopCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 96AD13F8242F7A17001A2863 /* TopCollectionViewCell.xib */; };
 		96D80CF11D56CA4400F8F019 /* Stickers.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96D80CF01D56CA4400F8F019 /* Stickers.xcassets */; };
 		96D80CF51D56CA4400F8F019 /* Sticker.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 96D80CEE1D56CA4400F8F019 /* Sticker.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		96E6C0752494EE8D005798E0 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E6C0742494EE8D005798E0 /* HomeViewController.swift */; };
 		96F8F0721D28A7870083BEDB /* DataUsageCat.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = 96F8F0331D28A7860083BEDB /* DataUsageCat.entitlements */; };
 		96F8F0731D28A7870083BEDB /* meow.wav in Resources */ = {isa = PBXBuildFile; fileRef = 96F8F0371D28A7860083BEDB /* meow.wav */; };
 		96F8F0751D28A7870083BEDB /* cat_box_sitting.png in Resources */ = {isa = PBXBuildFile; fileRef = 96F8F03A1D28A7860083BEDB /* cat_box_sitting.png */; };
@@ -59,11 +65,11 @@
 		96F8F0961D28A7870083BEDB /* PacketUsageConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F8F05E1D28A7860083BEDB /* PacketUsageConverter.swift */; };
 		96F8F0971D28A7870083BEDB /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F8F05F1D28A7860083BEDB /* UserPreferences.swift */; };
 		96F8F0981D28A7870083BEDB /* AboutAimViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F8F0611D28A7860083BEDB /* AboutAimViewController.swift */; };
-		96F8F0991D28A7870083BEDB /* CommonUtilChartScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F8F0621D28A7860083BEDB /* CommonUtilChartScrollViewController.swift */; };
+		96F8F0991D28A7870083BEDB /* ChartViewController+Scroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F8F0621D28A7860083BEDB /* ChartViewController+Scroll.swift */; };
 		96F8F09A1D28A7870083BEDB /* DetailSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F8F0631D28A7860083BEDB /* DetailSettingViewController.swift */; };
-		96F8F09B1D28A7870083BEDB /* DetailThisMonthUsageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F8F0641D28A7860083BEDB /* DetailThisMonthUsageViewController.swift */; };
+		96F8F09B1D28A7870083BEDB /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F8F0641D28A7860083BEDB /* ChartViewController.swift */; };
 		96F8F09C1D28A7870083BEDB /* AboutThisAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F8F0651D28A7870083BEDB /* AboutThisAppViewController.swift */; };
-		96F8F09D1D28A7870083BEDB /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F8F0661D28A7870083BEDB /* MainViewController.swift */; };
+		96F8F09D1D28A7870083BEDB /* MeterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F8F0661D28A7870083BEDB /* MeterViewController.swift */; };
 		96F8F09E1D28A7870083BEDB /* NotifyUsageStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F8F0671D28A7870083BEDB /* NotifyUsageStatusViewController.swift */; };
 		96F8F09F1D28A7870083BEDB /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F8F0681D28A7870083BEDB /* SettingsViewController.swift */; };
 		96F8F0A01D28A7870083BEDB /* SummaryNetworkUsageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F8F0691D28A7870083BEDB /* SummaryNetworkUsageTableViewController.swift */; };
@@ -76,6 +82,10 @@
 		96F8F0B01D28A7E70083BEDB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 96F8F0A81D28A7E70083BEDB /* InfoPlist.strings */; };
 		96F8F0B11D28A7E70083BEDB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 96F8F0AA1D28A7E70083BEDB /* Localizable.strings */; };
 		96F8F0B31D28A7E70083BEDB /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96F8F0AE1D28A7E70083BEDB /* Main_iPhone.storyboard */; };
+		CC5CCDED2439C1FC0041F5E6 /* Meter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC5CCDEB2439C1FC0041F5E6 /* Meter.storyboard */; };
+		CC5CCDF12439C74E0041F5E6 /* Summary.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC5CCDEF2439C74E0041F5E6 /* Summary.storyboard */; };
+		CC5CCDF9243AF9790041F5E6 /* Chart.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC5CCDF7243AF9790041F5E6 /* Chart.storyboard */; };
+		CC5CCDFC243AFBBC0041F5E6 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC5CCDFA243AFBBC0041F5E6 /* Setting.storyboard */; };
 		CCD08EAB2316693F007116AA /* HelpingMonetizeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD08EAA2316693F007116AA /* HelpingMonetizeViewController.swift */; };
 		CCD08EAE23166EB3007116AA /* DJKViewUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = CCD08EAC23166EB3007116AA /* DJKViewUtils.m */; };
 		CCD08EB123166ED7007116AA /* DJKUtilLocale.m in Sources */ = {isa = PBXBuildFile; fileRef = CCD08EAF23166ED7007116AA /* DJKUtilLocale.m */; };
@@ -153,9 +163,15 @@
 		9687A2D41D281F1600C6B9C1 /* DataUsageCatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DataUsageCatUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9687A2D81D281F1600C6B9C1 /* DataUsageCatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataUsageCatUITests.swift; sourceTree = "<group>"; };
 		9687A2DA1D281F1600C6B9C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		96AD13E9242F672F001A2863 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		96AD13F3242F7172001A2863 /* MeterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterView.swift; sourceTree = "<group>"; };
+		96AD13F5242F7184001A2863 /* MeterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MeterView.xib; sourceTree = "<group>"; };
+		96AD13F7242F7A17001A2863 /* TopCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopCollectionViewCell.swift; sourceTree = "<group>"; };
+		96AD13F8242F7A17001A2863 /* TopCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopCollectionViewCell.xib; sourceTree = "<group>"; };
 		96D80CEE1D56CA4400F8F019 /* Sticker.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Sticker.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		96D80CF01D56CA4400F8F019 /* Stickers.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Stickers.xcassets; sourceTree = "<group>"; };
 		96D80CF21D56CA4400F8F019 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		96E6C0742494EE8D005798E0 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		96F8F02D1D28A5F50083BEDB /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		96F8F02E1D28A6180083BEDB /* DataUsageCat 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "DataUsageCat 2.xcdatamodel"; sourceTree = "<group>"; };
 		96F8F02F1D28A62A0083BEDB /* DataUsageCat 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "DataUsageCat 3.xcdatamodel"; sourceTree = "<group>"; };
@@ -194,11 +210,11 @@
 		96F8F05E1D28A7860083BEDB /* PacketUsageConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PacketUsageConverter.swift; sourceTree = "<group>"; };
 		96F8F05F1D28A7860083BEDB /* UserPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
 		96F8F0611D28A7860083BEDB /* AboutAimViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutAimViewController.swift; sourceTree = "<group>"; };
-		96F8F0621D28A7860083BEDB /* CommonUtilChartScrollViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonUtilChartScrollViewController.swift; sourceTree = "<group>"; };
+		96F8F0621D28A7860083BEDB /* ChartViewController+Scroll.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ChartViewController+Scroll.swift"; sourceTree = "<group>"; };
 		96F8F0631D28A7860083BEDB /* DetailSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailSettingViewController.swift; sourceTree = "<group>"; };
-		96F8F0641D28A7860083BEDB /* DetailThisMonthUsageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailThisMonthUsageViewController.swift; sourceTree = "<group>"; };
+		96F8F0641D28A7860083BEDB /* ChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
 		96F8F0651D28A7870083BEDB /* AboutThisAppViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutThisAppViewController.swift; sourceTree = "<group>"; };
-		96F8F0661D28A7870083BEDB /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		96F8F0661D28A7870083BEDB /* MeterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeterViewController.swift; sourceTree = "<group>"; };
 		96F8F0671D28A7870083BEDB /* NotifyUsageStatusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotifyUsageStatusViewController.swift; sourceTree = "<group>"; };
 		96F8F0681D28A7870083BEDB /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		96F8F0691D28A7870083BEDB /* SummaryNetworkUsageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryNetworkUsageTableViewController.swift; sourceTree = "<group>"; };
@@ -212,6 +228,10 @@
 		96F8F0AB1D28A7E70083BEDB /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		96F8F0AF1D28A7E70083BEDB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		A700A22843B21031FF66B7D6 /* Pods_DataUsageCat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DataUsageCat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC5CCDEC2439C1FC0041F5E6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Meter.storyboard; sourceTree = "<group>"; };
+		CC5CCDF02439C74E0041F5E6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Summary.storyboard; sourceTree = "<group>"; };
+		CC5CCDF8243AF9790041F5E6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Chart.storyboard; sourceTree = "<group>"; };
+		CC5CCDFB243AFBBC0041F5E6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Setting.storyboard; sourceTree = "<group>"; };
 		CCD08EAA2316693F007116AA /* HelpingMonetizeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpingMonetizeViewController.swift; sourceTree = "<group>"; };
 		CCD08EAC23166EB3007116AA /* DJKViewUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJKViewUtils.m; sourceTree = "<group>"; };
 		CCD08EAD23166EB3007116AA /* DJKViewUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJKViewUtils.h; sourceTree = "<group>"; };
@@ -297,14 +317,18 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-		9674846023D9D96B00A5E947 /* InterfaceBuilders */ = {
+		9674846023D9D96B00A5E947 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				96AD13E8242F672F001A2863 /* Main.storyboard */,
+				CC5CCDEB2439C1FC0041F5E6 /* Meter.storyboard */,
+				CC5CCDEF2439C74E0041F5E6 /* Summary.storyboard */,
+				CC5CCDF7243AF9790041F5E6 /* Chart.storyboard */,
+				CC5CCDFA243AFBBC0041F5E6 /* Setting.storyboard */,
 				9687A2C11D281F1600C6B9C1 /* LaunchScreen.storyboard */,
-				96007AEC1D604AF8006BAF2C /* Main_iPad.storyboard */,
-				96F8F0AE1D28A7E70083BEDB /* Main_iPhone.storyboard */,
+				CC5CCDEE2439C2080041F5E6 /* Legacy */,
 			);
-			name = InterfaceBuilders;
+			name = Storyboards;
 			sourceTree = "<group>";
 		};
 		9687A2A91D281F1500C6B9C1 = {
@@ -343,7 +367,7 @@
 				96F8F0601D28A7860083BEDB /* ViewControllers */,
 				96F8F06A1D28A7870083BEDB /* Views */,
 				9687A2B51D281F1600C6B9C1 /* AppDelegate.swift */,
-				9674846023D9D96B00A5E947 /* InterfaceBuilders */,
+				9674846023D9D96B00A5E947 /* Storyboards */,
 				9687A2BF1D281F1600C6B9C1 /* Assets.xcassets */,
 				96F8F0A81D28A7E70083BEDB /* InfoPlist.strings */,
 				96F8F0AA1D28A7E70083BEDB /* Localizable.strings */,
@@ -457,15 +481,15 @@
 		96F8F0601D28A7860083BEDB /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				CCD08EA9231668B8007116AA /* Commonized */,
-				96F8F0611D28A7860083BEDB /* AboutAimViewController.swift */,
-				96F8F0621D28A7860083BEDB /* CommonUtilChartScrollViewController.swift */,
-				96F8F0631D28A7860083BEDB /* DetailSettingViewController.swift */,
-				96F8F0641D28A7860083BEDB /* DetailThisMonthUsageViewController.swift */,
-				96F8F0651D28A7870083BEDB /* AboutThisAppViewController.swift */,
-				96F8F0661D28A7870083BEDB /* MainViewController.swift */,
+				96E6C0742494EE8D005798E0 /* HomeViewController.swift */,
+				96F8F0661D28A7870083BEDB /* MeterViewController.swift */,
 				96F8F0671D28A7870083BEDB /* NotifyUsageStatusViewController.swift */,
+				96F8F0641D28A7860083BEDB /* ChartViewController.swift */,
 				96F8F0681D28A7870083BEDB /* SettingsViewController.swift */,
+				CCD08EA9231668B8007116AA /* Extension */,
+				96F8F0611D28A7860083BEDB /* AboutAimViewController.swift */,
+				96F8F0631D28A7860083BEDB /* DetailSettingViewController.swift */,
+				96F8F0651D28A7870083BEDB /* AboutThisAppViewController.swift */,
 				96F8F0691D28A7870083BEDB /* SummaryNetworkUsageTableViewController.swift */,
 				9660BF4F1D83E280006A3FF1 /* DetailAboutThisAppViewController.swift */,
 				600F66541DE2F651003167C5 /* DebugSettingViewController.swift */,
@@ -476,22 +500,36 @@
 		96F8F06A1D28A7870083BEDB /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				96AD13F3242F7172001A2863 /* MeterView.swift */,
+				96AD13F5242F7184001A2863 /* MeterView.xib */,
 				96F8F06B1D28A7870083BEDB /* PickerViewCell.swift */,
 				96F8F06C1D28A7870083BEDB /* PickerViewCell.xib */,
 				96F8F06D1D28A7870083BEDB /* SelectedDayUnitView.swift */,
 				96F8F06E1D28A7870083BEDB /* SelectedDayUnitView.xib */,
 				96F8F0701D28A7870083BEDB /* SelectedWeekChartView.swift */,
 				96F8F0711D28A7870083BEDB /* SelectedWeekChartView.xib */,
+				96AD13F7242F7A17001A2863 /* TopCollectionViewCell.swift */,
+				96AD13F8242F7A17001A2863 /* TopCollectionViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
 		};
-		CCD08EA9231668B8007116AA /* Commonized */ = {
+		CC5CCDEE2439C2080041F5E6 /* Legacy */ = {
+			isa = PBXGroup;
+			children = (
+				96007AEC1D604AF8006BAF2C /* Main_iPad.storyboard */,
+				96F8F0AE1D28A7E70083BEDB /* Main_iPhone.storyboard */,
+			);
+			path = Legacy;
+			sourceTree = "<group>";
+		};
+		CCD08EA9231668B8007116AA /* Extension */ = {
 			isa = PBXGroup;
 			children = (
 				CCD08EAA2316693F007116AA /* HelpingMonetizeViewController.swift */,
+				96F8F0621D28A7860083BEDB /* ChartViewController+Scroll.swift */,
 			);
-			path = Commonized;
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -582,7 +620,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
 				LastUpgradeCheck = 0940;
-				ORGANIZATIONNAME = "鈴木 航";
+				ORGANIZATIONNAME = WataruSuzuki;
 				TargetAttributes = {
 					9687A2B11D281F1500C6B9C1 = {
 						CreatedOnToolsVersion = 8.0;
@@ -659,10 +697,14 @@
 				96F8F0881D28A7870083BEDB /* iTunesArtwork in Resources */,
 				96F8F0861D28A7870083BEDB /* Icon@2x.png in Resources */,
 				96F8F0891D28A7870083BEDB /* iTunesArtwork@2x in Resources */,
+				CC5CCDED2439C1FC0041F5E6 /* Meter.storyboard in Resources */,
 				96F8F07F1D28A7870083BEDB /* Icon-iPad-Spotlight-iOS7@2x.png in Resources */,
 				96F8F0751D28A7870083BEDB /* cat_box_sitting.png in Resources */,
 				96F8F0801D28A7870083BEDB /* Icon-Small-50.png in Resources */,
 				96F8F07D1D28A7870083BEDB /* Icon-76.png in Resources */,
+				CC5CCDF9243AF9790041F5E6 /* Chart.storyboard in Resources */,
+				96AD13FA242F7A17001A2863 /* TopCollectionViewCell.xib in Resources */,
+				96AD13F6242F7184001A2863 /* MeterView.xib in Resources */,
 				96F8F08A1D28A7870083BEDB /* jarashi.png in Resources */,
 				96F8F0831D28A7870083BEDB /* Icon-Spotlight-iOS7.png in Resources */,
 				96F8F0731D28A7870083BEDB /* meow.wav in Resources */,
@@ -674,6 +716,7 @@
 				96F8F0841D28A7870083BEDB /* Icon-Spotlight-iOS7@2x.png in Resources */,
 				96F8F0A41D28A7870083BEDB /* SelectedDayUnitView.xib in Resources */,
 				9687A2C31D281F1600C6B9C1 /* LaunchScreen.storyboard in Resources */,
+				CC5CCDF12439C74E0041F5E6 /* Summary.storyboard in Resources */,
 				96F8F0811D28A7870083BEDB /* Icon-Small.png in Resources */,
 				96F8F0A71D28A7870083BEDB /* SelectedWeekChartView.xib in Resources */,
 				96F8F0B11D28A7E70083BEDB /* Localizable.strings in Resources */,
@@ -682,11 +725,13 @@
 				96F8F0821D28A7870083BEDB /* Icon-Small@2x.png in Resources */,
 				96F8F0721D28A7870083BEDB /* DataUsageCat.entitlements in Resources */,
 				96F8F08D1D28A7870083BEDB /* Settings.bundle in Resources */,
+				96AD13EA242F672F001A2863 /* Main.storyboard in Resources */,
 				96F8F07B1D28A7870083BEDB /* Icon-72.png in Resources */,
 				96F8F0A21D28A7870083BEDB /* PickerViewCell.xib in Resources */,
 				96F8F07E1D28A7870083BEDB /* Icon-76@2x.png in Resources */,
 				964215E51D28AB0500E7E29A /* GoogleService-Info.plist in Resources */,
 				96007AEE1D604AF8006BAF2C /* Main_iPad.storyboard in Resources */,
+				CC5CCDFC243AFBBC0041F5E6 /* Setting.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -767,8 +812,8 @@
 				"${BUILT_PRODUCTS_DIR}/Protobuf/protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/PureLayout/PureLayout.framework",
 				"${BUILT_PRODUCTS_DIR}/RMPZoomTransitionAnimator/RMPZoomTransitionAnimator.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftExtensionChimera/SwiftExtensionChimera.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyStoreKit/SwiftyStoreKit.framework",
-				"${BUILT_PRODUCTS_DIR}/TinyConstraints/TinyConstraints.framework",
 				"${BUILT_PRODUCTS_DIR}/ZFDragableModalTransition/ZFDragableModalTransition.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -783,8 +828,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PureLayout.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RMPZoomTransitionAnimator.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftExtensionChimera.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyStoreKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TinyConstraints.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ZFDragableModalTransition.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -844,6 +889,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96AD13F9242F7A17001A2863 /* TopCollectionViewCell.swift in Sources */,
 				96F8F0931D28A7870083BEDB /* UtilLocalNotification.swift in Sources */,
 				964215E31D28AA5100E7E29A /* DayNetworkUsage+CoreDataProperties.swift in Sources */,
 				600F66551DE2F651003167C5 /* DebugSettingViewController.swift in Sources */,
@@ -852,7 +898,7 @@
 				964215E11D28AA5100E7E29A /* CurrentMonthNetworkUsage+CoreDataProperties.swift in Sources */,
 				9674846223D9DA7000A5E947 /* PacketUsageStore.swift in Sources */,
 				96F8F0981D28A7870083BEDB /* AboutAimViewController.swift in Sources */,
-				96F8F09B1D28A7870083BEDB /* DetailThisMonthUsageViewController.swift in Sources */,
+				96F8F09B1D28A7870083BEDB /* ChartViewController.swift in Sources */,
 				964215E01D28AA5100E7E29A /* CurrentMonthNetworkUsage+CoreDataClass.swift in Sources */,
 				96F8F0971D28A7870083BEDB /* UserPreferences.swift in Sources */,
 				96F8F0A11D28A7870083BEDB /* PickerViewCell.swift in Sources */,
@@ -862,20 +908,22 @@
 				96F8F09A1D28A7870083BEDB /* DetailSettingViewController.swift in Sources */,
 				9687A2B61D281F1600C6B9C1 /* AppDelegate.swift in Sources */,
 				96F8F0901D28A7870083BEDB /* DUCNetworkInterFace.m in Sources */,
+				96E6C0752494EE8D005798E0 /* HomeViewController.swift in Sources */,
 				CCD08EB123166ED7007116AA /* DJKUtilLocale.m in Sources */,
 				96F8F0A61D28A7870083BEDB /* SelectedWeekChartView.swift in Sources */,
 				CCD08EAB2316693F007116AA /* HelpingMonetizeViewController.swift in Sources */,
 				96F8F0951D28A7870083BEDB /* UtilNCMB.swift in Sources */,
 				96F8F0921D28A7870083BEDB /* UtilCloudKit.swift in Sources */,
 				96F8F09F1D28A7870083BEDB /* SettingsViewController.swift in Sources */,
-				96F8F0991D28A7870083BEDB /* CommonUtilChartScrollViewController.swift in Sources */,
+				96AD13F4242F7172001A2863 /* MeterView.swift in Sources */,
+				96F8F0991D28A7870083BEDB /* ChartViewController+Scroll.swift in Sources */,
 				96F8F09E1D28A7870083BEDB /* NotifyUsageStatusViewController.swift in Sources */,
 				96F8F09C1D28A7870083BEDB /* AboutThisAppViewController.swift in Sources */,
 				96F8F08F1D28A7870083BEDB /* DUCCsvHelper.m in Sources */,
 				96F8F0941D28A7870083BEDB /* PacketUsageRecorder.swift in Sources */,
 				964215E21D28AA5100E7E29A /* DayNetworkUsage+CoreDataClass.swift in Sources */,
 				96F8F0961D28A7870083BEDB /* PacketUsageConverter.swift in Sources */,
-				96F8F09D1D28A7870083BEDB /* MainViewController.swift in Sources */,
+				96F8F09D1D28A7870083BEDB /* MeterViewController.swift in Sources */,
 				9660BF501D83E280006A3FF1 /* DetailAboutThisAppViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -935,6 +983,14 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+		96AD13E8242F672F001A2863 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				96AD13E9242F672F001A2863 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
 		96F8F0A81D28A7E70083BEDB /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -960,6 +1016,38 @@
 				964215D61D28A8C000E7E29A /* ja */,
 			);
 			name = Main_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		CC5CCDEB2439C1FC0041F5E6 /* Meter.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CC5CCDEC2439C1FC0041F5E6 /* Base */,
+			);
+			name = Meter.storyboard;
+			sourceTree = "<group>";
+		};
+		CC5CCDEF2439C74E0041F5E6 /* Summary.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CC5CCDF02439C74E0041F5E6 /* Base */,
+			);
+			name = Summary.storyboard;
+			sourceTree = "<group>";
+		};
+		CC5CCDF7243AF9790041F5E6 /* Chart.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CC5CCDF8243AF9790041F5E6 /* Base */,
+			);
+			name = Chart.storyboard;
+			sourceTree = "<group>";
+		};
+		CC5CCDFA243AFBBC0041F5E6 /* Setting.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CC5CCDFB243AFBBC0041F5E6 /* Base */,
+			);
+			name = Setting.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

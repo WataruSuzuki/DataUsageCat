@@ -18,7 +18,7 @@ class AppDelegate: UIResponder,
 
     var window: UIWindow?
     
-    var isUnlockAd: Bool = false
+//    var isUnlockAd: Bool = false
     var storyBoardName: String!
     var countAdMobInterstitial: Int = 0
     let recorder = PacketUsageRecorder()
@@ -36,14 +36,8 @@ class AppDelegate: UIResponder,
         }
         
         recorder.getNetworkUsageArrayData(context: packetStore.context)
-        isUnlockAd = false
-        
-        if #available(iOS 10, *) {
-            //do nothing.
-        } else {
-            if let localNotification = launchOptions?[UIApplication.LaunchOptionsKey.localNotification] as? UILocalNotification {
-                handleSilentPushNCMB(notification: localNotification, applicationState: .background)
-            }
+        if let localNotification = launchOptions?[UIApplication.LaunchOptionsKey.localNotification] as? UILocalNotification {
+            handleSilentPushNCMB(notification: localNotification, applicationState: .background)
         }
         return true
     }
@@ -176,10 +170,6 @@ class AppDelegate: UIResponder,
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
-    }
-    
-    func updateValueUnLockAd() {
-        isUnlockAd = false
     }
 }
 

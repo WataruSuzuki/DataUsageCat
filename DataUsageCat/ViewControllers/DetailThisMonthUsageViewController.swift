@@ -9,7 +9,7 @@
 
 import UIKit
 
-class DetailThisMonthUsageViewController: CommonUtilChartScrollViewController
+class ChartViewController: HelpingMonetizeViewController
 {
 
     var currentViewController: UIViewController!
@@ -84,7 +84,7 @@ class DetailThisMonthUsageViewController: CommonUtilChartScrollViewController
     func changeViewControllerForSegmentIndex(index: Int) {
         switch index {
         case ViewControllerIndex.DETAIL_THIS_MONTH.rawValue:
-            let detailThisMonthUsage = self.storyboard!.instantiateViewController(withIdentifier: "DetailThisMonthUsageViewController") as! DetailThisMonthUsageViewController
+            let detailThisMonthUsage = self.storyboard!.instantiateViewController(withIdentifier: "DetailThisMonthUsageViewController") as! ChartViewController
             self.updateContainerAnotherView(vc: detailThisMonthUsage)
             self.navigationItem.title = NSLocalizedString("usage_charts", comment: "")
             

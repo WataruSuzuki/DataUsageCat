@@ -60,11 +60,6 @@ class SummaryNetworkUsageTableViewController: HelpingMonetizeViewController,
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //var ret: Int = 0
         switch section {
-        case SectionSummary.SECTION_RECOMMEND_AD.rawValue:
-            let delegate = UIApplication.shared.delegate as! AppDelegate
-            if !delegate.isUnlockAd {
-                return 1
-            }
 
         case SectionSummary.DETAIL_DATA_WIFI.rawValue:
             return RowDetailWifi.MAX_ROW_DETAIL_DATA_WIFI.rawValue

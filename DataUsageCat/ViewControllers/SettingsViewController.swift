@@ -27,14 +27,10 @@ class SettingsViewController: HelpingMonetizeViewController,
         self.title = NSLocalizedString("app_settings", comment:"")
         let nib = UINib(nibName: "PickerViewCell", bundle: nil)
         self.settingsTableView.register(nib, forCellReuseIdentifier: "PickerViewCell")
-        let delegate = UIApplication.shared.delegate as! AppDelegate
-        if delegate.isUnlockAd {
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            //TODO -> self.view.addSubview(nendBannerView)
         } else {
-            if UIDevice.current.userInterfaceIdiom == .pad {
-                //TODO -> self.view.addSubview(nendBannerView)
-            } else {
-                addAdMobBannerView(unitId: KeyIdAdMob.BANNER_PHONE)
-                                            }
+            addAdMobBannerView(unitId: KeyIdAdMob.BANNER_PHONE)
         }
     }
 

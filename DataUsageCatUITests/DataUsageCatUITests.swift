@@ -37,13 +37,13 @@ class DataUsageCatUITests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
         
         let app = XCUIApplication()
-        let permissionAlert = app.alerts["“DataUsageCat” Would Like to Send You Notifications"]
-        if permissionAlert.exists {
-            permissionAlert.scrollViews.otherElements.buttons["Allow"].tap()
-        }
-        
-        app.buttons["remaining"].tap()
-        app.buttons["save of month"].tap()
+//        let permissionAlert = app.alerts["“DataUsageCat” Would Like to Send You Notifications"]
+//        if permissionAlert.exists {
+//            permissionAlert.scrollViews.otherElements.buttons["Allow"].tap()
+//        }
+//        
+//        app.buttons["remaining"].tap()
+//        app.buttons["save of month"].tap()
     }
 
     private func testExample002(dummyParam: Int) {

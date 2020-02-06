@@ -36,20 +36,17 @@ class AboutThisAppViewController: HelpingMonetizeViewController,
         } else {
             self.textView_messageAboutThisApp.text = NSLocalizedString("about_this_app_message", comment:"")
         }
+        let delay = 2.0 * Double(NSEC_PER_SEC)
+        let time = DispatchTime.now() + Double(Int64(delay)) / Double(NSEC_PER_SEC)
         let delegate = UIApplication.shared.delegate as! AppDelegate
-        if delegate.isUnlockAd {
-        } else {
-            let delay = 2.0 * Double(NSEC_PER_SEC)
-            let time = DispatchTime.now() + Double(Int64(delay)) / Double(NSEC_PER_SEC)
-            DispatchQueue.main.asyncAfter(deadline: time, execute: {
-                if UIDevice.current.userInterfaceIdiom == .pad {
-                    self.setupAdBannerView(delegate: delegate)
-                } else {
-                    self.addAdMobBannerView(unitId: KeyIdAdMob.BANNER_PHONE)
-                }
-            })
-            loadAdMobInterstitial(unitId: KeyIdAdMob.INTERSTITIAL)
-        }
+        DispatchQueue.main.asyncAfter(deadline: time, execute: {
+            if UIDevice.current.userInterfaceIdiom == .pad {
+                self.setupAdBannerView(delegate: delegate)
+            } else {
+                self.addAdMobBannerView(unitId: KeyIdAdMob.BANNER_PHONE)
+            }
+        })
+        loadAdMobInterstitial(unitId: KeyIdAdMob.INTERSTITIAL)
 
         self.storyBoardName = delegate.storyBoardName
             buttonAppSettings?.setTitle(NSLocalizedString("show_app_settings", comment:""), for: [])

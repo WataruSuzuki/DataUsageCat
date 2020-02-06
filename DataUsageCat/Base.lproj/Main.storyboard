@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Bcz-Cf-aX7">
+    <device id="ipad12_9rounded" orientation="portrait" layout="fullscreen" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--MeterViewController-->
+        <scene sceneID="YJg-pp-BsH">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="MeterViewController" storyboardName="Meter" referencedIdentifier="MeterViewController" id="jUo-t7-Y25" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yCT-bJ-tyC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1322" y="-211"/>
+        </scene>
+        <!--ChartViewController-->
+        <scene sceneID="wDY-qe-hxe">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nrx-Hk-goQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardIdentifier="ChartViewController" storyboardName="Chart" referencedIdentifier="ChartViewController" id="Idd-B4-2Go" sceneMemberID="viewController"/>
+            </objects>
+            <point key="canvasLocation" x="1351" y="-76"/>
+        </scene>
+        <!--Home View Controller-->
+        <scene sceneID="9Da-cb-aME">
+            <objects>
+                <viewController storyboardIdentifier="HomeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Bcz-Cf-aX7" customClass="HomeViewController" customModule="DataUsageCat" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VY5-3y-qlf">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3CL-hA-H0a">
+                                <rect key="frame" x="0.0" y="306.5" width="512" height="753"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="3CL-hA-H0a" secondAttribute="height" multiplier="683:1004" id="AFv-n9-bBh"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="AFv-n9-bBh"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <mask key="constraints">
+                                        <include reference="AFv-n9-bBh"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <segue destination="jUo-t7-Y25" kind="embed" id="iEn-US-sNP"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i9O-D6-6xD">
+                                <rect key="frame" x="512" y="306.5" width="512" height="753"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="i9O-D6-6xD" secondAttribute="height" multiplier="683:1004" id="JH5-2D-iFD"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="JH5-2D-iFD"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <mask key="constraints">
+                                        <include reference="JH5-2D-iFD"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <segue destination="Idd-B4-2Go" kind="embed" id="ORy-0C-haT"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottomMargin" secondItem="3CL-hA-H0a" secondAttribute="bottom" id="15Q-gC-YpN"/>
+                            <constraint firstItem="3CL-hA-H0a" firstAttribute="centerY" secondItem="VY5-3y-qlf" secondAttribute="centerY" id="36x-gO-xWF"/>
+                            <constraint firstItem="3CL-hA-H0a" firstAttribute="leading" secondItem="oKh-Ax-T5f" secondAttribute="leading" id="5Ao-4C-juT"/>
+                            <constraint firstItem="i9O-D6-6xD" firstAttribute="trailing" secondItem="oKh-Ax-T5f" secondAttribute="trailing" id="5IF-YN-2Ya"/>
+                            <constraint firstItem="oKh-Ax-T5f" firstAttribute="bottom" secondItem="i9O-D6-6xD" secondAttribute="bottom" id="BPg-lD-ScN"/>
+                            <constraint firstItem="3CL-hA-H0a" firstAttribute="top" secondItem="oKh-Ax-T5f" secondAttribute="top" id="Cwx-vf-iwq"/>
+                            <constraint firstItem="i9O-D6-6xD" firstAttribute="leading" secondItem="3CL-hA-H0a" secondAttribute="trailing" id="HiP-MM-uwu"/>
+                            <constraint firstItem="oKh-Ax-T5f" firstAttribute="bottom" secondItem="3CL-hA-H0a" secondAttribute="bottom" id="ReB-dC-5hZ"/>
+                            <constraint firstItem="i9O-D6-6xD" firstAttribute="width" secondItem="3CL-hA-H0a" secondAttribute="width" id="hJx-lh-EFx"/>
+                            <constraint firstItem="i9O-D6-6xD" firstAttribute="top" secondItem="oKh-Ax-T5f" secondAttribute="top" id="jrm-y3-MQ9"/>
+                            <constraint firstItem="oKh-Ax-T5f" firstAttribute="trailing" secondItem="3CL-hA-H0a" secondAttribute="trailing" id="mkY-Cl-JET"/>
+                            <constraint firstItem="i9O-D6-6xD" firstAttribute="centerY" secondItem="VY5-3y-qlf" secondAttribute="centerY" id="qFz-co-eth"/>
+                            <constraint firstItem="3CL-hA-H0a" firstAttribute="top" secondItem="oKh-Ax-T5f" secondAttribute="top" id="vx0-h0-tjN"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="oKh-Ax-T5f"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="i9O-D6-6xD"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="BPg-lD-ScN"/>
+                                <exclude reference="15Q-gC-YpN"/>
+                                <exclude reference="36x-gO-xWF"/>
+                                <exclude reference="Cwx-vf-iwq"/>
+                                <exclude reference="5IF-YN-2Ya"/>
+                                <exclude reference="HiP-MM-uwu"/>
+                                <exclude reference="hJx-lh-EFx"/>
+                                <exclude reference="jrm-y3-MQ9"/>
+                                <exclude reference="qFz-co-eth"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=regular">
+                            <mask key="subviews">
+                                <include reference="i9O-D6-6xD"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="BPg-lD-ScN"/>
+                                <exclude reference="ReB-dC-5hZ"/>
+                                <exclude reference="mkY-Cl-JET"/>
+                                <exclude reference="15Q-gC-YpN"/>
+                                <include reference="36x-gO-xWF"/>
+                                <exclude reference="Cwx-vf-iwq"/>
+                                <exclude reference="vx0-h0-tjN"/>
+                                <include reference="5IF-YN-2Ya"/>
+                                <include reference="HiP-MM-uwu"/>
+                                <include reference="hJx-lh-EFx"/>
+                                <exclude reference="jrm-y3-MQ9"/>
+                                <include reference="qFz-co-eth"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6oX-p2-n4W" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="151.97657393850659" y="100.78125"/>
+        </scene>
+    </scenes>
+</document>

@@ -38,34 +38,16 @@ class AboutAimViewController: HelpingMonetizeViewController {
         //self.title = self.aimTitleArray.objectAtIndex(UInt(aimType!))
         textViewAimDiscription.text = self.aimMessageArray[aimType]
         //textViewAimDiscription.text = self.aimMessageArray.objectAtIndex(aimType)
-        let delegate = UIApplication.shared.delegate as! AppDelegate
-        if delegate.isUnlockAd {
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            //TODO -> self.view.addSubview(nendBannerView!)
         } else {
-            if UIDevice.current.userInterfaceIdiom == .pad {
-                //TODO -> self.view.addSubview(nendBannerView!)
-            } else {
-                addAdMobBannerView(unitId: KeyIdAdMob.BANNER_PHONE)
-                                            }
-            loadAdMobInterstitial(unitId: KeyIdAdMob.INTERSTITIAL)
+            addAdMobBannerView(unitId: KeyIdAdMob.BANNER_PHONE)
         }
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        loadAdMobInterstitial(unitId: KeyIdAdMob.INTERSTITIAL)
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
         showAdMobInterstitial(rootViewController: self)
     }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-    }
-
 }

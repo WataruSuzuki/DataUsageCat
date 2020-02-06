@@ -12,7 +12,7 @@ import BubbleTransition
 import RMPZoomTransitionAnimator
 import DJKPurchaseService
 
-class MainViewController: CommonUtilChartScrollViewController,
+class MeterViewController: HelpingMonetizeViewController,
     AboutThisAppViewControllerDelegate,
     SettingsViewControllerDelegate,
     NotifyUsageStatusViewControllerDelegate,
@@ -28,6 +28,7 @@ class MainViewController: CommonUtilChartScrollViewController,
     var statusImageFilename: String = UsageProgessStats.GOOD.getStatusPartsName()
     var dataUsageCount: DUCNetworkInterFace?
     var isPrepareShowDayUsage: Bool = false
+    var userDefaultLimit = Float(7.0)
     
     private let privacyPolicyUrl = "https://github.com/WataruSuzuki/DataUsageCat/blob/master/PRIVACY_POLICY.md"
     
@@ -50,19 +51,10 @@ class MainViewController: CommonUtilChartScrollViewController,
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        NotificationCenter.default.addObserver(self, selector: #selector(MainViewController.mainViewControllerWillAppear), name: UIApplication.willEnterForegroundNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MeterViewController.mainViewControllerWillAppear), name: UIApplication.willEnterForegroundNotification, object: nil)
         
-        if .pad == UIDevice.current.userInterfaceIdiom {
-            imageMeterBackGround.image = UIImage(named: "meter_bg")
-            barButtonAboutThisApp.title = NSLocalizedString("about_this_app", comment:"")
-            barButtonSettings.title = NSLocalizedString("app_settings", comment:"")
-            self.initPadUsageDispArea(view: viewUsageResultArea, withColor: UIColor.gray.cgColor)
-            self.initPadUsageDispArea(view: weekChartScrollView, withColor: self.getDucGreenCgColor())
-            self.initPadUsageDispArea(view: selectedDayScrollView, withColor: UIColor.gray.cgColor)
-        } else {
-            meterNeedleButton?.setTitle("", for: [])
-        }
-        
+        meterNeedleButton?.setTitle("", for: [])
+
         self.needleAngle = OFFSET_START_ANGLE
         self.setInitViewImage()
     }
@@ -77,14 +69,6 @@ class MainViewController: CommonUtilChartScrollViewController,
         self.mainViewControllerWillAppear()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        if UIDevice.current.userInterfaceIdiom == .pad {
-            self.setupChartScrollViews()
-        }
-    }
-    
     func checkPermissions() {
         let delay: Double
         if #available(iOS 10.0, *) {
@@ -94,7 +78,7 @@ class MainViewController: CommonUtilChartScrollViewController,
             delay = 24.0 * Double(NSEC_PER_SEC)
             let time = DispatchTime.now() + delay / Double(NSEC_PER_SEC)
             DispatchQueue.main.asyncAfter(deadline: time, execute: {
-                Thread.detachNewThreadSelector(#selector(MainViewController.checkNotificationAuthorization), toTarget:self, with: nil)
+                Thread.detachNewThreadSelector(#selector(MeterViewController.checkNotificationAuthorization), toTarget:self, with: nil)
             })
         }
     }
@@ -106,11 +90,6 @@ class MainViewController: CommonUtilChartScrollViewController,
                 utilNotification.showConfirmNotificationPermission()
             }
         }
-    }
-    
-    func fitPadChartArea() {
-        self.setupChartScrollViews()
-        self.gotoSelectedDayPage(animated: false, withPage: self.currentDayPage)
     }
     
     @objc func mainViewControllerWillAppear() {
@@ -140,7 +119,6 @@ class MainViewController: CommonUtilChartScrollViewController,
 
                 if UIDevice.current.userInterfaceIdiom == .pad {
                     self.updateViewUsageResult(size: self.view.frame.size, orientation: UIApplication.shared.statusBarOrientation)
-                    self.setupUsageDataForChart()
                     self.updateAllAdBannerView()
                     self.loadAdMobInterstitial(unitId: KeyIdAdMob.INTERSTITIAL)
                 } else {
@@ -178,22 +156,9 @@ class MainViewController: CommonUtilChartScrollViewController,
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         
-        self.weekChartScrollView.isHidden = true
-        self.selectedDayScrollView.isHidden = true
         coordinator.animate(alongsideTransition: { (context) -> Void in
             self.updateViewUsageResult(size: size, orientation: UIApplication.shared.statusBarOrientation)
             
-            for view in self.selectedDayScrollView.subviews {
-                view.removeFromSuperview()
-            }
-            }, completion: { (context) -> Void in
-                self.fitPadChartArea()
-                if 0 > self.currentDayPage {
-                    //do nothing
-                } else {
-                    self.weekChartScrollView.isHidden = false
-                    self.selectedDayScrollView.isHidden = false
-                }
         })
     }
     
@@ -345,7 +310,7 @@ class MainViewController: CommonUtilChartScrollViewController,
                 let delay = Double(TIME_DELAY_1SECOND) * Double(NSEC_PER_SEC)
                 let time = DispatchTime.now() + Double(Int64(delay)) / Double(NSEC_PER_SEC)
                 DispatchQueue.main.asyncAfter(deadline: time, execute: {
-                    Thread.detachNewThreadSelector(#selector(MainViewController.delayShowAd), toTarget:self, with: nil)
+                    Thread.detachNewThreadSelector(#selector(MeterViewController.delayShowAd), toTarget:self, with: nil)
                 })
             }
             self.dismiss(animated: true, completion: nil)
@@ -399,7 +364,7 @@ class MainViewController: CommonUtilChartScrollViewController,
     func getStartPoint(destination: UIViewController) -> CGPoint {
         if type(of: destination) === NotifyUsageStatusViewController.self {
             return buttonTopCatStatusImage.center
-        } else if type(of: destination) === DetailThisMonthUsageViewController.self {
+        } else if type(of: destination) === ChartViewController.self {
             return buttonCurrentMonthValue.center
         } else {
             return self.view.center
@@ -426,7 +391,7 @@ class MainViewController: CommonUtilChartScrollViewController,
             }
         }
         switch segue.identifier! {
-        case "DetailThisMonthUsageViewController":
+        case "ChartViewController":
             navigationController.transitioningDelegate = self
             navigationController.modalPresentationStyle = .custom
 
@@ -444,17 +409,7 @@ class MainViewController: CommonUtilChartScrollViewController,
             let controller = navigationController.viewControllers.last as! NotifyUsageStatusViewController
             controller.statusImageFilename = statusImageFilename
             controller.delegate = self
-            
-        case "SummaryNetworkUsageTableViewController":
-            let controller = navigationController.viewControllers.last as! SummaryNetworkUsageTableViewController
-            if isPrepareShowDayUsage {
-                prepareShowSummaryNetworkUsage(controller: controller)
-            } else {
-                controller.networkIF = dataUsageCount
-            }
-            controller.delegate = self
-            self.isPrepareShowDayUsage = false
-            
+                        
         case "SettingsViewController":
             let controller = navigationController.viewControllers.last as! SettingsViewController
             controller.delegate = self
@@ -512,16 +467,6 @@ class MainViewController: CommonUtilChartScrollViewController,
         return UIColor(red: 0, green: 0.392, blue: 0, alpha: 1.0)
     }
     
-    func initPadUsageDispArea(view: UIView, withColor cgColor: CGColor) {
-        if 0 > self.currentDayPage {
-            //Do nothing because no usage data.
-        } else {
-            view.layer.borderColor = (cgColor)
-            view.layer.borderWidth = (2.0)
-            view.backgroundColor = (UIColor.clear)
-        }
-    }
-
     @IBAction func togglePopover(sender: AnyObject) {
         self.performSegue(withIdentifier: "showFlipside", sender: sender)
     }
@@ -531,11 +476,6 @@ class MainViewController: CommonUtilChartScrollViewController,
         let savingUsageValue = PacketUsageConverter.get(dataUsage: dataUsageCount!, of: .wifi, unit: .giga)
         let usageValue = PacketUsageConverter.get(dataUsage: dataUsageCount!, of: .wwan, unit: .giga)
         self.setCurrentMonthValueLabelAndButton(usermax: usermax, andWifiUsage: savingUsageValue, andCellularUsage: usageValue)
-    }
-    
-    override func tapSummaryNetworkUsage(sender: AnyObject) {
-        isPrepareShowDayUsage = true
-        self.performSegue(withIdentifier: "SummaryNetworkUsageTableViewController", sender: self)
     }
 
     deinit {

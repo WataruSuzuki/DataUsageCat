@@ -11,8 +11,6 @@ target "DataUsageCat" do
   pod 'RMPZoomTransitionAnimator'
   pod 'ZFDragableModalTransition'
   pod 'GoogleMobileAdsMediationNend'
-  pod 'PureLayout'
-  pod 'TinyConstraints'
 
   target 'DataUsageCatTests' do
     inherit! :search_paths

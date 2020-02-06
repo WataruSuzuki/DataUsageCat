@@ -1,10 +1,9 @@
 PODS:
   - BubbleTransition (4.0.0)
-  - DJKPurchaseService (0.0.23):
+  - DJKPurchaseService (0.0.24):
     - PersonalizedAdConsent
-    - PureLayout
+    - SwiftExtensionChimera
     - SwiftyStoreKit
-    - TinyConstraints
   - Firebase/Core (6.21.0):
     - Firebase/CoreOnly
     - FirebaseAnalytics (= 6.4.0)
@@ -98,8 +97,9 @@ PODS:
   - Protobuf (3.11.4)
   - PureLayout (3.1.5)
   - RMPZoomTransitionAnimator (1.0.3)
+  - SwiftExtensionChimera (0.0.6):
+    - PureLayout
   - SwiftyStoreKit (0.15.0)
-  - TinyConstraints (4.0.1)
   - ZFDragableModalTransition (0.6)
 
 DEPENDENCIES:
@@ -109,9 +109,7 @@ DEPENDENCIES:
   - Firebase/Messaging
   - GoogleMobileAdsMediationNend
   - NCMB (from `https://github.com/NIFTYCloud-mbaas/ncmb_ios.git`)
-  - PureLayout
   - RMPZoomTransitionAnimator
-  - TinyConstraints
   - ZFDragableModalTransition
 
 SPEC REPOS:
@@ -139,8 +137,8 @@ SPEC REPOS:
     - Protobuf
     - PureLayout
     - RMPZoomTransitionAnimator
+    - SwiftExtensionChimera
     - SwiftyStoreKit
-    - TinyConstraints
     - ZFDragableModalTransition
 
 EXTERNAL SOURCES:
@@ -151,7 +149,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   DJKPurchaseService:
-    :commit: 204b782ae0522992958c14019964e3538a6183e9
+    :commit: 053a1e11d47698f288b3e5ce1a6fa6a15b38cdca
     :git: https://github.com/WataruSuzuki/PurchaseService-iOS.git
   NCMB:
     :commit: 06072ba57e6ef461cafd20feaa798be0eef0cf8b
@@ -159,7 +157,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   BubbleTransition: 9d96f31375e0db46684e2060d3a601fa47d9f9c1
-  DJKPurchaseService: c9ce18253522a919d282ca3d32e69a9bed4d4a18
+  DJKPurchaseService: c47c9a94f31b124d731921b0faa0f98e03a36a5a
   Firebase: f378c80340dd41c0ad0914af740c021eb282a04b
   FirebaseAnalytics: a1a0b3327ceb5cd5b4bacffdb293f6c909aa087d
   FirebaseAnalyticsInterop: 3f86269c38ae41f47afeb43ebf32a001f58fcdae
@@ -183,10 +181,10 @@ SPEC CHECKSUMS:
   Protobuf: 176220c526ad8bd09ab1fb40a978eac3fef665f7
   PureLayout: 9b4ad47b2f0388c84ff534af23d96e720c1b875a
   RMPZoomTransitionAnimator: 33ded739d91052810c05c8e553663cc9ec79275b
+  SwiftExtensionChimera: a1328de9cfd065c79e11f4343d1e8ff9ab04e8a4
   SwiftyStoreKit: 033d06b6f87955405d3f844a18a7687c2438592a
-  TinyConstraints: 8dd91295e56797648c7bc335dd20e1d91ec4c192
   ZFDragableModalTransition: 0d294eaaba6edfcb9839595de765f9ca06a4b524
 
-PODFILE CHECKSUM: e0b283cd0d7575ba5cc1ae4a2eb1e51393b8e811
+PODFILE CHECKSUM: 72f2a06ad13e46a1d3555ac1cada4495b2c6ac7f
 
 COCOAPODS: 1.9.1

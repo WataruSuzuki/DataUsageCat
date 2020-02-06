@@ -22,14 +22,10 @@ class DetailSettingViewController: HelpingMonetizeViewController,
         
         let nib = UINib(nibName: "PickerViewCell", bundle: nil)
         self.detailSettingsTableView.register(nib, forCellReuseIdentifier: "PickerViewCell")
-        let delegate = UIApplication.shared.delegate as! AppDelegate
-        if delegate.isUnlockAd {
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            //TODO -> self.view.addSubview(nendBannerView!)
         } else {
-            if UIDevice.current.userInterfaceIdiom == .pad {
-                //TODO -> self.view.addSubview(nendBannerView!)
-            } else {
-                addAdMobBannerView(unitId: KeyIdAdMob.BANNER_PHONE)
-            }
+            addAdMobBannerView(unitId: KeyIdAdMob.BANNER_PHONE)
         }
     }
 

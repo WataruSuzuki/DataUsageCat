@@ -16,7 +16,6 @@ class NotifyUsageStatusViewController: HelpingMonetizeViewController,
     UITableViewDelegate, UITableViewDataSource
 {
     @IBOutlet weak var tableviewAboutAim: UITableView!
-    @IBOutlet weak var imageUsageStatus: UIImageView!
     @IBOutlet weak var buttonUsageStatus: UIButton!
     @IBOutlet weak var textViewCommentToUsage: UITextView!
     @IBOutlet weak var labelTitlePercentage: UILabel!
@@ -25,7 +24,7 @@ class NotifyUsageStatusViewController: HelpingMonetizeViewController,
     var userDefaultLimit: Float = 7.0
     var dataUsageCount: DUCNetworkInterFace?
     var aimTypeArray: [Double]!
-    var statusImageFilename: String?
+    var statusImageFilename = "cat_dangerous"
     
     weak var delegate: NotifyUsageStatusViewControllerDelegate?
 
@@ -48,16 +47,9 @@ class NotifyUsageStatusViewController: HelpingMonetizeViewController,
         self.setViewNotifyUsageStatus()
         self.title = NSLocalizedString("comment_from_cat", comment:"")
         
-        if delegate.isUnlockAd {
-        } else {
-            if UIDevice.current.userInterfaceIdiom == .pad {
-                //TODO -> self.view.addSubview(nendBannerView!)
-            } else {
-                addAdMobBannerView(unitId: KeyIdAdMob.BANNER_PHONE)
-                                            }
-            loadAdMobInterstitial(unitId: KeyIdAdMob.INTERSTITIAL)
-            loadAdMobReward(unitId: KeyIdAdMob.REWARDED_VIDEO)
-        }
+        addAdMobBannerView(unitId: KeyIdAdMob.BANNER_PHONE)
+        loadAdMobInterstitial(unitId: KeyIdAdMob.INTERSTITIAL)
+        loadAdMobReward(unitId: KeyIdAdMob.REWARDED_VIDEO)
 
         self.initPercentageDisplay()
         self.initAimTypeArray()
@@ -65,7 +57,8 @@ class NotifyUsageStatusViewController: HelpingMonetizeViewController,
 
     func initPercentageDisplay() {
         labelTitlePercentage.text = NSLocalizedString("month_percentage", comment:"")
-        let usageValue = PacketUsageConverter.getUsageValue(networkIf: self.dataUsageCount!)
+        guard let dataUsageCount = dataUsageCount else { return }
+        let usageValue = PacketUsageConverter.getUsageValue(networkIf: dataUsageCount)
         let usageValueGigaByte = PacketUsageConverter.calcByteData(value: usageValue, unit: PacketUsageConverter.ByteUnit.giga)
 
         labelValuePercentage.text = String(format: "%.1f", ((usageValueGigaByte / self.userDefaultLimit) * 100)) + "%"
@@ -94,12 +87,8 @@ class NotifyUsageStatusViewController: HelpingMonetizeViewController,
     }
 
     func setViewNotifyUsageStatus() {
-        if UIDevice.current.userInterfaceIdiom == .pad {
-            imageUsageStatus.image = UIImage(named: statusImageFilename!)
-        } else {
-            buttonUsageStatus.setBackgroundImage(UIImage(named: statusImageFilename!), for: [])
-        }
-        self.setCommentToUsage(statusStr: statusImageFilename!)
+        buttonUsageStatus.setBackgroundImage(UIImage(named: statusImageFilename), for: [])
+        self.setCommentToUsage(statusStr: statusImageFilename)
     }
 
     func setCommentToUsage(statusStr: String) {
@@ -125,7 +114,8 @@ class NotifyUsageStatusViewController: HelpingMonetizeViewController,
     }
 
     func getAimValue(index: Int) -> Float {
-        let usageValue = PacketUsageConverter.getUsageValue(networkIf: self.dataUsageCount!)
+        guard let dataUsageCount = dataUsageCount else { return Float(0.0) }
+        let usageValue = PacketUsageConverter.getUsageValue(networkIf: dataUsageCount)
         let remainValue = Int64(self.userDefaultLimit * 1000 * 1000 * 1000) - usageValue
         let aimOffset = self.aimTypeArray[index]
         let aimValue = PacketUsageConverter.calcByteData(value: remainValue, unit: PacketUsageConverter.ByteUnit.mega) * Float(aimOffset)
@@ -139,11 +129,6 @@ class NotifyUsageStatusViewController: HelpingMonetizeViewController,
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var ret: Int = 0
         switch section {
-        case SectionNotify.RECOMMEND_AD.rawValue:
-            let delegate = UIApplication.shared.delegate as! AppDelegate
-            if !delegate.isUnlockAd {
-                ret = 1
-            }
 
         case SectionNotify.ABOUT_AIM.rawValue:
             ret = RowAboutAim.MAX_ROW_ABOUT_AIM.rawValue

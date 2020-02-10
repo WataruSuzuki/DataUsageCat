@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Bcz-Cf-aX7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Bcz-Cf-aX7">
     <device id="ipad12_9rounded" orientation="portrait" layout="fullscreen" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -16,11 +16,11 @@
             </objects>
             <point key="canvasLocation" x="1322" y="-211"/>
         </scene>
-        <!--ChartViewController-->
+        <!--Chart-->
         <scene sceneID="wDY-qe-hxe">
             <objects>
+                <viewControllerPlaceholder storyboardIdentifier="ChartViewController" storyboardName="Chart" id="Idd-B4-2Go" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nrx-Hk-goQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <viewControllerPlaceholder storyboardIdentifier="ChartViewController" storyboardName="Chart" referencedIdentifier="ChartViewController" id="Idd-B4-2Go" sceneMemberID="viewController"/>
             </objects>
             <point key="canvasLocation" x="1351" y="-76"/>
         </scene>

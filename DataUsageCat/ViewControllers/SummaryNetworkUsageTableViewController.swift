@@ -24,9 +24,7 @@ class SummaryNetworkUsageTableViewController: HelpingMonetizeViewController,
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if UIDevice.current.userInterfaceIdiom == .phone {
-            self.navigationItem.leftBarButtonItem = nil
-        }
+        self.navigationItem.leftBarButtonItem = nil
 
         let delegate = UIApplication.shared.delegate as! AppDelegate
         if nil == titleStr || titleStr!.isEmpty {

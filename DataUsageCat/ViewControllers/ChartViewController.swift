@@ -46,9 +46,11 @@ class ChartViewController: HelpingMonetizeViewController
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationItem.title = NSLocalizedString("usage_charts", comment: "")
+        self.navigationController?.isNavigationBarHidden = UIDevice.current.userInterfaceIdiom == .pad
     }
 
     override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = false
         super.viewWillDisappear(animated)
     }
 

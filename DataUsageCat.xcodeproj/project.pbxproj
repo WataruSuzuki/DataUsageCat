@@ -1183,6 +1183,7 @@
 				);
 				INFOPLIST_FILE = DataUsageCat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 10.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = jp.co.JchanKchan.DataUsageCat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "DataUsageCat/DataUsageCat-Bridging-Header.h";
@@ -1209,6 +1210,7 @@
 				);
 				INFOPLIST_FILE = DataUsageCat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 10.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = jp.co.JchanKchan.DataUsageCat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "DataUsageCat/DataUsageCat-Bridging-Header.h";
@@ -1282,6 +1284,7 @@
 				DEVELOPMENT_TEAM = F35G39V2UB;
 				INFOPLIST_FILE = Sticker/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MARKETING_VERSION = 10.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = jp.co.JchanKchan.DataUsageCat.Sticker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1297,6 +1300,7 @@
 				DEVELOPMENT_TEAM = F35G39V2UB;
 				INFOPLIST_FILE = Sticker/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MARKETING_VERSION = 10.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = jp.co.JchanKchan.DataUsageCat.Sticker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

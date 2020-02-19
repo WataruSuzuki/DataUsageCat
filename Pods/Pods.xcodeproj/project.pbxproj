@@ -1352,6 +1352,7 @@
 		144C8518369B86AB455F64057A61F16E /* FIRAppInternal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRAppInternal.h; path = FirebaseCore/Sources/Private/FIRAppInternal.h; sourceTree = "<group>"; };
 		1453AB11148B57B7C8F1ACAC55A90621 /* firebasecore.nanopb.c */ = {isa = PBXFileReference; includeInIndex = 1; name = firebasecore.nanopb.c; path = Firebase/CoreDiagnostics/FIRCDLibrary/Protogen/nanopb/firebasecore.nanopb.c; sourceTree = "<group>"; };
 		1484A15701853EF7258A64D827BF5CF8 /* SwiftyStoreKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyStoreKit.debug.xcconfig; sourceTree = "<group>"; };
+		159130172D47976985F4CF2F445B7B93 /* NendAdapter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NendAdapter.framework; path = "NendAdapter-6.0.0.0/NendAdapter.framework"; sourceTree = "<group>"; };
 		160861A12392DA487A8C4EF115A4B8A1 /* FIRMessagingTopicOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRMessagingTopicOperation.h; path = FirebaseMessaging/Sources/FIRMessagingTopicOperation.h; sourceTree = "<group>"; };
 		1672677F1B4E64AB939F4513D34EB055 /* GDTCORReachability.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GDTCORReachability.h; path = GoogleDataTransport/GDTCORLibrary/Public/GDTCORReachability.h; sourceTree = "<group>"; };
 		16A1B2EBD2BF566BC0058EC59A18A106 /* GULNetworkURLSession.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULNetworkURLSession.h; path = GoogleUtilities/Network/Private/GULNetworkURLSession.h; sourceTree = "<group>"; };
@@ -2002,7 +2003,6 @@
 		E0359D6C026DD5A26046CC51BB762AFE /* NCMB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = NCMB.framework; path = NCMB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0540003B1A4C5BA7AF199966D039DFE /* Pods-DataUsageCat-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-DataUsageCat-umbrella.h"; sourceTree = "<group>"; };
 		E0C9934F90F056D707DAD6FCF7DA9EEC /* NCMB.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = NCMB.modulemap; sourceTree = "<group>"; };
-		E1243E17001F7D2500BCCE8E1118821A /* NendAdapter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NendAdapter.framework; path = "NendAdapter-5.4.1.0/NendAdapter.framework"; sourceTree = "<group>"; };
 		E15E69C2DA275034278F56C9D0CDB464 /* GPBWireFormat.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GPBWireFormat.h; path = objectivec/GPBWireFormat.h; sourceTree = "<group>"; };
 		E16BA987BF5A7322A1A2DB8AC3CD26E5 /* FIRAnalyticsConfiguration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRAnalyticsConfiguration.h; path = FirebaseCore/Sources/FIRAnalyticsConfiguration.h; sourceTree = "<group>"; };
 		E25253E1543CF79E1CE13A0351F8830E /* PromisesObjC-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "PromisesObjC-Info.plist"; sourceTree = "<group>"; };
@@ -2565,6 +2565,14 @@
 			path = PersonalizedAdConsent;
 			sourceTree = "<group>";
 		};
+		2E70FDA0A0660ABD6D5855E63DD5E3D5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				159130172D47976985F4CF2F445B7B93 /* NendAdapter.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		2ED1E3F2C97DEBD96A71EEB1CCEC9DDB /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -2692,7 +2700,7 @@
 		5F33C1921BB66D893E64C7D831168303 /* GoogleMobileAdsMediationNend */ = {
 			isa = PBXGroup;
 			children = (
-				91713FFF98075E024854958286BC2605 /* Frameworks */,
+				2E70FDA0A0660ABD6D5855E63DD5E3D5 /* Frameworks */,
 				BE7550C6746E4122E38D1AB9F7362D4A /* Support Files */,
 			);
 			name = GoogleMobileAdsMediationNend;
@@ -2908,14 +2916,6 @@
 			children = (
 			);
 			name = encode;
-			sourceTree = "<group>";
-		};
-		91713FFF98075E024854958286BC2605 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				E1243E17001F7D2500BCCE8E1118821A /* NendAdapter.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		91D4CECA87BDDFA466031E76EE8C1956 /* PureLayout */ = {
@@ -7005,20 +7005,6 @@
 			};
 			name = Release;
 		};
-		C1A45380B9978699D58CE8BE155289C0 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E28870FD8BD961E0E8B37739006098F6 /* NendSDK_iOS.release.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
 		C781F2BE4380A48C31CA13B0C471C1BE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 76249F5302B239319CFD840B7E3C4AFF /* Protobuf.debug.xcconfig */;
@@ -7047,6 +7033,19 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		C89C313974707BAFCE94CD88379FA1FF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7F86F227E5D751B9BDD2B2113E1A4399 /* NendSDK_iOS.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -7083,19 +7082,6 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
-		};
-		CBA5F07A90777426CBAE830FBACEB442 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7F86F227E5D751B9BDD2B2113E1A4399 /* NendSDK_iOS.debug.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
 		};
 		CCE6B9A1834E3A89F60D49BB6F9D8829 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -7219,6 +7205,20 @@
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		D515A2A527F52A8830EF9C73EE5E361D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E28870FD8BD961E0E8B37739006098F6 /* NendSDK_iOS.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
@@ -7455,8 +7455,8 @@
 		0F36A3B338C597FD66F15C120D56C095 /* Build configuration list for PBXAggregateTarget "NendSDK_iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CBA5F07A90777426CBAE830FBACEB442 /* Debug */,
-				C1A45380B9978699D58CE8BE155289C0 /* Release */,
+				C89C313974707BAFCE94CD88379FA1FF /* Debug */,
+				D515A2A527F52A8830EF9C73EE5E361D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -58,9 +58,9 @@ PODS:
     - nanopb (~> 1.30905.0)
   - GoogleDataTransport (7.0.0):
     - nanopb (~> 1.30905.0)
-  - GoogleMobileAdsMediationNend (5.4.1.0):
-    - Google-Mobile-Ads-SDK (>= 7.58.0)
-    - NendSDK_iOS (= 5.4.1)
+  - GoogleMobileAdsMediationNend (6.0.0.0):
+    - Google-Mobile-Ads-SDK (>= 7.62.0)
+    - NendSDK_iOS (= 6.0.0)
   - GoogleUtilities/AppDelegateSwizzler (6.7.1):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
@@ -86,7 +86,7 @@ PODS:
   - nanopb/decode (1.30905.0)
   - nanopb/encode (1.30905.0)
   - NCMB (3.1.0)
-  - NendSDK_iOS (5.4.1)
+  - NendSDK_iOS (6.0.0)
   - PersonalizedAdConsent (1.0.5)
   - PromisesObjC (1.2.9)
   - Protobuf (3.12.0)
@@ -141,7 +141,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   DJKPurchaseService:
-    :commit: dd788839c663a412924517fa92484dedc54c8cb3
+    :commit: 328845f754ce5277d6614ade269d7b8c5b01bbfa
     :git: https://github.com/WataruSuzuki/PurchaseService-iOS.git
   NCMB:
     :commit: 06072ba57e6ef461cafd20feaa798be0eef0cf8b
@@ -160,11 +160,11 @@ SPEC CHECKSUMS:
   Google-Mobile-Ads-SDK: c92c27666fbf684c964259785a6b3cdd3068e06f
   GoogleAppMeasurement: 8cd1f289d60e629cf16ab03363b9e89c776b9651
   GoogleDataTransport: 8a40cb194ad242b6f6dfe72c14fe40fc67c4dcd7
-  GoogleMobileAdsMediationNend: 742506ffefafa286ef37e3d6b8657a7f31e1c3f4
+  GoogleMobileAdsMediationNend: 0c1b15cb326c825ea79514ffb8ccf1e009a7046e
   GoogleUtilities: e121a3867449ce16b0e35ddf1797ea7a389ffdf2
   nanopb: c43f40fadfe79e8b8db116583945847910cbabc9
   NCMB: c308972109137bf523ec1830bac16de6a31c25f4
-  NendSDK_iOS: c0c22a467a3f17d2945d1fd7c245b416274d8129
+  NendSDK_iOS: db99bd4fd438dcd05d33e5bed7be3db66b41714f
   PersonalizedAdConsent: dbecabb3467df967c16d9cebc2ef4a8890e4bbd8
   PromisesObjC: b48e0338dbbac2207e611750777895f7a5811b75
   Protobuf: 2793fcd0622a00b546c60e7cbbcc493e043e9bb9

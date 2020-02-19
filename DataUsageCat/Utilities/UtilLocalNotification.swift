@@ -80,7 +80,7 @@ class UtilLocalNotification: NSObject {
                 case .denied:
                     status(true)
                 case .notDetermined:
-                    self.reqAuthNotification()
+                    self.requestAuthNotification()
                     fallthrough
                 default:
                     status(false)
@@ -131,13 +131,13 @@ class UtilLocalNotification: NSObject {
     }
     
     @available(iOS 10.0, *)
-    func reqAuthNotification() {
+    func requestAuthNotification() {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
-            if !granted {
-                self.showConfirmNotificationPermission()
-            } else {
-                DispatchQueue.main.async {
+            DispatchQueue.main.async {
+                if granted {
                     UIApplication.shared.registerForRemoteNotifications()
+                } else {
+                    self.confirmPermission()
                 }
             }
         }
@@ -152,30 +152,25 @@ class UtilLocalNotification: NSObject {
         }
     }
     
-    func showConfirmNotificationPermission() {
+    func confirmPermission() {
+        guard let delegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        
         let controller = UIAlertController(title: NSLocalizedString("title_ignore_notification", comment:""), message: NSLocalizedString("msg_ignore_notification", comment:""), preferredStyle: .alert)
         controller.addAction(UIAlertAction(title: actionAlert, style: .default, handler: { (UIAlertAction) in
-            let url = URL(string: UIApplication.openSettingsURLString)!
+            guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
             if #available(iOS 10.0, *) {
-                UIApplication.shared.open(url, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
+                UIApplication.shared.open(url, options:[:], completionHandler: nil)
             } else {
                 UIApplication.shared.openURL(url)
             }
         }))
         controller.addAction(UIAlertAction(title: NSLocalizedString("cancel", comment:""), style: .cancel, handler: nil))
         
-        if let delegate = UIApplication.shared.delegate as? AppDelegate {
-            delegate.window?.rootViewController?.present(controller, animated: true, completion: nil)
-        }
+        delegate.window?.rootViewController?.present(controller, animated: true, completion: nil)
     }
 }
 
 // Helper function inserted by Swift 4.2 migrator.
 fileprivate func convertToUNNotificationSoundName(_ input: String) -> UNNotificationSoundName {
 	return UNNotificationSoundName(rawValue: input)
-}
-
-// Helper function inserted by Swift 4.2 migrator.
-fileprivate func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
-	return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIApplication.OpenExternalURLOptionsKey(rawValue: key), value)})
 }

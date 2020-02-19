@@ -68,8 +68,10 @@ class MeterViewController: HelpingMonetizeViewController,
     @objc func checkNotificationAuthorization() {
         let utilNotification = UtilLocalNotification()
         utilNotification.getNotificationPermittedStatus { (isPermitted) in
-            if isPermitted {
-                utilNotification.showConfirmNotificationPermission()
+            DispatchQueue.main.async {
+                if isPermitted {
+                    utilNotification.confirmPermission()
+                }
             }
         }
     }

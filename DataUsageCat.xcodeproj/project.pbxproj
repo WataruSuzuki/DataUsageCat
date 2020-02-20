@@ -601,7 +601,6 @@
 			buildPhases = (
 				96D80CEC1D56CA4400F8F019 /* Resources */,
 				2F03AFF481184EB3137F7FC1 /* Frameworks */,
-				F03AB2C71E7FAAED0004C870 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -850,19 +849,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "#!/bin/bash\n${PROJECT_DIR}/setting_bundle_version.sh\n";
-		};
-		F03AB2C71E7FAAED0004C870 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "#!/bin/bash\nAPP_VERSION=$(/usr/libexec/PlistBuddy -c \"Print CFBundleShortVersionString\" $PRODUCT_SETTINGS_PATH)\n#/usr/libexec/PlistBuddy -c \"Set :PreferenceSpecifiers:1:DefaultValue ${APP_VERSION}\" \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/Settings.bundle/Root.plist\"\n\nAPP_BUILD_NO=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" $PRODUCT_SETTINGS_PATH)\n#/usr/libexec/PlistBuddy -c \"Set :PreferenceSpecifiers:2:DefaultValue ${APP_BUILD_NO}\" \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/Settings.bundle/Root.plist\"\n\nif [ \"${CONFIGURATION}\" = \"Release\" ]; then\n# get the build number\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"$INFOPLIST_FILE\")\necho \"Old Build number $buildNumber\"\n\n# split it by dots\narrIN=(${buildNumber/./ })\n\n# get the last element position\nlastElementPosition=$((${#arrIN[@]} - 1))\n    # get the minor version from the last array element\n    minorVersion=${arrIN[${lastElementPosition}]}\n    # Increase it by 1\n    minorVersion=$((minorVersion+1))\n    # Format it as 3 digit\n    #minorVersion=`printf \"%03d\" $minorVersion`\n    echo \"New minor version $minorVersion\"\n    # Update it on the array\n    arrIN[$lastElementPosition]=$minorVersion\n    \n    # construct the build number now by joining the array\n    buildNumber=$(IFS=. ; echo \"${arrIN[*]}\")\n    \n    echo \"New Build number $buildNumber\"\n    \n    #update it in plist\n    /usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"\n    \n    fi\n";
 		};
 		FB93B58A12D6760A58132D61 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

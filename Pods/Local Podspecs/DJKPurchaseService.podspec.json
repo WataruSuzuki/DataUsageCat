@@ -1,6 +1,6 @@
 {
   "name": "DJKPurchaseService",
-  "version": "0.0.24",
+  "version": "0.0.28",
   "summary": "A short description of DJKPurchaseService.",
   "description": "A longer description of DJKPurchaseService in Markdown format.\n\n* Think: Why did you write this? What is the focus? What does it do?\n* CocoaPods will be using this to generate tags, and improve search results.\n* Try to keep it short, snappy and to the point.\n* Finally, don't worry about the indent, CocoaPods strips it!",
   "homepage": "https://github.com/WataruSuzuki",
@@ -10,7 +10,7 @@
   },
   "source": {
     "git": "https://github.com/WataruSuzuki/PurchaseService-iOS.git",
-    "tag": "0.0.24"
+    "tag": "0.0.28"
   },
   "dependencies": {
     "PersonalizedAdConsent": [
@@ -20,6 +20,9 @@
 
     ],
     "SwiftExtensionChimera": [
+
+    ],
+    "KeychainAccess": [
 
     ]
   },

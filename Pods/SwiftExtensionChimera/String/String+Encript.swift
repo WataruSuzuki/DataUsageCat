@@ -15,7 +15,9 @@ extension String {
             let data = self.data(using: .utf8)!
             let length = Int(CC_SHA1_DIGEST_LENGTH)
             var digest = [UInt8](repeating: 0, count: length)
-            _ = data.withUnsafeBytes { CC_SHA1($0, CC_LONG(data.count), &digest) }
+            data.withUnsafeBytes {
+                _ = CC_SHA1($0.baseAddress, CC_LONG(data.count), &digest)
+            }
             let crypt = digest.map { String(format: "%02x", $0) }.joined(separator: "")
             debugPrint("crypt : \(crypt)")
 
@@ -28,7 +30,9 @@ extension String {
             let data = self.data(using: .utf8)!
             let length = Int(CC_MD5_DIGEST_LENGTH)
             var digest = [UInt8](repeating: 0, count: length)
-            _ = data.withUnsafeBytes { CC_MD5($0, CC_LONG(data.count), &digest) }
+            data.withUnsafeBytes {
+                _ = CC_MD5($0.baseAddress, CC_LONG(data.count), &digest)
+            }
             let crypt = digest.map { String(format: "%02x", $0) }.joined(separator: "")
             debugPrint("md5 : \(crypt)")
 

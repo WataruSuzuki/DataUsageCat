@@ -8,8 +8,6 @@
 
 import UIKit
 import CoreData
-import BubbleTransition
-import RMPZoomTransitionAnimator
 import DJKPurchaseService
 
 class MeterViewController: HelpingMonetizeViewController,
@@ -17,14 +15,9 @@ class MeterViewController: HelpingMonetizeViewController,
     SettingsViewControllerDelegate,
     NotifyUsageStatusViewControllerDelegate,
     SummaryNetworkUsageTableViewControllerDelegate,
-    //ADGManagerViewControllerDelegate, ADGInterstitialDelegate,
-    //UIViewControllerTransitioningDelegate,
     UIPopoverControllerDelegate
 {
-    let bubbleTransition = BubbleTransition()
-    let zoomTransitionAnimator = RMPZoomTransitionAnimator()
-    
-    var isPrepareShowDayUsage: Bool = false
+    //var isPrepareShowDayUsage: Bool = false
     
     private let privacyPolicyUrl = "https://github.com/WataruSuzuki/DataUsageCat/blob/master/PRIVACY_POLICY.md"
     
@@ -95,19 +88,24 @@ class MeterViewController: HelpingMonetizeViewController,
     }
     
     private func setupAdMob() {
-        PurchaseService.shared.confirmPersonalizedConsent(publisherIds: [KeyIdAdMob.PUBLISHER_ID], privacyPolicyUrl: privacyPolicyUrl) { (success) in
+        PurchaseService.shared.confirmConsent(
+            publisherIds: [KeyIdAdMob.PUBLISHER_ID],
+            privacyPolicyUrl: privacyPolicyUrl) { (success) in
             if success {
-                //TODO -> GADMobileAds.sharedInstance().start(completionHandler: nil)
-
-                if UIDevice.current.userInterfaceIdiom == .pad {
-                    self.updateViewUsageResult(size: self.view.frame.size, orientation: UIApplication.shared.statusBarOrientation)
-                    self.updateAllAdBannerView()
-                    self.loadAdMobInterstitial(unitId: KeyIdAdMob.INTERSTITIAL)
-                } else {
-                    self.navigationController?.isNavigationBarHidden = true
-                    self.updateAllAdBannerView()
-                }
+                self.refreshAd()
             }
+        }
+    }
+    
+    func refreshAd() {
+        //TODO -> GADMobileAds.sharedInstance().start(completionHandler: nil)
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            self.updateViewUsageResult(size: self.view.frame.size, orientation: UIApplication.shared.statusBarOrientation)
+            self.updateAllAdBannerView()
+            self.loadAdMobInterstitial(unitId: KeyIdAdMob.INTERSTITIAL)
+        } else {
+            self.navigationController?.isNavigationBarHidden = true
+            self.updateAllAdBannerView()
         }
     }
 

@@ -7,9 +7,6 @@ target "DataUsageCat" do
   pod 'NCMB', :git => 'https://github.com/NIFTYCloud-mbaas/ncmb_ios.git'
   pod 'Firebase/Core'
   pod 'Firebase/Messaging'
-  pod 'BubbleTransition'
-  pod 'RMPZoomTransitionAnimator'
-  pod 'ZFDragableModalTransition'
   pod 'GoogleMobileAdsMediationNend'
 
   target 'DataUsageCatTests' do

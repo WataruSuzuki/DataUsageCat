@@ -13,10 +13,37 @@ import PersonalizedAdConsent
 #if canImport(SwiftExtensionChimera)
   import SwiftExtensionChimera
 #endif
+import AppTrackingTransparency
 
 extension PurchaseService {
 
-    public func confirmPersonalizedConsent(publisherIds: [String], productId: String = "", privacyPolicyUrl: String, completion: @escaping (Bool) -> Void) {
+    public func confirmConsent(publisherIds: [String], productId: String = "", privacyPolicyUrl: String, completion: @escaping (Bool) -> Void) {
+        let dispatchGroup = DispatchGroup()
+        let dispatchQueue = DispatchQueue(label: "queue_confirm_consent", attributes: .concurrent)
+        
+        dispatchGroup.enter()
+        if #available(iOS 14, *) {
+            DispatchQueue.main.async {
+                guard ATTrackingManager.trackingAuthorizationStatus == .notDetermined else {
+                    dispatchGroup.leave()
+                    return
+                }
+                ATTrackingManager.requestTrackingAuthorization { (status) in
+                    dispatchGroup.leave()
+                }
+            }
+        } else {
+            dispatchGroup.leave()
+        }
+        
+        dispatchGroup.notify(queue: dispatchQueue) {
+            DispatchQueue.main.async {
+                self.confirmPersonalizedConsent(publisherIds: publisherIds, productId: productId, privacyPolicyUrl: privacyPolicyUrl, completion: completion)
+            }
+        }
+    }
+    
+    private func confirmPersonalizedConsent(publisherIds: [String], productId: String = "", privacyPolicyUrl: String, completion: @escaping (Bool) -> Void) {
         let info = PACConsentInformation.sharedInstance
         PurchaseService.shared.privacyPolicyUrl = privacyPolicyUrl
         
@@ -54,7 +81,7 @@ extension PurchaseService {
         let info = PACConsentInformation.sharedInstance
         info.requestConsentInfoUpdate(forPublisherIdentifiers: publisherIds) { (error) in
             if let error = error {
-                OptionalError.alertErrorMessage(error: error)
+                ErrorHandler.alert(error: error)
                 completion(false)
             } else {
                 completion(info.isRequestLocationInEEAOrUnknown)
@@ -73,20 +100,19 @@ extension PurchaseService {
 
         form.load { (error) in
             guard let top = UIViewController.currentTop(), error == nil else {
-                OptionalError.alertErrorMessage(error: error ?? OptionalError(with: OptionalError.Cause.unknown, userInfo: nil))
+                ErrorHandler.alert(error: error ?? ErrorHandler(userInfo: nil))
                 completion(false)
                 return
             }
             form.present(from: top, dismissCompletion: { (error, userPrefersAdFree) in
                 guard error == nil else {
-                    OptionalError.alertErrorMessage(error: error ?? OptionalError(with: OptionalError.Cause.unknown, userInfo: nil))
+                    ErrorHandler.alert(error: error ?? ErrorHandler(userInfo: nil))
                     completion(false)
                     return
                 }
                 if userPrefersAdFree {
-                    self.validateProduct(productIDs: [productId], subscriptionIDs: Set<String>(), atomically: false, completion: {
-                        completion(false)
-                    })
+                    self.purchase(productID: productId, completion: nil)
+                    completion(false)
                 } else {
                     let status = PACConsentInformation.sharedInstance.consentStatus
                     if status == .nonPersonalized {

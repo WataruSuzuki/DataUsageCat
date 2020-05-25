@@ -42,7 +42,6 @@ class UtilLocalNotification: NSObject {
         setLocalNotification(date: Date(), title: catSmiling, subTitle: "", body: bodySilentIsWorking, action: actionAlert, soundName: "", requestIdentifier: "WorkingNow")
     }
     
-    @available(iOS 10.0, *)
     func catRestartDataMonitoring() {
         UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [reqIdRestartDataMonitoring])
         let interval = TimeInterval(secOneDay * 2)
@@ -74,63 +73,40 @@ class UtilLocalNotification: NSObject {
     }
     
     func getNotificationPermittedStatus(status: @escaping ((_ isPermitted: Bool) -> Void)) {
-        if #available(iOS 10.0, *) {
-            UNUserNotificationCenter.current().getNotificationSettings { (settings) in
-                switch settings.authorizationStatus {
-                case .denied:
-                    status(true)
-                case .notDetermined:
-                    self.requestAuthNotification()
-                    fallthrough
-                default:
-                    status(false)
-                }
+        UNUserNotificationCenter.current().getNotificationSettings { (settings) in
+            switch settings.authorizationStatus {
+            case .denied:
+                status(true)
+            case .notDetermined:
+                self.requestAuthNotification()
+                fallthrough
+            default:
+                status(false)
             }
-        } else {
-            let types = UIApplication.shared.currentUserNotificationSettings?.types
-            if let result = (types?.contains(.alert)) {
-                status(!result)
-            }
-            status(true)
         }
     }
     
     private func setLocalNotification(date:Date, title: String, subTitle: String, body: String, action: String, soundName: String, requestIdentifier: String) {
-        if #available(iOS 10.0, *) {
-            let content = UNMutableNotificationContent()
-            content.title = title
-            content.subtitle = subTitle
-            content.body = body
-            if !soundName.isEmpty {
-                content.sound = UNNotificationSound(named: convertToUNNotificationSoundName(soundName))
+        let content = UNMutableNotificationContent()
+        content.title = title
+        content.subtitle = subTitle
+        content.body = body
+        if !soundName.isEmpty {
+            content.sound = UNNotificationSound(named: UNNotificationSoundName(rawValue: soundName))
+        }
+        
+        let time = date.timeIntervalSince(Date())
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: (time > 0 ? time : 1), repeats: false)
+        
+        let request = UNNotificationRequest(identifier: requestIdentifier, content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(request) {
+            (error_) in
+            if let error = error_ {
+                print(error)
             }
-            
-            let time = date.timeIntervalSince(Date())
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: (time > 0 ? time : 1), repeats: false)
-            
-            let request = UNNotificationRequest(identifier: requestIdentifier, content: content, trigger: trigger)
-            UNUserNotificationCenter.current().add(request) {
-                (error_) in
-                if let error = error_ {
-                    print(error)
-                }
-            }
-        } else {
-            let notification:UILocalNotification = UILocalNotification()
-            notification.fireDate = date
-            if #available(iOS 8.2, *) {
-                notification.alertTitle = title
-            }
-            notification.alertBody = title + subTitle + body
-            notification.alertAction = action
-            notification.soundName = soundName
-            //notification.userInfo = ["notification_id": notification_id]
-            
-            UIApplication.shared.scheduleLocalNotification(notification)
         }
     }
     
-    @available(iOS 10.0, *)
     func requestAuthNotification() {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
             DispatchQueue.main.async {
@@ -143,34 +119,16 @@ class UtilLocalNotification: NSObject {
         }
     }
     
-    func registUserNotification(application: UIApplication)  {
-        if #available(iOS 10.0, *) {
-            //do nothing
-        } else {
-            let notificationSetting = UIUserNotificationSettings(types: [UIUserNotificationType.badge, UIUserNotificationType.sound, UIUserNotificationType.alert], categories: nil)
-            application.registerUserNotificationSettings(notificationSetting)
-        }
-    }
-    
     func confirmPermission() {
         guard let delegate = UIApplication.shared.delegate as? AppDelegate else { return }
         
         let controller = UIAlertController(title: NSLocalizedString("title_ignore_notification", comment:""), message: NSLocalizedString("msg_ignore_notification", comment:""), preferredStyle: .alert)
         controller.addAction(UIAlertAction(title: actionAlert, style: .default, handler: { (UIAlertAction) in
             guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
-            if #available(iOS 10.0, *) {
-                UIApplication.shared.open(url, options:[:], completionHandler: nil)
-            } else {
-                UIApplication.shared.openURL(url)
-            }
+            UIApplication.shared.open(url, options:[:], completionHandler: nil)
         }))
         controller.addAction(UIAlertAction(title: NSLocalizedString("cancel", comment:""), style: .cancel, handler: nil))
         
         delegate.window?.rootViewController?.present(controller, animated: true, completion: nil)
     }
-}
-
-// Helper function inserted by Swift 4.2 migrator.
-fileprivate func convertToUNNotificationSoundName(_ input: String) -> UNNotificationSoundName {
-	return UNNotificationSoundName(rawValue: input)
 }

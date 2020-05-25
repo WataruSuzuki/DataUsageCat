@@ -87,9 +87,7 @@ class DebugSettingViewController: UITableViewController {
                 if UserPreferences.shared.silentNotificationSetting {
                     UIApplication.shared.registerForRemoteNotifications()
                 } else {
-                    if #available(iOS 10.0, *) {
-                        UtilLocalNotification().catRestartDataMonitoring()
-                    }
+                    UtilLocalNotification().catRestartDataMonitoring()
                 }
             default:
                 break

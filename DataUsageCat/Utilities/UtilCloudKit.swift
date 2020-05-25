@@ -15,20 +15,7 @@ class UtilCloudKit: NSObject {
     let keyDevice = "device"
     let myCKContainer = CKContainer.default()
     
-    fileprivate var _mySubscription: Any? = nil
-    @available(iOS 8.0, *)
-    var mySubscription: Any? {
-        get {
-            if #available(iOS 10.0, *) {
-                return _mySubscription as? CKQuerySubscription
-            } else {
-                return _mySubscription as? CKSubscription
-            }
-        }
-        set {
-            _mySubscription = newValue
-        }
-    }
+    private var mySubscription: CKQuerySubscription?
     
     func createDevicePredicate(deviceName: String) -> NSPredicate {
         let format = (keyDevice + " == '\(deviceName)'")
@@ -49,19 +36,11 @@ class UtilCloudKit: NSObject {
     }
     
     func savePublicSubscription() {
-        if #available(iOS 10.0, *) {
-            let targetSubscription = mySubscription as! CKQuerySubscription
-            myCKContainer.publicCloudDatabase.save(targetSubscription, completionHandler: {
-                subscription, error in
-                self.handleSaveSubscription(ID: subscription?.subscriptionID, message: subscription.debugDescription, error: error)
-            })
-        } else {
-            let targetSubscription = mySubscription as! CKSubscription
-            myCKContainer.publicCloudDatabase.save(targetSubscription, completionHandler: {
-                subscription, error in
-                self.handleSaveSubscription(ID: subscription?.subscriptionID, message: subscription.debugDescription, error: error)
-            })
-        }
+        guard let targetSubscription = mySubscription else { return }
+        myCKContainer.publicCloudDatabase.save(targetSubscription, completionHandler: {
+            subscription, error in
+            self.handleSaveSubscription(ID: subscription?.subscriptionID, message: subscription.debugDescription, error: error)
+        })
     }
     
     func fetchPublicSubscription() {
@@ -107,18 +86,11 @@ class UtilCloudKit: NSObject {
         
         let predicate = createDevicePredicate(deviceName: "iOS")
         let type = "SilentChecking"
-        if #available(iOS 10.0, *) {
-            let subscription = CKQuerySubscription(recordType: type, predicate: predicate, options: [.firesOnRecordCreation, .firesOnRecordDeletion, .firesOnRecordUpdate])
-            subscription.notificationInfo = createCKNotificationInfo()
-            mySubscription = subscription
-            UserPreferences.shared.cloudKitSubscriptionID = subscription.subscriptionID
-        } else {
-            let subscription = CKSubscription(recordType: type, predicate: predicate, options: [.firesOnRecordCreation, .firesOnRecordDeletion, .firesOnRecordUpdate])
-            subscription.notificationInfo = createCKNotificationInfo()
-            mySubscription = subscription
-            UserPreferences.shared.cloudKitSubscriptionID = subscription.subscriptionID
-        }
-        
+        let subscription = CKQuerySubscription(recordType: type, predicate: predicate, options: [.firesOnRecordCreation, .firesOnRecordDeletion, .firesOnRecordUpdate])
+        subscription.notificationInfo = createCKNotificationInfo()
+        mySubscription = subscription
+        UserPreferences.shared.cloudKitSubscriptionID = subscription.subscriptionID
+
         return false
     }
     

@@ -45,17 +45,7 @@ class MeterViewController: HelpingMonetizeViewController,
     }
     
     func checkPermissions() {
-        let delay: Double
-        if #available(iOS 10.0, *) {
-            checkNotificationAuthorization()
-            delay = 3.0 * Double(NSEC_PER_SEC)
-        } else {
-            delay = 24.0 * Double(NSEC_PER_SEC)
-            let time = DispatchTime.now() + delay / Double(NSEC_PER_SEC)
-            DispatchQueue.main.asyncAfter(deadline: time, execute: {
-                Thread.detachNewThreadSelector(#selector(MeterViewController.checkNotificationAuthorization), toTarget:self, with: nil)
-            })
-        }
+        checkNotificationAuthorization()
     }
     
     @objc func checkNotificationAuthorization() {
@@ -76,10 +66,8 @@ class MeterViewController: HelpingMonetizeViewController,
         
         delegate.recorder.fetchMonthNetworkUsage(context: delegate.packetStore.context)
         meterView.dataUsageCount = delegate.recorder.dataUsageCount
-        if #available(iOS 10.0, *) {
-            UtilLocalNotification().catRestartDataMonitoring()
-        }
-        
+        UtilLocalNotification().catRestartDataMonitoring()
+
         setupAdMob()
         
         self.meterView.setViewTitle()

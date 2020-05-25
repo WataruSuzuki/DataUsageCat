@@ -29,12 +29,8 @@ class AppDelegate: UIResponder,
         FirebaseApp.configure()
         
         application.setMinimumBackgroundFetchInterval(UIApplication.backgroundFetchIntervalMinimum)
-        if #available(iOS 10.0, *) {
-            UNUserNotificationCenter.current().delegate = self
-        } else {
-            UtilLocalNotification().registUserNotification(application: application)
-        }
-        
+        UNUserNotificationCenter.current().delegate = self
+
         recorder.getNetworkUsageArrayData(context: packetStore.context)
         if let localNotification = launchOptions?[UIApplication.LaunchOptionsKey.localNotification] as? UILocalNotification {
             handleSilentPushNCMB(notification: localNotification, applicationState: .background)
@@ -42,7 +38,6 @@ class AppDelegate: UIResponder,
         return true
     }
     
-    @available(iOS 10.0, *)
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         let utilNoti = UtilLocalNotification()
         switch response.notification.request.identifier {
@@ -80,15 +75,11 @@ class AppDelegate: UIResponder,
         queue.addOperation({
             self.recorder.checkRecentLimitUsage()
             OperationQueue.main.addOperation({
-                // (UIの更新はメインスレッドから行う必要がある)
-                if #available(iOS 10, *) {
-                    UtilLocalNotification().catRestartDataMonitoring()
-                }
+                UtilLocalNotification().catRestartDataMonitoring()
             })
         })
     }
     
-    @available(iOS 10.0, *)
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         //UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: [notification.request.identifier])
         if let trigger = notification.request.trigger, trigger.repeats {
@@ -129,7 +120,6 @@ class AppDelegate: UIResponder,
         }
     }
     
-    @available(iOS 8.0, *)
     func application(_ application: UIApplication, didRegister notificationSettings: UIUserNotificationSettings) {
         application.registerForRemoteNotifications()
     }

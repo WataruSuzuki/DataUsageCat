@@ -6,3 +6,4 @@
   Copyright (c) 2015年 Wataru Suzuki. All rights reserved.
 */
 CFBundleDisplayName = "パケにゃんこ";
+NSUserTrackingUsageDescription = "最適化された広告を配信するために使用します。";

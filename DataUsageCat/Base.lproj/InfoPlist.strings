@@ -6,3 +6,4 @@
   Copyright (c) 2015年 Wataru Suzuki. All rights reserved.
 */
 CFBundleDisplayName = "DataUsageCat";
+NSUserTrackingUsageDescription = "This identifier will be used to deliver personalized ads to you.";
